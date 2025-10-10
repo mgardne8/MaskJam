@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkurodxopvs7a"
-path="res://.godot/imported/TheDude.png-00c3ca4ec0bd4e83efd07ac22ba42c07.ctex"
+path="res://.godot/imported/TheDude.png-dd993b2127d34334d8f5fcd22b095193.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TheDude.png"
-dest_files=["res://.godot/imported/TheDude.png-00c3ca4ec0bd4e83efd07ac22ba42c07.ctex"]
+source_file="res://Art/TheDude.png"
+dest_files=["res://.godot/imported/TheDude.png-dd993b2127d34334d8f5fcd22b095193.ctex"]
 
 [params]
 
