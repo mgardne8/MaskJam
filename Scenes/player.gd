@@ -9,7 +9,7 @@ var coyote_timer = 0.0
 
 #enum colour_mask {K,C,Y,M}
 #var current_color = colour_mask.K
-var colour_mask = 0
+var colour_mask = 1
 
 enum player_states {IDLE,RUN,JUMP,FALL}
 var  current_state = player_states.IDLE

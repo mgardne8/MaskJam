@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://8fe65lqi7b58" path="res://Art/monochrome_tilemap_packed.png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Scenes/player.tscn" id="2_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://bbmf76x11s3gy" path="res://Enemies/Enemy_Toner_Drone.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bbmf76x11s3gy" path="res://Enemies/Enemy_Bolt.tscn" id="3_8gbba"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_jjgbg")
