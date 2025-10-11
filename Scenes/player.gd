@@ -9,6 +9,7 @@ var coyote_timer = 0.0
 
 #enum colour_mask {K,C,Y,M}
 #var current_color = colour_mask.K
+var colour_mask = 0
 
 enum player_states {IDLE,RUN,JUMP}
 var  current_state = player_states.IDLE
@@ -53,3 +54,6 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 
 	move_and_slide()
+	
+func kill_player():
+	return
