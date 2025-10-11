@@ -1,12 +1,26 @@
+<<<<<<< Updated upstream:Scenes/Enemies/Enemy_Bolt.tscn
 [gd_scene load_steps=10 format=3 uid="uid://bbmf76x11s3gy"]
 
 [ext_resource type="Script" uid="uid://csg2743n8c06b" path="res://Scenes/Enemies/Enemy_Base.gd" id="1_enhor"]
+=======
+[gd_scene load_steps=11 format=3 uid="uid://bbmf76x11s3gy"]
+
+[ext_resource type="Script" uid="uid://csg2743n8c06b" path="res://Enemies/Enemy_Base.gd" id="1_enhor"]
+[ext_resource type="Shader" uid="uid://df4piot6xiokr" path="res://Enemies/EnemyShader.gdshader" id="2_idtok"]
+>>>>>>> Stashed changes:Enemies/Enemy_Bolt.tscn
 [ext_resource type="Texture2D" uid="uid://bk00l5gxwyfg3" path="res://Art/Enemy_Bolt.png" id="2_jk4gd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_idtok"]
 radius = 34.0
 
+<<<<<<< Updated upstream:Scenes/Enemies/Enemy_Bolt.tscn
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpjh0"]
+=======
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u54tr"]
+shader = ExtResource("2_idtok")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk4gd"]
+>>>>>>> Stashed changes:Enemies/Enemy_Bolt.tscn
 atlas = ExtResource("2_jk4gd")
 region = Rect2(0, 0, 800, 800)
 
@@ -58,8 +72,13 @@ script = ExtResource("1_enhor")
 shape = SubResource("CircleShape2D_idtok")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_u54tr")
 position = Vector2(-1, 0)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_xaqjv")
 animation = &"Roll"
+<<<<<<< Updated upstream:Scenes/Enemies/Enemy_Bolt.tscn
 frame_progress = 0.4132878
+=======
+frame_progress = 0.91385764
+>>>>>>> Stashed changes:Enemies/Enemy_Bolt.tscn
