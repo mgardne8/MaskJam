@@ -1,13 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://d01j4f253dh61"]
+[gd_scene load_steps=19 format=3 uid="uid://d01j4f253dh61"]
 
 [ext_resource type="Script" uid="uid://c8bumtr2tssgd" path="res://Scenes/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dnxj1e55wf00i" path="res://Art/TheDude/Idle.png" id="2_cvnsp"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="2_fkybt"]
 [ext_resource type="Texture2D" uid="uid://cwimwsruupi2t" path="res://Art/TheDude/Run.png" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://cddsu0cugxf14" path="res://Art/TheDude/InAir.png" id="3_vgqql"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0iea"]
 radius = 12.0
 height = 40.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3wgy"]
+shader = ExtResource("2_fkybt")
+shader_parameter/colour = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
 atlas = ExtResource("3_vgqql")
@@ -109,13 +114,14 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-collision_mask = 3
+collision_mask = 63
 script = ExtResource("1_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_v0iea")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_x3wgy")
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_cvnsp")
 animation = &"JUMP"

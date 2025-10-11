@@ -2,19 +2,20 @@ extends CharacterBody2D
 class_name Player
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -450.0
 const COYOTE_TIME_LIMIT = 0.2
 
 var coyote_timer = 0.0
-
+var colour_mask = "K"
 #enum colour_mask {K,C,Y,M}
 #var current_color = colour_mask.K
-var colour_mask = 1
 
 enum player_states {IDLE,RUN,JUMP,FALL}
 var  current_state = player_states.IDLE
 
 func _ready() -> void:
+	var colour_mask = "K"
+	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 	$AnimatedSprite2D.play("IDLE")
 
 func _physics_process(delta: float) -> void:
@@ -24,17 +25,41 @@ func _physics_process(delta: float) -> void:
 	else:
 		coyote_timer = 0
 	# jump.
-	if Input.is_action_just_pressed("ui_accept") and (coyote_timer < COYOTE_TIME_LIMIT) and (current_state != player_states.JUMP):
+	if Input.is_action_just_pressed("jump") and (coyote_timer < COYOTE_TIME_LIMIT) and (current_state != player_states.JUMP):
 		velocity.y = JUMP_VELOCITY
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
+	#colour change controls
+	if Input.is_action_just_pressed("colour_k"):
+		colour_mask = "K"
+		set_collision_mask_value(3,true)
+		set_collision_mask_value(4,true)
+		set_collision_mask_value(5,true)
+	if Input.is_action_just_pressed("colour_c"):
+		colour_mask = "C"
+		set_collision_mask_value(3,false)
+		set_collision_mask_value(4,true)
+		set_collision_mask_value(5,true)
+		
+	if Input.is_action_just_pressed("colour_y"):
+		colour_mask = "Y"
+		set_collision_mask_value(3,true)
+		set_collision_mask_value(4,false)
+		set_collision_mask_value(5,true)
+		
+	if Input.is_action_just_pressed("colour_m"):
+		colour_mask = "M"
+		set_collision_mask_value(3,true)
+		set_collision_mask_value(4,true)
+		set_collision_mask_value(5,false)
+
 	# Animation control
 	if not is_on_floor():
 		if velocity.y < 0:
@@ -58,8 +83,9 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 	else:
 		pass
-
+	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 	move_and_slide()
 	
 func die():
-	return
+	print("PLAYER DIE")
+	queue_free()

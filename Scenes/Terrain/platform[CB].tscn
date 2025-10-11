@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtwljp3v2wlxb"]
+
+[ext_resource type="Texture2D" uid="uid://bcnlficlmm0ub" path="res://Art/platform.png" id="1_5dda8"]
+[ext_resource type="Script" uid="uid://dyftt15aqka18" path="res://Scenes/Terrain/ObstacleBase.gd" id="1_dyp75"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="2_kgeqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsosc"]
+size = Vector2(78, 14)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_muqv4"]
+resource_local_to_scene = true
+shader = ExtResource("2_kgeqr")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[node name="Platform2" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_dyp75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_xsosc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_muqv4")
+position = Vector2(-3.8146973e-06, 2.000001)
+scale = Vector2(0.12647057, 0.14460781)
+texture = ExtResource("1_5dda8")

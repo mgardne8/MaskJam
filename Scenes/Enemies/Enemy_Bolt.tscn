@@ -5,11 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bk00l5gxwyfg3" path="res://Art/Enemy_Bolt.png" id="2_jk4gd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_idtok"]
-radius = 34.0
+radius = 18.027756
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c3v75"]
+resource_local_to_scene = true
 shader = ExtResource("2_64p1g")
-shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/colour = Color(0, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpjh0"]
 atlas = ExtResource("2_jk4gd")
@@ -64,8 +65,8 @@ shape = SubResource("CircleShape2D_idtok")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_c3v75")
-position = Vector2(-1, 0)
-scale = Vector2(0.1, 0.1)
+position = Vector2(-1.9073486e-06, -1.9073486e-06)
+scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_xaqjv")
 animation = &"Roll"
 frame_progress = 0.4132878

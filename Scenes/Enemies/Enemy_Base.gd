@@ -2,16 +2,16 @@ extends CharacterBody2D
 
 class_name Enemy
 
-var colour_mask = 1
-var speed = 100
+
+@export var colour_mask = "C"
+var speed = 15
 var direction = Vector2(-1,0)
 var player : Player
 
 func _ready():
-	colour_mask = 1
+	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 	$AnimatedSprite2D.play("Roll")
-
-
+	
 func _physics_process(delta: float) -> void:
 	velocity = speed*direction
 	
@@ -24,15 +24,10 @@ func _physics_process(delta: float) -> void:
 		var collider = collision.get_collider()
 		if collider is Player:
 			player = collider
-			print("collision player")
 			if player.colour_mask == colour_mask:
-				print("mask match kill enemy")
 				die()
 			else:
-				print("mask missmatch kill player")
 				player.die()
-		else:
-			print("collisioin wall")
 	
 	move_and_slide()
 	

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://37qn68iygr0h"]
+
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="1_8heir"]
+[ext_resource type="Script" uid="uid://dky6vaem4srk7" path="res://Scenes/Terrain/obstacle_spike.gd" id="1_itds5"]
+[ext_resource type="Texture2D" uid="uid://ccynpbfd3k318" path="res://Art/spike.png" id="1_vl4ji"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_10nhj"]
+resource_local_to_scene = true
+shader = ExtResource("1_8heir")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[node name="Spike" type="CharacterBody2D"]
+light_mask = 0
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_itds5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_10nhj")
+position = Vector2(0.031249864, -7.0000005)
+scale = Vector2(0.022438908, 0.027029583)
+texture = ExtResource("1_vl4ji")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, 0, 0, -15, 5, 0)
