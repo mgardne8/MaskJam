@@ -50,10 +50,12 @@ func _physics_process(delta: float) -> void:
 	
 	if direction > 0:
 		$AnimatedSprite2D.flip_h = false
-	else:
+	elif direction < 0:
 		$AnimatedSprite2D.flip_h = true
+	else:
+		pass
 
 	move_and_slide()
 	
-func kill_player():
+func die():
 	return
