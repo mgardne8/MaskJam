@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		coyote_timer = 0
 	# jump.
-	if Input.is_action_just_pressed("ui_accept") and (coyote_timer < COYOTE_TIME_LIMIT):
+	if Input.is_action_just_pressed("ui_accept") and (coyote_timer < COYOTE_TIME_LIMIT) and (current_state != player_states.JUMP):
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.

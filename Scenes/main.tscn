@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://djrb1j3txahw0"]
+[gd_scene load_steps=7 format=4 uid="uid://djrb1j3txahw0"]
 
 [ext_resource type="Texture2D" uid="uid://8fe65lqi7b58" path="res://Art/monochrome_tilemap_packed.png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Scenes/player.tscn" id="2_bo1nx"]
-[ext_resource type="PackedScene" path="res://Scenes/Enemies/Enemy_Bolt.tscn" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://18kfumi8wv7q" path="res://Scenes/camera_2d.gd" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://bbmf76x11s3gy" path="res://Scenes/Enemies/Enemy_Bolt.tscn" id="3_8gbba"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_jjgbg")
@@ -425,9 +426,11 @@ tile_set = SubResource("TileSet_8gbba")
 [node name="Player" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(-91, -30)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(26, 21)
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(-65, -9)
 zoom = Vector2(2.93, 2.93)
+script = ExtResource("2_jjvhh")
+player = NodePath("../Player")
 
 [node name="EnemyTonerDrone" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(84, -32)
