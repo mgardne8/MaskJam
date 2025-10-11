@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://d01j4f253dh61"]
+[gd_scene load_steps=14 format=3 uid="uid://d01j4f253dh61"]
 
 [ext_resource type="Script" uid="uid://c8bumtr2tssgd" path="res://Scenes/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://dkurodxopvs7a" path="res://Art/TheDude.png" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://dnxj1e55wf00i" path="res://Art/TheDude/Idle.png" id="2_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://cwimwsruupi2t" path="res://Art/TheDude/Run.png" id="3_6t5aa"]
 
@@ -49,8 +50,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_fkybt")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"IDLE",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v0iea")
+}],
+"loop": true,
+"name": &"JUMP",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -72,8 +81,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_3smsa")
 }],
 "loop": true,
-"name": &"run",
-"speed": 5.0
+"name": &"RUN",
+"speed": 7.0
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -86,5 +95,4 @@ shape = SubResource("CapsuleShape2D_v0iea")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_cvnsp")
-animation = &"run"
-frame_progress = 0.2965509
+animation = &"RUN"

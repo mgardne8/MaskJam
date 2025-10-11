@@ -7,12 +7,14 @@ const COYOTE_TIME_LIMIT = 0.2
 
 var coyote_timer = 0.0
 
-enum colour_mask {K,C,Y,M}
+#enum colour_mask {K,C,Y,M}
+#var current_color = colour_mask.K
+
 enum player_states {IDLE,RUN,JUMP}
 var  current_state = player_states.IDLE
 
 func _ready() -> void:
-	$AnimatedSprite2D.play("idle")
+	$AnimatedSprite2D.play("IDLE")
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -41,7 +43,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			current_state = player_states.IDLE
 	
-	#if $AnimatedSprite2D.animation = player
+	if $AnimatedSprite2D.animation != player_states.keys()[current_state]:
+		$AnimatedSprite2D.play(player_states.keys()[current_state])
+
 	
 	if direction > 0:
 		$AnimatedSprite2D.flip_h = false
