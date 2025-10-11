@@ -4,11 +4,11 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const coyote_time_limit = 0.2
+const COYOTE_TIME_LIMIT = 0.2
 
 var coyote_timer = 0.0
 
-enum color_mask {K,C,Y,M}
+enum colour_mask {K,C,Y,M}
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		coyote_timer = 0
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and (coyote_timer < coyote_time_limit):
+	if Input.is_action_just_pressed("ui_accept") and (coyote_timer < COYOTE_TIME_LIMIT):
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
