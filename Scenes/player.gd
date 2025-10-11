@@ -24,19 +24,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		coyote_timer = 0
 	# jump.
-	
-	if Input.is_action_just_pressed("colour_k"):
-		colour_mask = 0
-	
-	if Input.is_action_just_pressed("colour_c"):
-		colour_mask = 1
-	
-	if Input.is_action_just_pressed("jump") and (coyote_timer < COYOTE_TIME_LIMIT):
+	if Input.is_action_just_pressed("ui_accept") and (coyote_timer < COYOTE_TIME_LIMIT):
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("move_left", "move_right")
+	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -53,6 +46,7 @@ func _physics_process(delta: float) -> void:
 			current_state = player_states.RUN
 		else:
 			current_state = player_states.IDLE
+	
 	
 
 	if $AnimatedSprite2D.animation != player_states.keys()[current_state]:
