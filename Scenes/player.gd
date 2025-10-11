@@ -15,6 +15,9 @@ var  current_state = player_states.IDLE
 
 func _ready() -> void:
 	var colour_mask = "K"
+	set_collision_mask_value(3,false)
+	set_collision_mask_value(4,false)
+	set_collision_mask_value(5,false)
 	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 	$AnimatedSprite2D.play("IDLE")
 
@@ -39,26 +42,26 @@ func _physics_process(delta: float) -> void:
 	#colour change controls
 	if Input.is_action_just_pressed("colour_k"):
 		colour_mask = "K"
-		set_collision_mask_value(3,true)
-		set_collision_mask_value(4,true)
-		set_collision_mask_value(5,true)
+		set_collision_mask_value(3,false)
+		set_collision_mask_value(4,false)
+		set_collision_mask_value(5,false)
 	if Input.is_action_just_pressed("colour_c"):
 		colour_mask = "C"
-		set_collision_mask_value(3,false)
-		set_collision_mask_value(4,true)
-		set_collision_mask_value(5,true)
+		set_collision_mask_value(3,true)
+		set_collision_mask_value(4,false)
+		set_collision_mask_value(5,false)
 		
 	if Input.is_action_just_pressed("colour_y"):
 		colour_mask = "Y"
-		set_collision_mask_value(3,true)
-		set_collision_mask_value(4,false)
-		set_collision_mask_value(5,true)
+		set_collision_mask_value(3,false)
+		set_collision_mask_value(4,true)
+		set_collision_mask_value(5,false)
 		
 	if Input.is_action_just_pressed("colour_m"):
 		colour_mask = "M"
-		set_collision_mask_value(3,true)
-		set_collision_mask_value(4,true)
-		set_collision_mask_value(5,false)
+		set_collision_mask_value(3,false)
+		set_collision_mask_value(4,false)
+		set_collision_mask_value(5,true)
 
 	# Animation control
 	if not is_on_floor():
