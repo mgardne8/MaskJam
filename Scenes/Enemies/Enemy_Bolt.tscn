@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbmf76x11s3gy"]
+[gd_scene load_steps=10 format=3 uid="uid://bbmf76x11s3gy"]
 
 [ext_resource type="Script" uid="uid://csg2743n8c06b" path="res://Scenes/Enemies/Enemy_Base.gd" id="1_enhor"]
 [ext_resource type="Texture2D" uid="uid://bk00l5gxwyfg3" path="res://Art/Enemy_Bolt.png" id="2_jk4gd"]
@@ -22,6 +22,10 @@ region = Rect2(1600, 0, 800, 800)
 atlas = ExtResource("2_jk4gd")
 region = Rect2(2400, 0, 800, 800)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyblw"]
+atlas = ExtResource("2_jk4gd")
+region = Rect2(3200, 0, 800, 800)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_xaqjv"]
 animations = [{
 "frames": [{
@@ -38,14 +42,11 @@ animations = [{
 "texture": SubResource("AtlasTexture_bnatq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c3v75")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_64p1g")
+"texture": SubResource("AtlasTexture_iyblw")
 }],
 "loop": true,
 "name": &"Roll",
-"speed": 10.0
+"speed": 6.0
 }]
 
 [node name="EnemyTonerDrone" type="CharacterBody2D"]
@@ -61,4 +62,4 @@ position = Vector2(-1, 0)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_xaqjv")
 animation = &"Roll"
-frame_progress = 0.23170684
+frame_progress = 0.4132878
