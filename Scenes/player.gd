@@ -88,4 +88,3 @@ func _physics_process(delta: float) -> void:
 	
 func die():
 	print("PLAYER DIE")
-	queue_free()
