@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Enemy
 
 var colour_mask = 1
-var speed = 10
+var speed = 100
 var direction = Vector2(-1,0)
 var player : Player
 

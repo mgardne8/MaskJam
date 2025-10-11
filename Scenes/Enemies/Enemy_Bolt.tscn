@@ -1,45 +1,51 @@
 [gd_scene load_steps=9 format=3 uid="uid://bbmf76x11s3gy"]
 
-[ext_resource type="Script" uid="uid://csg2743n8c06b" path="res://Enemies/Enemy_Base.gd" id="1_enhor"]
+[ext_resource type="Script" uid="uid://csg2743n8c06b" path="res://Scenes/Enemies/Enemy_Base.gd" id="1_enhor"]
 [ext_resource type="Texture2D" uid="uid://bk00l5gxwyfg3" path="res://Art/Enemy_Bolt.png" id="2_jk4gd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_idtok"]
 radius = 34.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jk4gd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpjh0"]
 atlas = ExtResource("2_jk4gd")
-region = Rect2(0, 0, 827, 973)
+region = Rect2(0, 0, 800, 800)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_idtok"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_64p1g"]
 atlas = ExtResource("2_jk4gd")
-region = Rect2(827, 0, 827, 973)
+region = Rect2(800, 0, 800, 800)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u54tr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3v75"]
 atlas = ExtResource("2_jk4gd")
-region = Rect2(1654, 0, 827, 973)
+region = Rect2(1600, 0, 800, 800)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d6ani"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnatq"]
 atlas = ExtResource("2_jk4gd")
-region = Rect2(0, 973, 827, 973)
+region = Rect2(2400, 0, 800, 800)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xaqjv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jk4gd")
+"texture": SubResource("AtlasTexture_fpjh0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_idtok")
+"texture": SubResource("AtlasTexture_64p1g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u54tr")
+"texture": SubResource("AtlasTexture_c3v75")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d6ani")
+"texture": SubResource("AtlasTexture_bnatq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3v75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64p1g")
 }],
 "loop": true,
 "name": &"Roll",
-"speed": 6.0
+"speed": 10.0
 }]
 
 [node name="EnemyTonerDrone" type="CharacterBody2D"]
@@ -55,4 +61,4 @@ position = Vector2(-1, 0)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_xaqjv")
 animation = &"Roll"
-frame_progress = 0.44626835
+frame_progress = 0.23170684
