@@ -1,10 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbmf76x11s3gy"]
+[gd_scene load_steps=12 format=3 uid="uid://bbmf76x11s3gy"]
 
 [ext_resource type="Script" uid="uid://csg2743n8c06b" path="res://Scenes/Enemies/Enemy_Base.gd" id="1_enhor"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="2_64p1g"]
 [ext_resource type="Texture2D" uid="uid://bk00l5gxwyfg3" path="res://Art/Enemy_Bolt.png" id="2_jk4gd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_idtok"]
 radius = 34.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3v75"]
+shader = ExtResource("2_64p1g")
+shader_parameter/colour = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpjh0"]
 atlas = ExtResource("2_jk4gd")
@@ -49,7 +54,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="EnemyTonerDrone" type="CharacterBody2D"]
+[node name="EnemyBolt" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 63
 script = ExtResource("1_enhor")
@@ -58,6 +63,7 @@ script = ExtResource("1_enhor")
 shape = SubResource("CircleShape2D_idtok")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_c3v75")
 position = Vector2(-1, 0)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_xaqjv")
