@@ -11,7 +11,7 @@ var coyote_timer = 0.0
 #var current_color = colour_mask.K
 var colour_mask = 0
 
-enum player_states {IDLE,RUN,JUMP}
+enum player_states {IDLE,RUN,JUMP,FALL}
 var  current_state = player_states.IDLE
 
 func _ready() -> void:
@@ -37,16 +37,20 @@ func _physics_process(delta: float) -> void:
 		
 	# Animation control
 	if not is_on_floor():
-		current_state = player_states.JUMP
+		if velocity.y < 0:
+			current_state = player_states.JUMP
+		else:
+			current_state = player_states.FALL
 	else:
 		if direction:
 			current_state = player_states.RUN
 		else:
 			current_state = player_states.IDLE
 	
+	
+
 	if $AnimatedSprite2D.animation != player_states.keys()[current_state]:
 		$AnimatedSprite2D.play(player_states.keys()[current_state])
-
 	
 	if direction > 0:
 		$AnimatedSprite2D.flip_h = false
