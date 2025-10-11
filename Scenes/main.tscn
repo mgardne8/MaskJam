@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://djrb1j3txahw0"]
+[gd_scene load_steps=6 format=4 uid="uid://djrb1j3txahw0"]
 
 [ext_resource type="Texture2D" uid="uid://8fe65lqi7b58" path="res://Art/monochrome_tilemap_packed.png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Scenes/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://bbmf76x11s3gy" path="res://Enemies/Enemy_Toner_Drone.tscn" id="3_8gbba"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_jjgbg")
@@ -427,3 +428,6 @@ position = Vector2(-91, -30)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(26, 21)
 zoom = Vector2(2.93, 2.93)
+
+[node name="EnemyTonerDrone" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(84, -32)
