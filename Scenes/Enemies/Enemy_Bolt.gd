@@ -16,6 +16,10 @@ func movement(delta): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
 	if not is_on_floor():
 		velocity += get_gravity()*mass * delta
 	move_and_slide()
+	
+	if not $RayCastDown.is_colliding():
+		change_dir()
+	move_and_slide()
 
 	
 func die(): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
@@ -38,6 +42,7 @@ func _on_bounce_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_
 			var player : Player = body
 			if player.colour_mask == colour_mask:
 				player.velocity.y = player.JUMP_VELOCITY*1.5
+				player.jump_count = 0
 				die()
 			else:
 				player.die()
