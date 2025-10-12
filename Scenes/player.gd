@@ -7,6 +7,7 @@ const COYOTE_TIME_LIMIT = 0.2
 
 var coyote_timer = 0.0
 var colour_mask = Global.Colour_States.K
+var current_colour = Global.colourDict[colour_mask]
 #enum colour_mask {K,C,Y,M}
 #var current_color = colour_mask.K
 
@@ -109,7 +110,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		pass
 
-	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
+	#$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
+	#current_colour. ( Global.colourDict[colour_mask], delta)
+	current_colour = Vector4(
+		lerp(current_colour.x,Global.colourDict[colour_mask].x,5*delta),
+		lerp(current_colour.y,Global.colourDict[colour_mask].y,5*delta),
+		lerp(current_colour.z,Global.colourDict[colour_mask].z,5*delta),
+		1)
+	$AnimatedSprite2D.material.set_shader_parameter("colour", current_colour)
 	move_and_slide()
 	
 func die():
