@@ -1,13 +1,14 @@
 extends Enemy
 
 @export var colour_mask_2 = Global.Colour_States.K
-var visual_colour
-var enemy_colours_left = {}
-var colour_remaining_count = 2
+var visual_colour = Vector4(0,0,0,0)
+@export var  enemy_colours_left : Array[Global.Colour_States]
+var colour_remaining_count : int
 func READY():
-	enemy_colours_left[colour_mask] = Global.colourDict[colour_mask]
-	enemy_colours_left[colour_mask_2] = Global.colourDict[colour_mask_2]
-	visual_colour = (Global.colourDict[colour_mask] + Global.colourDict[colour_mask_2])/2
+	colour_remaining_count = enemy_colours_left.size()
+	for colour in enemy_colours_left:
+		visual_colour = visual_colour + Global.colourDict[colour]
+	visual_colour = visual_colour/colour_remaining_count
 	$BaseSprite.material.set_shader_parameter("colour", visual_colour)
 
 func movement(delta):
@@ -20,9 +21,14 @@ func movement(delta):
 func colour_drain(colour_to_drain):
 	if colour_remaining_count > 1:
 		enemy_colours_left.erase(colour_to_drain)
-		visual_colour = visual_colour*2 - Global.colourDict[colour_to_drain]
+		colour_remaining_count = enemy_colours_left.size()
+		print(enemy_colours_left)
+		print(visual_colour)
+		visual_colour = Vector4(0,0,0,0)
+		for colour in enemy_colours_left:
+			visual_colour = visual_colour + Global.colourDict[colour]
+		visual_colour = visual_colour/colour_remaining_count 
 		$BaseSprite.material.set_shader_parameter("colour", visual_colour)
-		colour_remaining_count -= 1
 	else:
 		die()
 
@@ -36,7 +42,8 @@ func _on_bounce_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 			var player : Player = body
 			if enemy_colours_left.has(player.colour_mask):
-				player.velocity.y = player.JUMP_VELOCITY*1.5
+				player.velocity.y = player.JUMP_VELOCITY*1.5 #replace this with a player function (bounce)
+				player.jump_count = 0
 				colour_drain(player.colour_mask)
 			else:
 				player.die()

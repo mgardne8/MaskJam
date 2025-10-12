@@ -54,6 +54,7 @@ func _on_parts_2_body_shape_entered(body_rid: RID, body: Node2D, body_shape_inde
 			var player : Player = body
 			if player.colour_mask == colour_mask_part2:
 				player.velocity.y = player.JUMP_VELOCITY*1.5
+				player.jump_count = 0
 				$Parts2.queue_free()
 			else:
 				player.die()
