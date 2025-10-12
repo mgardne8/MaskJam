@@ -23,6 +23,12 @@ func _physics_process(delta: float) -> void:
 func movement(delta):
 	velocity = speed*direction
 	
+	if path > 0:
+		$AnimatedSprite2D.flip_h = true
+	elif path < 0:
+		$AnimatedSprite2D.flip_h = false
+	else:
+		pass
 	if not is_on_floor():
 		velocity += get_gravity()*mass * delta
 	move_and_slide()
