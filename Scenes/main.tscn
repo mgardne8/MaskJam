@@ -432,7 +432,7 @@ collision_mask = 63
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(-65, -9)
-zoom = Vector2(2.93, 2.93)
+zoom = Vector2(2, 2)
 script = ExtResource("2_jjvhh")
 player = NodePath("../Player")
 
