@@ -4,9 +4,9 @@ class_name Enemy
 
 
 @export var colour_mask = Global.Colour_States.K
-var speed = 15
+var speed = 25
 var direction = Vector2(-1,0)
-var player : Player
+@export var mass = 15 #determines how fast they fall
 
 func _ready():
 	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
@@ -15,26 +15,25 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	
 	movement(delta)
-	
-	var collision = move_and_collide(velocity*delta)
-	 	
-	if collision:
-		var collider = collision.get_collider()
-		if collider is Player:
-			player = collider
-			if player.colour_mask == colour_mask:
-				die()
-			else:
-				player.die()
 
 
 func movement(delta):
 	velocity = speed*direction
 	
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity()*mass * delta
 	move_and_slide()
 
 func die():
 	#death annimation
 	queue_free()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+		if body.name == "Player":
+			var player : Player = body
+			if player.colour_mask == colour_mask:
+				die()
+			else:
+				player.die()
+			

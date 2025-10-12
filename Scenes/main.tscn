@@ -427,7 +427,7 @@ tile_map_data = PackedByteArray("AAD8/wAAAAALAAUAAAD9/wAAAAALAAUAAAD+/wAAAAALAAU
 tile_set = SubResource("TileSet_8gbba")
 
 [node name="Player" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(-91, -30)
+position = Vector2(-74, -33)
 collision_mask = 63
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
@@ -442,25 +442,32 @@ scale = Vector2(0.15220587, 0.20751631)
 texture = ExtResource("5_kry3j")
 
 [node name="Platform2" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(393, -85)
+position = Vector2(873, -36)
+colour_mask = 2
 
 [node name="Platform3" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(602, -84)
+position = Vector2(565, -78)
+colour_mask = 2
 
 [node name="Platform4" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(504, -87)
+position = Vector2(425, -74)
+collision_layer = 4
+collision_mask = 39
+colour_mask = 1
 
 [node name="Platform5" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(874, -47)
+position = Vector2(763, -120)
 
 [node name="Platform6" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(874, 110)
+position = Vector2(874, -22)
+colour_mask = 1
 
 [node name="Platform7" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(874, 269)
+position = Vector2(874, -8)
 
 [node name="EnemyBolt" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(118, -19)
+colour_mask = 2
 
 [node name="Platform8" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(644, 517)
@@ -473,3 +480,7 @@ position = Vector2(11, -2)
 collision_layer = 0
 collision_mask = 0
 colour_mask = 2
+
+[node name="EnemyBolt2" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(270, -101)
+colour_mask = 1
