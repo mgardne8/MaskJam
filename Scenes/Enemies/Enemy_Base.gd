@@ -4,7 +4,7 @@ class_name Enemy
 
 
 @export var colour_mask = Global.Colour_States.K
-var speed = 25
+@export var speed = 25
 @export var path = -1
 var direction : Vector2
 @export var mass = 15 #determines how fast they fall
@@ -37,7 +37,7 @@ func die():
 	#death annimation
 	queue_free()
 
-
+##Killbox area (hitting fromt he side)
 func _on_area_2d_body_entered(body: Node2D) -> void:
 		if body.name == "Player":
 			var player : Player = body
@@ -46,3 +46,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			else:
 				player.die()
 			
+
+
+func _on_bounce_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body.name == "Player":
+			var player : Player = body
+			if player.colour_mask == colour_mask:
+				player.velocity.y = player.JUMP_VELOCITY*1.5
+				die()
+			else:
+				player.die()

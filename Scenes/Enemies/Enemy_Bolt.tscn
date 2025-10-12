@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbmf76x11s3gy"]
+[gd_scene load_steps=14 format=3 uid="uid://bbmf76x11s3gy"]
 
 [ext_resource type="Script" uid="uid://csg2743n8c06b" path="res://Scenes/Enemies/Enemy_Base.gd" id="1_enhor"]
 [ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="2_64p1g"]
@@ -58,6 +58,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_idtok"]
 radius = 17.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64p1g"]
+radius = 7.0
+
 [node name="EnemyBolt" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 63
@@ -75,10 +78,18 @@ sprite_frames = SubResource("SpriteFrames_xaqjv")
 animation = &"Roll"
 frame_progress = 0.4132878
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Killbox" type="Area2D" parent="."]
 
-[node name="Area" type="CollisionShape2D" parent="Area2D"]
+[node name="Area" type="CollisionShape2D" parent="Killbox"]
 position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_idtok")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="BounceArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceArea"]
+position = Vector2(-1, -10)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_64p1g")
+
+[connection signal="body_entered" from="Killbox" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_shape_entered" from="BounceArea" to="." method="_on_bounce_area_body_shape_entered"]
