@@ -125,5 +125,3 @@ material = SubResource("ShaderMaterial_x3wgy")
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_cvnsp")
 animation = &"JUMP"
-
-[node name="Timer" type="Timer" parent="."]

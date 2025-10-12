@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1xgbthysy8vq"]
+
+[ext_resource type="Script" uid="uid://qhddvy61p6el" path="res://Scenes/Enemies/component_enemy.gd" id="1_25vyb"]
+[ext_resource type="Texture2D" uid="uid://ghyaq6oo84ho" path="res://Art/PulleyBase.png" id="1_b3kor"]
+[ext_resource type="Texture2D" uid="uid://dfc02oyh68b4k" path="res://Art/PulleyParts.png" id="2_25vyb"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="2_33oru"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33oru"]
+radius = 21.0
+height = 120.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgij7"]
+shader = ExtResource("2_33oru")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33oru"]
+shader = ExtResource("2_33oru")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[node name="ComponentEnemy" type="CharacterBody2D"]
+script = ExtResource("1_25vyb")
+
+[node name="BaseCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 11)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_33oru")
+
+[node name="BaseSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wgij7")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_b3kor")
+
+[node name="Parts1" type="Area2D" parent="."]
+
+[node name="Parts1Sprite" type="Sprite2D" parent="Parts1"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_33oru")
+position = Vector2(0, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_25vyb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Parts1"]
+polygon = PackedVector2Array(63, 8, 47, -38, 102, -17, 110, -7, 111, 2, 106, 10, 101, 14, 107, 18, 108, 27, 104, 35, 50, 55, 61, 17, -13, 17, -12, -47, -75, -47, -35, -69, -12, -75, 5, -72, 26, -65, 57, -48, -6, -48, -9, 11)
+
+[node name="KillboxBase" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KillboxBase"]
+polygon = PackedVector2Array(-47, -14, 46, -14, 54, -9, 53, 31, 47, 37, -46, 37, -57, 32, -57, 59, -72, 59, -75, 17, -83, 15, -81, 7, -76, 6, -71, -42, -56, -38, -58, -11)
+
+[connection signal="body_shape_entered" from="Parts1" to="." method="_on_parts_1_body_shape_entered"]
+[connection signal="body_shape_entered" from="KillboxBase" to="." method="_on_killbox_base_body_shape_entered"]

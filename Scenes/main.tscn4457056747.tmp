@@ -544,6 +544,6 @@ colour_mask_part1 = 2
 colour_mask_part2 = 3
 
 [node name="ColourTheoryEnemy" parent="." instance=ExtResource("7_6bp64")]
-position = Vector2(723, 189)
+position = Vector2(791, 188)
 colour_mask_2 = 3
 colour_mask = 2

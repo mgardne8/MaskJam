@@ -4,8 +4,6 @@ extends CharacterBody2D
 
 func _ready():
 	$Sprite2D.material.set_shader_parameter("colour",Global.colourDict[colour_mask])
-	print(Global.Colour_States.M)
-	print(colour_mask)
 	
 	if colour_mask == Global.Colour_States.K:
 		set_collision_layer_value(2,true)

@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1xgbthysy8vq"]
+
+[ext_resource type="Script" uid="uid://qhddvy61p6el" path="res://Scenes/Enemies/component_enemy.gd" id="1_25vyb"]
+[ext_resource type="Texture2D" uid="uid://ghyaq6oo84ho" path="res://Art/PulleyBase.png" id="1_b3kor"]
+[ext_resource type="Texture2D" uid="uid://dfc02oyh68b4k" path="res://Art/PulleyParts.png" id="2_25vyb"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="2_33oru"]
+[ext_resource type="Texture2D" uid="uid://w4qjtxva874t" path="res://Art/PulleyParts2.png" id="5_wgij7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33oru"]
+radius = 15.714284
+height = 85.71429
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgij7"]
+shader = ExtResource("2_33oru")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33oru"]
+shader = ExtResource("2_33oru")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3xjq"]
+shader = ExtResource("2_33oru")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[node name="ComponentEnemy" type="CharacterBody2D"]
+collision_layer = 32
+script = ExtResource("1_25vyb")
+
+[node name="CharacterBody" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 9)
+rotation = 1.5707964
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CapsuleShape2D_33oru")
+
+[node name="BaseSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wgij7")
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("1_b3kor")
+
+[node name="Parts1" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 33
+
+[node name="Parts1Sprite" type="Sprite2D" parent="Parts1"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_33oru")
+position = Vector2(0, 1)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_25vyb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Parts1"]
+polygon = PackedVector2Array(-24, -20, -31, -3, -32, 8, -26, 30, -44, 24, -55, 19, -57, 16, -58, 14, -55, 7, -60, -1, -58, -4, -53, -9)
+
+[node name="KillboxBase" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KillboxBase"]
+position = Vector2(4, -3.5527137e-15)
+scale = Vector2(0.7, 0.7)
+polygon = PackedVector2Array(-45.714283, -7.1428566, -44.285713, -14.285713, 37.142853, -12.857142, 37.142853, -29.999998, 49.999996, -29.999998, 49.999996, 4.285714, 57.142853, 5.7142854, 57.142853, 11.428571, 51.428566, 11.428571, 48.571423, 45.714283, 38.571426, 44.285713, 35.714283, 28.571426, -38.571426, 28.571426, -45.714283, 25.714285)
+
+[node name="Parts2" type="Area2D" parent="."]
+collision_layer = 33
+collision_mask = 33
+
+[node name="Parts2Sprite" type="Sprite2D" parent="Parts2"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_w3xjq")
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("5_wgij7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Parts2"]
+position = Vector2(20, 5)
+polygon = PackedVector2Array(-51, -32, -23, -45, -11, -46, -2, -43, 11, -37, 20, -31, -50, -31)
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+position = Vector2(-59, 8)
+
+[connection signal="body_shape_entered" from="Parts1" to="." method="_on_parts_1_body_shape_entered"]
+[connection signal="body_shape_entered" from="KillboxBase" to="." method="_on_killbox_base_body_shape_entered"]
+[connection signal="body_shape_entered" from="Parts2" to="." method="_on_parts_2_body_shape_entered"]

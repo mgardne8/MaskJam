@@ -24,7 +24,7 @@ func _ready() -> void:
 	set_collision_mask_value(3,false)
 	set_collision_mask_value(4,false)
 	set_collision_mask_value(5,false)
-	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict.keys()[colour_mask])
+	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 	$AnimatedSprite2D.play("IDLE")
 
 func _physics_process(delta: float) -> void:
@@ -136,7 +136,7 @@ func _physics_process(delta: float) -> void:
 	#$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 	#current_colour. ( Global.colourDict[colour_mask], delta)
 	current_colour = Vector4(
-		lerp(current_colour.x,Global.colourDict[colour_mask].x,5*delta),
+	lerp(current_colour.x,Global.colourDict[colour_mask].x,5*delta),
 		lerp(current_colour.y,Global.colourDict[colour_mask].y,5*delta),
 		lerp(current_colour.z,Global.colourDict[colour_mask].z,5*delta),
 		1)
