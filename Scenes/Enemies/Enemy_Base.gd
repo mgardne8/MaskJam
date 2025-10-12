@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Enemy
 
 
-@export var colour_mask = "C"
+@export var colour_mask = Global.Colour_States.K
 var speed = 15
 var direction = Vector2(-1,0)
 var player : Player
@@ -13,10 +13,8 @@ func _ready():
 	$AnimatedSprite2D.play("Roll")
 	
 func _physics_process(delta: float) -> void:
-	velocity = speed*direction
 	
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	movement(delta)
 	
 	var collision = move_and_collide(velocity*delta)
 	 	
@@ -28,9 +26,14 @@ func _physics_process(delta: float) -> void:
 				die()
 			else:
 				player.die()
+
+
+func movement(delta):
+	velocity = speed*direction
 	
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	move_and_slide()
-	
 
 func die():
 	#death annimation

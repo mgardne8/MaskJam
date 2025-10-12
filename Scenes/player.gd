@@ -2,11 +2,11 @@ extends CharacterBody2D
 class_name Player
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -450.0
+const JUMP_VELOCITY = -400.0
 const COYOTE_TIME_LIMIT = 0.2
 
 var coyote_timer = 0.0
-var colour_mask = "K"
+var colour_mask = Global.Colour_States.K
 #enum colour_mask {K,C,Y,M}
 #var current_color = colour_mask.K
 
@@ -14,7 +14,7 @@ enum player_states {IDLE,RUN,JUMP,FALL}
 var  current_state = player_states.IDLE
 
 func _ready() -> void:
-	var colour_mask = "K"
+	var colour_mask = Global.Colour_States.K
 	set_collision_mask_value(3,false)
 	set_collision_mask_value(4,false)
 	set_collision_mask_value(5,false)
@@ -41,24 +41,28 @@ func _physics_process(delta: float) -> void:
 		
 	#colour change controls
 	if Input.is_action_just_pressed("colour_k"):
-		colour_mask = "K"
+		colour_mask = Global.Colour_States.K
+		set_collision_mask_value(2,true)
 		set_collision_mask_value(3,false)
 		set_collision_mask_value(4,false)
 		set_collision_mask_value(5,false)
 	if Input.is_action_just_pressed("colour_c"):
-		colour_mask = "C"
+		colour_mask = Global.Colour_States.C
+		set_collision_mask_value(2,false)
 		set_collision_mask_value(3,true)
 		set_collision_mask_value(4,false)
 		set_collision_mask_value(5,false)
 		
 	if Input.is_action_just_pressed("colour_y"):
-		colour_mask = "Y"
+		colour_mask = Global.Colour_States.Y
+		set_collision_mask_value(2,false)
 		set_collision_mask_value(3,false)
 		set_collision_mask_value(4,true)
 		set_collision_mask_value(5,false)
 		
 	if Input.is_action_just_pressed("colour_m"):
-		colour_mask = "M"
+		colour_mask = Global.Colour_States.M
+		set_collision_mask_value(2,false)
 		set_collision_mask_value(3,false)
 		set_collision_mask_value(4,false)
 		set_collision_mask_value(5,true)
@@ -86,6 +90,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 	else:
 		pass
+
 	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 	move_and_slide()
 	

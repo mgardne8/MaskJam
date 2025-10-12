@@ -1,8 +1,30 @@
 [gd_scene load_steps=5 format=3 uid="uid://37qn68iygr0h"]
 
 [ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="1_8heir"]
-[ext_resource type="Script" uid="uid://dky6vaem4srk7" path="res://Scenes/Terrain/obstacle_spike.gd" id="1_itds5"]
 [ext_resource type="Texture2D" uid="uid://ccynpbfd3k318" path="res://Art/spike.png" id="1_vl4ji"]
+
+[sub_resource type="GDScript" id="GDScript_8heir"]
+script/source = "extends Obstacle
+var player : CharacterBody2D
+
+
+func _ready():
+	$Sprite2D.material.set_shader_parameter(\"colour\", Global.colourDict[colour_mask])
+	if colour_mask == Global.Colour_States.K:
+		set_collision_layer_value(3,false)
+		set_collision_layer_value(4,true)
+		set_collision_layer_value(5,true)
+		
+	if 	colour_mask == Global.Colour_States.Y:
+		set_collision_layer_value(3,true)
+		set_collision_layer_value(4,false)
+		set_collision_layer_value(5,true)
+		
+	if colour_mask == Global.Colour_States.M:
+		set_collision_layer_value(3,true)
+		set_collision_layer_value(4,true)
+		set_collision_layer_value(5,false)
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_10nhj"]
 resource_local_to_scene = true
@@ -13,7 +35,7 @@ shader_parameter/colour = Color(0, 0, 0, 1)
 light_mask = 0
 collision_layer = 0
 collision_mask = 32
-script = ExtResource("1_itds5")
+script = SubResource("GDScript_8heir")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_10nhj")
