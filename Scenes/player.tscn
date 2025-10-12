@@ -125,3 +125,9 @@ material = SubResource("ShaderMaterial_x3wgy")
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_cvnsp")
 animation = &"JUMP"
+
+[node name="RayCast2D-LEFT" type="RayCast2D" parent="."]
+target_position = Vector2(-20, 0)
+
+[node name="RayCast2D-RIGHT" type="RayCast2D" parent="."]
+target_position = Vector2(20, 0)
