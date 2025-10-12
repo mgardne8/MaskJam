@@ -5,10 +5,13 @@ class_name Enemy
 
 @export var colour_mask = Global.Colour_States.K
 var speed = 25
-var direction = Vector2(-1,0)
+@export var path = -1
+var direction : Vector2
 @export var mass = 15 #determines how fast they fall
 
 func _ready():
+	direction.x = path
+	direction.y = 0
 	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 	$AnimatedSprite2D.play("Roll")
 	
