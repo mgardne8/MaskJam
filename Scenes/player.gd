@@ -15,10 +15,11 @@ var  current_state = player_states.IDLE
 
 func _ready() -> void:
 	var colour_mask = Global.Colour_States.K
+	set_collision_layer_value(2,true)
 	set_collision_mask_value(3,false)
 	set_collision_mask_value(4,false)
 	set_collision_mask_value(5,false)
-	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
+	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict.keys()[colour_mask])
 	$AnimatedSprite2D.play("IDLE")
 
 func _physics_process(delta: float) -> void:
@@ -42,30 +43,30 @@ func _physics_process(delta: float) -> void:
 	#colour change controls
 	if Input.is_action_just_pressed("colour_k"):
 		colour_mask = Global.Colour_States.K
-		set_collision_mask_value(2,true)
-		set_collision_mask_value(3,false)
-		set_collision_mask_value(4,false)
-		set_collision_mask_value(5,false)
+		set_collision_layer_value(2,true)
+		set_collision_layer_value(3,false)
+		set_collision_layer_value(4,false)
+		set_collision_layer_value(5,false)
 	if Input.is_action_just_pressed("colour_c"):
 		colour_mask = Global.Colour_States.C
-		set_collision_mask_value(2,false)
-		set_collision_mask_value(3,true)
-		set_collision_mask_value(4,false)
-		set_collision_mask_value(5,false)
+		set_collision_layer_value(2,false)
+		set_collision_layer_value(3,true)
+		set_collision_layer_value(4,false)
+		set_collision_layer_value(5,false)
 		
 	if Input.is_action_just_pressed("colour_y"):
 		colour_mask = Global.Colour_States.Y
-		set_collision_mask_value(2,false)
-		set_collision_mask_value(3,false)
-		set_collision_mask_value(4,true)
-		set_collision_mask_value(5,false)
+		set_collision_layer_value(2,false)
+		set_collision_layer_value(3,false)
+		set_collision_layer_value(4,true)
+		set_collision_layer_value(5,false)
 		
 	if Input.is_action_just_pressed("colour_m"):
 		colour_mask = Global.Colour_States.M
-		set_collision_mask_value(2,false)
-		set_collision_mask_value(3,false)
-		set_collision_mask_value(4,false)
-		set_collision_mask_value(5,true)
+		set_collision_layer_value(2,false)
+		set_collision_layer_value(3,false)
+		set_collision_layer_value(4,false)
+		set_collision_layer_value(5,true)
 
 	# Animation control
 	if not is_on_floor():

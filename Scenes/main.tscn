@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://djrb1j3txahw0"]
+[gd_scene load_steps=10 format=4 uid="uid://djrb1j3txahw0"]
 
 [ext_resource type="Texture2D" uid="uid://8fe65lqi7b58" path="res://Art/monochrome_tilemap_packed.png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Scenes/player.tscn" id="2_bo1nx"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bbmf76x11s3gy" path="res://Scenes/Enemies/Enemy_Bolt.tscn" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://bcnlficlmm0ub" path="res://Art/platform.png" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://dtwljp3v2wlxb" path="res://Scenes/Terrain/platform[CB].tscn" id="6_21xkr"]
-[ext_resource type="PackedScene" uid="uid://37qn68iygr0h" path="res://Scenes/Terrain/spike.tscn" id="7_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bv2evqsyofia0" path="res://Scenes/Terrain/Spike[A].tscn" id="8_344ge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
@@ -447,39 +446,18 @@ position = Vector2(393, -85)
 
 [node name="Platform3" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(602, -84)
-colour_mask = "M"
 
 [node name="Platform4" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(504, -87)
-colour_mask = "C"
 
 [node name="Platform5" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(874, -47)
-colour_mask = "C"
 
 [node name="Platform6" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(874, 110)
 
 [node name="Platform7" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(874, 269)
-colour_mask = "M"
-
-[node name="Spike" parent="." instance=ExtResource("7_6bp64")]
-position = Vector2(913, -105)
-rotation = 4.712389
-
-[node name="Spike3" parent="." instance=ExtResource("7_6bp64")]
-position = Vector2(784, -96)
-
-[node name="Spike4" parent="." instance=ExtResource("7_6bp64")]
-position = Vector2(773, -96)
-
-[node name="Spike5" parent="." instance=ExtResource("7_6bp64")]
-position = Vector2(762, -96)
-
-[node name="Spike2" parent="." instance=ExtResource("7_6bp64")]
-position = Vector2(913, -91)
-rotation = 4.712389
 
 [node name="EnemyBolt" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(118, -19)
@@ -489,7 +467,9 @@ position = Vector2(644, 517)
 
 [node name="Platform9" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(611, 440)
-colour_mask = "C"
 
 [node name="Spike[a]" parent="." instance=ExtResource("8_344ge")]
 position = Vector2(11, -2)
+collision_layer = 0
+collision_mask = 0
+colour_mask = 2

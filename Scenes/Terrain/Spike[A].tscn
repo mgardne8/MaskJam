@@ -9,8 +9,8 @@ shader = ExtResource("2_c2tjg")
 shader_parameter/colour = Color(0, 0, 0, 1)
 
 [node name="Spike[a]" type="Area2D"]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 63
+collision_mask = 63
 script = ExtResource("1_wq4bl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
