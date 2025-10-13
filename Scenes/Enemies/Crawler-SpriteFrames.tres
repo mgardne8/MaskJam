@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dwtdjvc2kf5lf"]
+
+[ext_resource type="Texture2D" uid="uid://cm5xocsuii5pi" path="res://Art/Enemy_Crawler.png" id="1_bp8jm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ja1c"]
+atlas = ExtResource("1_bp8jm")
+region = Rect2(1648, 0, 824, 551)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca1vt"]
+atlas = ExtResource("1_bp8jm")
+region = Rect2(824, 0, 824, 551)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f175"]
+atlas = ExtResource("1_bp8jm")
+region = Rect2(0, 0, 824, 551)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ja1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca1vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f175")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}]

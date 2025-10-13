@@ -1,15 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://r2kv1a73s3in"]
+[gd_scene load_steps=6 format=3 uid="uid://r2kv1a73s3in"]
 
-[ext_resource type="Shader" uid="uid://b1qeda71dkdeh" path="res://Scenes/Terrain/Grow.gdshader" id="1_fmxwc"]
+[ext_resource type="Script" uid="uid://bodg2knamivc7" path="res://Scenes/Terrain/spike_static.gd" id="1_fmxwc"]
 [ext_resource type="Texture2D" uid="uid://dwo3m2nk7n8ws" path="res://Art/SpikeRed.png" id="2_l3r61"]
 
+[sub_resource type="Shader" id="Shader_l3r61"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5q81q"]
-shader = ExtResource("1_fmxwc")
+shader = SubResource("Shader_l3r61")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmxwc"]
+size = Vector2(21.5, 16)
 
 [node name="SpikeStatic" type="Area2D"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+script = ExtResource("1_fmxwc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_5q81q")
+position = Vector2(-7, -8)
+scale = Vector2(0.04642858, 0.046542574)
 texture = ExtResource("2_l3r61")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5q81q")
+position = Vector2(7, -8)
+scale = Vector2(0.04642858, 0.04691195)
+texture = ExtResource("2_l3r61")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5q81q")
+position = Vector2(0, -8)
+scale = Vector2(0.04642858, 0.046542574)
+texture = ExtResource("2_l3r61")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, -8)
+shape = SubResource("RectangleShape2D_fmxwc")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://bv1atsta3pqk8"]
+[gd_scene load_steps=2 format=3 uid="uid://bv1atsta3pqk8"]
+
+[ext_resource type="SpriteFrames" uid="uid://dwtdjvc2kf5lf" path="res://Scenes/Enemies/Crawler-SpriteFrames.tres" id="1_kg5a0"]
 
 [node name="EnemyCharger" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.3881318e-21, 5.9604645e-08)
+scale = Vector2(0.16, 0.16)
+sprite_frames = ExtResource("1_kg5a0")
+animation = &"Move"
+
+[node name="Area2D" type="Area2D" parent="."]
