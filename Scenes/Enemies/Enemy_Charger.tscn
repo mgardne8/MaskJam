@@ -1,23 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv1atsta3pqk8"]
+[gd_scene load_steps=6 format=3 uid="uid://bv1atsta3pqk8"]
 
 [ext_resource type="SpriteFrames" uid="uid://dwtdjvc2kf5lf" path="res://Annimations/Crawler-SpriteFrames.tres" id="1_kg5a0"]
 [ext_resource type="PackedScene" uid="uid://b1r015wd0qvah" path="res://Scripts/Global/StateMachine.tscn" id="2_ibusk"]
-[ext_resource type="Script" uid="uid://ctnkax5hqadai" path="res://Scripts/Global/state.gd" id="3_5hbsb"]
+[ext_resource type="Script" uid="uid://dl7pl1iut4n7m" path="res://Scenes/Enemies/ST_Wander.gd" id="3_5hbsb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jxlg"]
+size = Vector2(65, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktx8l"]
+size = Vector2(84, 53)
 
 [node name="EnemyCharger" type="CharacterBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3.3881318e-21, 5.9604645e-08)
 scale = Vector2(0.16, 0.16)
 sprite_frames = ExtResource("1_kg5a0")
 animation = &"Move"
+frame_progress = 0.64193803
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, 22)
+shape = SubResource("RectangleShape2D_0jxlg")
 
 [node name="Area2D" type="Area2D" parent="."]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8, 2)
+shape = SubResource("RectangleShape2D_ktx8l")
+
 [node name="StateMachine" parent="." instance=ExtResource("2_ibusk")]
 
-[node name="State" type="Node" parent="StateMachine"]
+[node name="Wander" type="Node" parent="StateMachine"]
 script = ExtResource("3_5hbsb")
 metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[node name="IdleTime" type="Timer" parent="StateMachine/Wander"]
+one_shot = true
