@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtwljp3v2wlxb"]
 
 [ext_resource type="Texture2D" uid="uid://bcnlficlmm0ub" path="res://Art/platform.png" id="1_5dda8"]
-[ext_resource type="Script" uid="uid://dyftt15aqka18" path="res://Scenes/Terrain/ObstacleBase.gd" id="1_dyp75"]
-[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="2_kgeqr"]
+[ext_resource type="Script" uid="uid://dyftt15aqka18" path="res://Scripts/Terrain and Obstacles/ObstacleBase.gd" id="1_dyp75"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_kgeqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xsosc"]
 size = Vector2(78, 14)

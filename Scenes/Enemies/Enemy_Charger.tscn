@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bv1atsta3pqk8"]
 
-[ext_resource type="SpriteFrames" uid="uid://dwtdjvc2kf5lf" path="res://Scenes/Enemies/Crawler-SpriteFrames.tres" id="1_kg5a0"]
+[ext_resource type="SpriteFrames" uid="uid://dwtdjvc2kf5lf" path="res://Annimations/Crawler-SpriteFrames.tres" id="1_kg5a0"]
 
 [node name="EnemyCharger" type="CharacterBody2D"]
 
