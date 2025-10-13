@@ -286,7 +286,7 @@ delay_in_seconds = "0.0"
 
 [node name="Change M" type="Node" parent="ColorState/Root/K"]
 script = ExtResource("9_pu2lt")
-to = NodePath("..")
+to = NodePath("../../M")
 event = &"Change M"
 delay_in_seconds = "0.0"
 
@@ -313,7 +313,7 @@ delay_in_seconds = "0.0"
 
 [node name="Change M" type="Node" parent="ColorState/Root/C"]
 script = ExtResource("9_pu2lt")
-to = NodePath("..")
+to = NodePath("../../M")
 event = &"Change M"
 delay_in_seconds = "0.0"
 
@@ -340,7 +340,7 @@ delay_in_seconds = "0.0"
 
 [node name="Change M" type="Node" parent="ColorState/Root/Y"]
 script = ExtResource("9_pu2lt")
-to = NodePath("..")
+to = NodePath("../../M")
 event = &"Change M"
 delay_in_seconds = "0.0"
 
@@ -382,6 +382,6 @@ delay_in_seconds = "0.0"
 [connection signal="state_entered" from="PlayerState/Root/Wall Jumping" to="." method="_on_wall_jumping_state_entered"]
 [connection signal="state_physics_processing" from="PlayerState/Root/Wall Jumping" to="." method="_on_wall_jumping_state_physics_processing"]
 [connection signal="state_entered" from="ColorState/Root/K" to="." method="_on_k_state_entered"]
-[connection signal="state_exited" from="ColorState/Root/C" to="." method="_on_c_state_exited"]
+[connection signal="state_entered" from="ColorState/Root/C" to="." method="_on_c_state_entered"]
 [connection signal="state_entered" from="ColorState/Root/Y" to="." method="_on_y_state_entered"]
 [connection signal="state_entered" from="ColorState/Root/M" to="." method="_on_m_state_entered"]

@@ -45,12 +45,13 @@ animations = [{
 [node name="EnemyCharger" type="CharacterBody2D"]
 script = ExtResource("1_0jxlg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(3.3881318e-21, 5.9604645e-08)
 scale = Vector2(0.16, 0.16)
 sprite_frames = ExtResource("1_kg5a0")
 animation = &"ChargeWindup"
-frame_progress = 0.12421866
+frame_progress = 0.2990331
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.5, 22)
@@ -70,7 +71,7 @@ position = Vector2(-7, 32)
 scale = Vector2(0.15493588, 0.03)
 sprite_frames = SubResource("SpriteFrames_hjb3s")
 animation = &"Poof"
-frame_progress = 0.9604716
+frame_progress = 0.49391332
 
 [node name="WallChecker" type="RayCast2D" parent="."]
 unique_name_in_owner = true
@@ -117,7 +118,8 @@ position = Vector2(-84, 18)
 scale = Vector2(0.09745557, 0.102518454)
 sprite_frames = SubResource("SpriteFrames_hjb3s")
 animation = &"Poof"
-frame_progress = 0.6144117
+frame_progress = 0.14785132
 
+[connection signal="timeout" from="StateMachine/Wander/IdleTime" to="StateMachine/Wander" method="_on_idle_time_timeout"]
+[connection signal="timeout" from="StateMachine/Wander/WanderTime" to="StateMachine/Wander" method="_on_wander_time_timeout"]
 [connection signal="timeout" from="StateMachine/Charge/ChargeDelay" to="StateMachine/Charge" method="_on_charge_delay_timeout"]
-[connection signal="animation_finished" from="PoofLaunch" to="StateMachine/Charge" method="_on_poof_launch_animation_finished"]

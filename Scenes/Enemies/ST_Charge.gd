@@ -10,6 +10,7 @@ func Enter():
 	%PoofCharging.visible = true
 	$ChargeDelay.start()
 	%PoofCharging.play("Poof")
+	%BodySprite.play("ChargeWindup")
 	direction_hold = enemy.velocity.normalized()
 	enemy.velocity = Vector2(0,0)
 	
@@ -19,7 +20,3 @@ func _on_charge_delay_timeout() -> void:
 	%PoofLaunch. visible = true
 	%PoofLaunch.play("Poof")
 	enemy.velocity = direction_hold * enemy.charge_speed
-
-
-func _on_poof_launch_animation_finished() -> void:
-	%PoofLaunch.visible - false
