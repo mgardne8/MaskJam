@@ -40,7 +40,7 @@ func player_collision(body,mask,object : Node2D):
 		if player.colour_mask == mask:
 			object.queue_free()
 		else:
-			player.die()
+			player.damage_player()
 
 func player_bounce_collision(body,mask, object :Node2D):
 	if body.name == "Player":
@@ -50,7 +50,7 @@ func player_bounce_collision(body,mask, object :Node2D):
 				player.jump_count = 0
 				object.queue_free()
 			else:
-				player.die()
+				player.damage_player()
 
 func die(): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
 	#death annimation

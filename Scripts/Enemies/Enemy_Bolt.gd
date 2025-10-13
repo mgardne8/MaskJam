@@ -33,7 +33,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			if player.colour_mask == colour_mask:
 				die()
 			else:
-				player.die()
+				player.damage_player()
 			
 
 ##Speacial killbox if hitting from above to bounce player up ##THIS SHOULD BE REMOVED FROM THE BASE SCRIPT
@@ -45,4 +45,4 @@ func _on_bounce_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_
 				player.jump_count = 0
 				die()
 			else:
-				player.die()
+				player.damage_player()

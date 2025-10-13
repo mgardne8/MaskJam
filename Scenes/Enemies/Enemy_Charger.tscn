@@ -1,12 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://bv1atsta3pqk8"]
+[gd_scene load_steps=21 format=3 uid="uid://bv1atsta3pqk8"]
 
 [ext_resource type="Script" uid="uid://b66jlq0g8sxsd" path="res://Scenes/Enemies/enemy_charger.gd" id="1_0jxlg"]
 [ext_resource type="SpriteFrames" uid="uid://dwtdjvc2kf5lf" path="res://Annimations/Crawler-SpriteFrames.tres" id="1_kg5a0"]
 [ext_resource type="PackedScene" uid="uid://b1r015wd0qvah" path="res://Scripts/Global/StateMachine.tscn" id="2_ibusk"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_tl84j"]
 [ext_resource type="Texture2D" uid="uid://b0oo156fnck51" path="res://Art/cloudpoof.png" id="3_2gblp"]
-[ext_resource type="Script" uid="uid://dl7pl1iut4n7m" path="res://Scenes/Enemies/ST_Wander.gd" id="3_5hbsb"]
-[ext_resource type="Script" uid="uid://b3r07ti6ut6lp" path="res://Scenes/Enemies/ST_Charge.gd" id="5_ktx8l"]
-[ext_resource type="Script" uid="uid://ctnkax5hqadai" path="res://Scripts/Global/state.gd" id="7_mtf6k"]
+[ext_resource type="Script" uid="uid://dl7pl1iut4n7m" path="res://Scenes/Enemies/ST_Wander_Charger.gd" id="3_5hbsb"]
+[ext_resource type="Script" uid="uid://b3r07ti6ut6lp" path="res://Scenes/Enemies/ST_Charge_Charger.gd" id="5_ktx8l"]
+[ext_resource type="Script" uid="uid://6avj880pvk53" path="res://Scenes/Enemies/ST_Stunned_Charger.gd" id="7_mtf6k"]
+[ext_resource type="Texture2D" uid="uid://dp8bqqkvgvxwh" path="res://Art/Shittystars.png" id="8_3ijh5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjb3s"]
+shader = ExtResource("2_tl84j")
+shader_parameter/colour = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jxlg"]
 size = Vector2(65, 20)
@@ -43,12 +49,42 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjb3s"]
+atlas = ExtResource("8_3ijh5")
+region = Rect2(0, 0, 345, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtrvt"]
+atlas = ExtResource("8_3ijh5")
+region = Rect2(345, 0, 345, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgkom"]
+atlas = ExtResource("8_3ijh5")
+region = Rect2(690, 0, 345, 336)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r72e4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjb3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtrvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgkom")
+}],
+"loop": true,
+"name": &"Stunned",
+"speed": 5.0
+}]
+
 [node name="EnemyCharger" type="CharacterBody2D"]
 script = ExtResource("1_0jxlg")
 charge_speed = 600
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_hjb3s")
 position = Vector2(3.3881318e-21, 5.9604645e-08)
 scale = Vector2(0.16, 0.16)
 sprite_frames = ExtResource("1_kg5a0")
@@ -78,7 +114,7 @@ frame_progress = 0.49391332
 [node name="WallChecker" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 rotation = -1.5707964
-target_position = Vector2(5.604694e-07, 47)
+target_position = Vector2(-1.6610328e-06, 38)
 collision_mask = 63
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_ibusk")]
@@ -88,9 +124,6 @@ initial_state = NodePath("Wander")
 script = ExtResource("3_5hbsb")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://ctnkax5hqadai"
-
-[node name="IdleTime" type="Timer" parent="StateMachine/Wander"]
-one_shot = true
 
 [node name="WanderTime" type="Timer" parent="StateMachine/Wander"]
 one_shot = true
@@ -107,9 +140,12 @@ metadata/_custom_type_script = "uid://ctnkax5hqadai"
 [node name="ChargeDelay" type="Timer" parent="StateMachine/Charge"]
 one_shot = true
 
-[node name="Stunned" type="Node" parent="StateMachine"]
+[node name="Stunned" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_mtf6k")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[node name="StunTime" type="Timer" parent="StateMachine/Stunned"]
 
 [node name="PlayerDetector" type="RayCast2D" parent="."]
 unique_name_in_owner = true
@@ -126,6 +162,21 @@ sprite_frames = SubResource("SpriteFrames_hjb3s")
 animation = &"Poof"
 frame_progress = 0.14785132
 
-[connection signal="timeout" from="StateMachine/Wander/IdleTime" to="StateMachine/Wander" method="_on_idle_time_timeout"]
+[node name="ChargeCD" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="StunStars" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(3, -35)
+scale = Vector2(0.14969607, 0.17857143)
+sprite_frames = SubResource("SpriteFrames_r72e4")
+animation = &"Stunned"
+frame_progress = 0.9302322
+script = ExtResource("7_mtf6k")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="StateMachine/Wander/WanderTime" to="StateMachine/Wander" method="_on_wander_time_timeout"]
 [connection signal="timeout" from="StateMachine/Charge/ChargeDelay" to="StateMachine/Charge" method="_on_charge_delay_timeout"]
+[connection signal="timeout" from="StateMachine/Stunned/StunTime" to="StateMachine/Stunned" method="_on_stun_time_timeout"]

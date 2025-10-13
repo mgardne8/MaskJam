@@ -1,6 +1,6 @@
 extends State
 
-class_name Charge
+class_name Charge_Charger
 
 @export var enemy: Enemy_Charger
 var direction_hold 
@@ -16,14 +16,17 @@ func Enter():
 	
 
 func Update(_delta: float):
-	if %WallChecker.get_collider() is not Player:
+	if %WallChecker.is_colliding() and %WallChecker.get_collider().name != "Player": #for now transitioned to stun if hits anythign but a player
 		Transitioned.emit(self,"Stunned")
-	
+		print("Stunned!")
+	if %WallChecker.is_colliding() and %WallChecker.get_collider().name == "Player":
+		enemy.change_dir()
+		%ChargeCD.start()
+		Transitioned.emit(self,"Wander")
 
 
 func Exit():
-	%PoofLaunch.pause()
-	%PoofLaunch.visible = false
+	%BodySprite.pause()
 
 func _on_charge_delay_timeout() -> void:
 	%PoofCharging.visible = false
