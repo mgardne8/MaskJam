@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dp8bqqkvgvxwh" path="res://Art/Shittystars.png" id="8_3ijh5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hjb3s"]
+resource_local_to_scene = true
 shader = ExtResource("2_tl84j")
 shader_parameter/colour = Color(0, 0, 0, 1)
 

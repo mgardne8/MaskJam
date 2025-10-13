@@ -16,7 +16,8 @@ func movement(delta): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
 	if not is_on_floor():
 		velocity += get_gravity()*mass * delta
 	move_and_slide()
-	
+	if $RayCastWall.is_colliding():
+		change_dir()
 	if not $RayCastDown.is_colliding():
 		change_dir()
 	move_and_slide()
