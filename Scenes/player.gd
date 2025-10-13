@@ -17,63 +17,17 @@ var jump_wall_last_side = null
 var colour_mask = Global.Colour_States.K
 var current_colour = Global.colourDict[colour_mask]
 
-func _ready() -> void:
-	var colour_mask = Global.Colour_States.K
-	set_collision_layer_value(1,true)
-	set_collision_mask_value(1,true)
-	set_collision_layer_value(2,true)
-	set_collision_mask_value(3,false)
-	set_collision_mask_value(4,false)
-	set_collision_mask_value(5,false)
-	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
-
 # TEMPORARY TO BE MOVED LATER
 func _physics_process(delta: float) -> void:
 		#colour change controls
 	if Input.is_action_just_pressed("colour_k"):
-		print('k')
-		colour_mask = Global.Colour_States.K
-		set_collision_layer_value(2,true)
-		set_collision_mask_value(2,true)
-		set_collision_layer_value(3,false)
-		set_collision_mask_value(3,false)
-		set_collision_layer_value(4,false)
-		set_collision_mask_value(4,false)
-		set_collision_layer_value(5,false)
-		set_collision_mask_value(5,false)
-		
+		$ColorState.send_event("Change K")
 	if Input.is_action_just_pressed("colour_c"):
-		colour_mask = Global.Colour_States.C
-		set_collision_layer_value(2,false)
-		set_collision_mask_value(2,false)
-		set_collision_layer_value(3,true)
-		set_collision_mask_value(3,true)
-		set_collision_layer_value(4,false)
-		set_collision_mask_value(4,false)
-		set_collision_layer_value(5,false)
-		set_collision_mask_value(5,false)
-		
+		$ColorState.send_event("Change C")
 	if Input.is_action_just_pressed("colour_y"):
-		colour_mask = Global.Colour_States.Y
-		set_collision_layer_value(2,false)
-		set_collision_mask_value(2,false)
-		set_collision_layer_value(3,false)
-		set_collision_mask_value(3,false)
-		set_collision_layer_value(4,true)
-		set_collision_mask_value(4,true)
-		set_collision_layer_value(5,false)
-		set_collision_mask_value(5,false)
-		
+		$ColorState.send_event("Change Y")
 	if Input.is_action_just_pressed("colour_m"):
-		colour_mask = Global.Colour_States.M
-		set_collision_layer_value(2,false)
-		set_collision_mask_value(2,false)
-		set_collision_layer_value(3,false)
-		set_collision_mask_value(3,false)
-		set_collision_layer_value(4,false)
-		set_collision_mask_value(4,false)
-		set_collision_layer_value(5,true)
-		set_collision_mask_value(5,true)
+		$ColorState.send_event("Change M")
 
 	current_colour = Vector4(
 		lerp(current_colour.x,Global.colourDict[colour_mask].x,5*delta),
@@ -118,7 +72,7 @@ func CalcMovement(delta: float) -> void:
 	else:
 		jump_coyote_time += delta
 		if velocity.y > 0:
-			$StateChart.send_event("Fall")
+			$PlayerState.send_event("Fall")
 	
 	# Calculate if sprite needs to be flipped
 	if direction > 0:
@@ -132,7 +86,7 @@ func CalcJump(delta: float) -> void:
 	if not jump_wall_time and Input.is_action_just_pressed("jump") and (
 		(is_on_floor() or jump_coyote_time < JUMP_COYOTE_LIMIT) or (jump_count < JUMP_COUNT_MAX)
 	):
-		$StateChart.send_event("Jump")
+		$PlayerState.send_event("Jump")
 		velocity.y = JUMP_VELOCITY if jump_count == 0 else JUMP_VELOCITY*1.5
 		#if not is_on_floor() and jump_count > 0:
 		#	velocity.x *= 2
@@ -142,7 +96,7 @@ func CalcWallJump(delta: float) -> void:
 		($"RayCast2D-LEFT".is_colliding() and jump_wall_last_side != $"RayCast2D-LEFT") or
 		($"RayCast2D-RIGHT".is_colliding() and jump_wall_last_side != $"RayCast2D-RIGHT")
 	):
-		$StateChart.send_event("Wall Jump")
+		$PlayerState.send_event("Wall Jump")
 		velocity.y = JUMP_VELOCITY*2
 		jump_wall_time = 0.00001
 
@@ -163,7 +117,7 @@ func _on_idle_state_physics_processing(delta: float) -> void:
 	CalcJump(delta)
 	move_and_slide()
 	if direction:
-		$StateChart.send_event("Moved")
+		$PlayerState.send_event("Moved")
 
 ##Walk
 func _on_walking_state_entered() -> void:
@@ -176,7 +130,7 @@ func _on_walking_state_physics_processing(delta: float) -> void:
 	CalcJump(delta)
 	move_and_slide()
 	if not direction and velocity.x == 0:
-		$StateChart.send_event("Stopped")
+		$PlayerState.send_event("Stopped")
 
 ##Jump
 func _on_jumping_state_entered() -> void:
@@ -190,9 +144,9 @@ func _on_jumping_state_physics_processing(delta: float) -> void:
 	move_and_slide()
 	if is_on_floor(): #We are no longer jumping, so switch to grounded state
 		if direction:
-			$StateChart.send_event("Landed")
+			$PlayerState.send_event("Landed")
 		else:
-			$StateChart.send_event("Stopped")
+			$PlayerState.send_event("Stopped")
 
 ##Fall
 func _on_falling_state_entered() -> void:
@@ -206,9 +160,9 @@ func _on_falling_state_physics_processing(delta: float) -> void:
 	move_and_slide()
 	if is_on_floor(): #We are no longer jumping, so switch to grounded state
 		if direction:
-			$StateChart.send_event("Landed")
+			$PlayerState.send_event("Landed")
 		else:
-			$StateChart.send_event("Stopped")
+			$PlayerState.send_event("Stopped")
 
 ##Wall Jump
 func _on_wall_jumping_state_entered() -> void:
@@ -227,7 +181,7 @@ func _on_wall_jumping_state_physics_processing(delta: float) -> void:
 		move_and_slide()
 	else:
 		jump_wall_time = 0.0
-		$StateChart.send_event("WallJumpEnd")
+		$PlayerState.send_event("WallJumpEnd")
 	
 	#Recalculate sprite flip as we mess with x momentum after movement
 	if velocity.x > 0:
@@ -236,3 +190,51 @@ func _on_wall_jumping_state_physics_processing(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 	else:
 		pass
+
+# Mask Changes
+func _on_k_state_entered() -> void:
+	colour_mask = Global.Colour_States.K
+	set_collision_layer_value(2,true)
+	set_collision_mask_value(2,true)
+	set_collision_layer_value(3,false)
+	set_collision_mask_value(3,false)
+	set_collision_layer_value(4,false)
+	set_collision_mask_value(4,false)
+	set_collision_layer_value(5,false)
+	set_collision_mask_value(5,false)
+
+
+func _on_c_state_exited() -> void:
+	colour_mask = Global.Colour_States.C
+	set_collision_layer_value(2,false)
+	set_collision_mask_value(2,false)
+	set_collision_layer_value(3,true)
+	set_collision_mask_value(3,true)
+	set_collision_layer_value(4,false)
+	set_collision_mask_value(4,false)
+	set_collision_layer_value(5,false)
+	set_collision_mask_value(5,false)
+
+
+func _on_y_state_entered() -> void:
+	colour_mask = Global.Colour_States.Y
+	set_collision_layer_value(2,false)
+	set_collision_mask_value(2,false)
+	set_collision_layer_value(3,false)
+	set_collision_mask_value(3,false)
+	set_collision_layer_value(4,true)
+	set_collision_mask_value(4,true)
+	set_collision_layer_value(5,false)
+	set_collision_mask_value(5,false)
+
+
+func _on_m_state_entered() -> void:
+	colour_mask = Global.Colour_States.M
+	set_collision_layer_value(2,false)
+	set_collision_mask_value(2,false)
+	set_collision_layer_value(3,false)
+	set_collision_mask_value(3,false)
+	set_collision_layer_value(4,false)
+	set_collision_mask_value(4,false)
+	set_collision_layer_value(5,true)
+	set_collision_mask_value(5,true)
