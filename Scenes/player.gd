@@ -36,10 +36,10 @@ func CalcMovement(delta: float) -> void:
 		($"RayCast2D-LEFT".is_colliding() and Input.is_action_pressed("move_left"))or 
 		($"RayCast2D-RIGHT".is_colliding() and Input.is_action_pressed("move_right"))
 	):
-		velocity += (get_gravity() * delta*.1)
+		velocity = (get_gravity()*.15) # from += to =
 		print('.1 gravity')
 	else:
-		velocity += get_gravity() * delta
+		velocity.y = max(velocity.y + (get_gravity().y * (delta*1.2)),-SPEED)
 	
 	if direction:
 		#velocity.x = lerp(velocity.x,direction*SPEED,3*delta)
