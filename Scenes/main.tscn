@@ -579,7 +579,6 @@ colour_mask_part1 = 2
 colour_mask_part2 = 3
 
 [node name="ColourTheoryEnemy" parent="." instance=ExtResource("7_6bp64")]
-position = Vector2(723, 189)
 position = Vector2(2, 45)
 enemy_colours_left = Array[int]([2, 2, 3, 2, 1, 1])
 
