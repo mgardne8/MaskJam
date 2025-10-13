@@ -40,7 +40,7 @@ func set_layers(layerDict: Dictionary) -> void:
 		set_collision_layer_value(layer,layerDict[layer])
 		set_collision_mask_value(layer,layerDict[layer])
 
-func die():
+func damage_player():
 	#Todo: Player Die Script
 	print("PLAYER DIE")
 
