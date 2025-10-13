@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://d01j4f253dh61"]
 
-[ext_resource type="Script" uid="uid://dq84t65h5eo5t" path="res://Scenes/player.gd" id="1_f1ek2"]
+[ext_resource type="Script" uid="uid://dq84t65h5eo5t" path="res://Scenes/player_new.gd" id="1_f1ek2"]
 [ext_resource type="Texture2D" uid="uid://dnxj1e55wf00i" path="res://Art/TheDude/Idle.png" id="2_cvnsp"]
 [ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="2_fkybt"]
 [ext_resource type="Texture2D" uid="uid://cwimwsruupi2t" path="res://Art/TheDude/Run.png" id="3_6t5aa"]
@@ -149,13 +149,13 @@ script = ExtResource("8_gymyn")
 
 [node name="Fall" type="Node" parent="StateChart/Root/Idle"]
 script = ExtResource("9_pu2lt")
-to = NodePath("../../Jumping")
+to = NodePath("../../Falling")
 event = &"Fall"
 delay_in_seconds = "0.0"
 
 [node name="Jump" type="Node" parent="StateChart/Root/Idle"]
 script = ExtResource("9_pu2lt")
-to = NodePath("../../Jumping")
+to = NodePath("..")
 event = &"Jump"
 delay_in_seconds = "0.0"
 
