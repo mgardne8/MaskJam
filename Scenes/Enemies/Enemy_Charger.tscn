@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv1atsta3pqk8"]
+[gd_scene load_steps=4 format=3 uid="uid://bv1atsta3pqk8"]
 
 [ext_resource type="SpriteFrames" uid="uid://dwtdjvc2kf5lf" path="res://Annimations/Crawler-SpriteFrames.tres" id="1_kg5a0"]
+[ext_resource type="PackedScene" uid="uid://b1r015wd0qvah" path="res://Scripts/Global/StateMachine.tscn" id="2_ibusk"]
+[ext_resource type="Script" uid="uid://ctnkax5hqadai" path="res://Scripts/Global/state.gd" id="3_5hbsb"]
 
 [node name="EnemyCharger" type="CharacterBody2D"]
 
@@ -13,3 +15,9 @@ sprite_frames = ExtResource("1_kg5a0")
 animation = &"Move"
 
 [node name="Area2D" type="Area2D" parent="."]
+
+[node name="StateMachine" parent="." instance=ExtResource("2_ibusk")]
+
+[node name="State" type="Node" parent="StateMachine"]
+script = ExtResource("3_5hbsb")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
