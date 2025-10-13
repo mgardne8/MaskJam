@@ -29,7 +29,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("colour_m"):
 		$ColorState.send_event("Change M")
 
-	print(colour_mask)
 	current_colour = Vector4(
 		lerp(current_colour.x,Global.colourDict[colour_mask].x,5*delta),
 		lerp(current_colour.y,Global.colourDict[colour_mask].y,5*delta),
