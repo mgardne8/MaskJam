@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8fe65lqi7b58" path="res://Art/monochrome_tilemap_packed.png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bbmf76x11s3gy" path="res://Scenes/Enemies/Enemy_Bolt.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="3_hptm8"]
 [ext_resource type="PackedScene" uid="uid://b1xgbthysy8vq" path="res://Scenes/Enemies/ComponentEnemy.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dtwljp3v2wlxb" path="res://Scenes/Terrain/platform[CB].tscn" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://vlyqgyn7hciy" path="res://Scenes/Enemies/ColourTheoryEnemy.tscn" id="7_6bp64"]
@@ -453,12 +454,23 @@ tile_map_data = PackedByteArray("AABBAAUAAAALAAUAAABCAAUAAAALAAUAAABDAAUAAAALAAU
 tile_set = SubResource("TileSet_8gbba")
 
 [node name="Player" parent="." instance=ExtResource("2_bo1nx")]
+<<<<<<< HEAD
 position = Vector2(-167, -31)
+=======
+position = Vector2(481, 13)
+>>>>>>> 1a59350ada4c5534774a40940f70e8923bf84748
 collision_mask = 63
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(80, 26)
 zoom = Vector2(1.5, 1.5)
+
+[node name="StateChartDebugger" parent="Player/Camera2D" instance=ExtResource("3_hptm8")]
+offset_left = -382.0
+offset_top = -214.0
+offset_right = -103.0
+offset_bottom = -14.0
+initial_node_to_watch = NodePath("../..")
 
 [node name="Platform12" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(137, 460)
@@ -568,6 +580,7 @@ colour_mask_part2 = 3
 
 [node name="ColourTheoryEnemy" parent="." instance=ExtResource("7_6bp64")]
 position = Vector2(723, 189)
+position = Vector2(2, 45)
 enemy_colours_left = Array[int]([2, 2, 3, 2, 1, 1])
 
 [node name="Platform22" parent="." instance=ExtResource("6_21xkr")]
@@ -863,3 +876,4 @@ rotation = 3.1415927
 
 [node name="EnemyCharger" parent="." instance=ExtResource("9_ynf5e")]
 position = Vector2(850, 180)
+charge_speed = 800

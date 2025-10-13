@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv1atsta3pqk8"]
+[gd_scene load_steps=14 format=3 uid="uid://bv1atsta3pqk8"]
 
+[ext_resource type="Script" uid="uid://b66jlq0g8sxsd" path="res://Scenes/Enemies/enemy_charger.gd" id="1_0jxlg"]
 [ext_resource type="SpriteFrames" uid="uid://dwtdjvc2kf5lf" path="res://Annimations/Crawler-SpriteFrames.tres" id="1_kg5a0"]
 [ext_resource type="PackedScene" uid="uid://b1r015wd0qvah" path="res://Scripts/Global/StateMachine.tscn" id="2_ibusk"]
+[ext_resource type="Texture2D" uid="uid://b0oo156fnck51" path="res://Art/cloudpoof.png" id="3_2gblp"]
 [ext_resource type="Script" uid="uid://dl7pl1iut4n7m" path="res://Scenes/Enemies/ST_Wander.gd" id="3_5hbsb"]
+[ext_resource type="Script" uid="uid://b3r07ti6ut6lp" path="res://Scenes/Enemies/ST_Charge.gd" id="5_ktx8l"]
+[ext_resource type="Script" uid="uid://ctnkax5hqadai" path="res://Scripts/Global/state.gd" id="7_mtf6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jxlg"]
 size = Vector2(65, 20)
@@ -10,14 +14,46 @@ size = Vector2(65, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktx8l"]
 size = Vector2(84, 53)
 
-[node name="EnemyCharger" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtf6k"]
+atlas = ExtResource("3_2gblp")
+region = Rect2(0, 0, 858, 542)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ijh5"]
+atlas = ExtResource("3_2gblp")
+region = Rect2(0, 542, 858, 542)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl84j"]
+atlas = ExtResource("3_2gblp")
+region = Rect2(858, 542, 858, 542)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hjb3s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtf6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ijh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl84j")
+}],
+"loop": true,
+"name": &"Poof",
+"speed": 5.0
+}]
+
+[node name="EnemyCharger" type="CharacterBody2D"]
+script = ExtResource("1_0jxlg")
+charge_speed = 600
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(3.3881318e-21, 5.9604645e-08)
 scale = Vector2(0.16, 0.16)
 sprite_frames = ExtResource("1_kg5a0")
-animation = &"Move"
-frame_progress = 0.64193803
+animation = &"ChargeWindup"
+frame_progress = 0.2990331
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.5, 22)
@@ -29,11 +65,67 @@ shape = SubResource("RectangleShape2D_0jxlg")
 position = Vector2(-8, 2)
 shape = SubResource("RectangleShape2D_ktx8l")
 
-[node name="StateMachine" parent="." instance=ExtResource("2_ibusk")]
+[node name="PoofCharging" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.5137255)
+position = Vector2(-7, 32)
+scale = Vector2(0.15493588, 0.03)
+sprite_frames = SubResource("SpriteFrames_hjb3s")
+animation = &"Poof"
+frame_progress = 0.49391332
 
-[node name="Wander" type="Node" parent="StateMachine"]
+[node name="WallChecker" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+rotation = -1.5707964
+target_position = Vector2(5.604694e-07, 47)
+collision_mask = 63
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_ibusk")]
+initial_state = NodePath("Wander")
+
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("3_5hbsb")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://ctnkax5hqadai"
 
 [node name="IdleTime" type="Timer" parent="StateMachine/Wander"]
 one_shot = true
+
+[node name="WanderTime" type="Timer" parent="StateMachine/Wander"]
+one_shot = true
+
+[node name="FlipCD" type="Timer" parent="StateMachine/Wander"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Charge" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_ktx8l")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[node name="ChargeDelay" type="Timer" parent="StateMachine/Charge"]
+one_shot = true
+
+[node name="Stunned" type="Node" parent="StateMachine"]
+script = ExtResource("7_mtf6k")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[node name="PlayerDetector" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+rotation = 4.712389
+target_position = Vector2(5.700093e-06, 478)
+
+[node name="PoofLaunch" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.7058824)
+position = Vector2(-84, 18)
+scale = Vector2(0.09745557, 0.102518454)
+sprite_frames = SubResource("SpriteFrames_hjb3s")
+animation = &"Poof"
+frame_progress = 0.14785132
+
+[connection signal="timeout" from="StateMachine/Wander/IdleTime" to="StateMachine/Wander" method="_on_idle_time_timeout"]
+[connection signal="timeout" from="StateMachine/Wander/WanderTime" to="StateMachine/Wander" method="_on_wander_time_timeout"]
+[connection signal="timeout" from="StateMachine/Charge/ChargeDelay" to="StateMachine/Charge" method="_on_charge_delay_timeout"]
