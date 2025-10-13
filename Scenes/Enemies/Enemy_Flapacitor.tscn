@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c56enxijp1gvm"]
 
-[ext_resource type="Script" uid="uid://pqoovolppxlj" path="res://Scenes/Enemies/enemy_flapacitor.gd" id="1_32asi"]
+[ext_resource type="Script" uid="uid://pqoovolppxlj" path="res://Scripts/Enemies/enemy_flapacitor.gd" id="1_32asi"]
 [ext_resource type="Texture2D" uid="uid://7uoyk8pv4eyc" path="res://Art/Flappacitor.png" id="1_gcjld"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32asi"]

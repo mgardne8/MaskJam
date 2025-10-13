@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://b1xgbthysy8vq"]
 
-[ext_resource type="Script" uid="uid://qhddvy61p6el" path="res://Scenes/Enemies/component_enemy.gd" id="1_25vyb"]
+[ext_resource type="Script" uid="uid://qhddvy61p6el" path="res://Scripts/Enemies/component_enemy.gd" id="1_25vyb"]
 [ext_resource type="Texture2D" uid="uid://ghyaq6oo84ho" path="res://Art/PulleyBase.png" id="1_b3kor"]
 [ext_resource type="Texture2D" uid="uid://dfc02oyh68b4k" path="res://Art/PulleyParts.png" id="2_25vyb"]
-[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="2_33oru"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_33oru"]
 [ext_resource type="Texture2D" uid="uid://w4qjtxva874t" path="res://Art/PulleyParts2.png" id="5_wgij7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33oru"]
