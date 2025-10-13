@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://djrb1j3txahw0"]
+[gd_scene load_steps=13 format=4 uid="uid://djrb1j3txahw0"]
 
+[ext_resource type="Script" uid="uid://ceragwgnf7w4y" path="res://Scenes/main.gd" id="1_hptm8"]
 [ext_resource type="Texture2D" uid="uid://8fe65lqi7b58" path="res://Art/monochrome_tilemap_packed.png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bbmf76x11s3gy" path="res://Scenes/Enemies/Enemy_Bolt.tscn" id="3_8gbba"]
@@ -444,6 +445,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bo1nx")
 
 [node name="Main" type="Node"]
+script = ExtResource("1_hptm8")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(2, 0)
@@ -451,7 +453,7 @@ tile_map_data = PackedByteArray("AABBAAUAAAALAAUAAABCAAUAAAALAAUAAABDAAUAAAALAAU
 tile_set = SubResource("TileSet_8gbba")
 
 [node name="Player" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(-2708, 1560)
+position = Vector2(-167, -31)
 collision_mask = 63
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
