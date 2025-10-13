@@ -452,7 +452,7 @@ tile_map_data = PackedByteArray("AABBAAUAAAALAAUAAABCAAUAAAALAAUAAABDAAUAAAALAAU
 tile_set = SubResource("TileSet_8gbba")
 
 [node name="Player" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(-2708, 1560)
+position = Vector2(481, 13)
 collision_mask = 63
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -573,10 +573,8 @@ colour_mask_part1 = 2
 colour_mask_part2 = 3
 
 [node name="ColourTheoryEnemy" parent="." instance=ExtResource("7_6bp64")]
-position = Vector2(723, 189)
-colour_mask_2 = 3
+position = Vector2(2, 45)
 enemy_colours_left = Array[int]([2, 2, 3, 2, 1, 1])
-colour_mask = 2
 
 [node name="Platform22" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(-1605, 388)

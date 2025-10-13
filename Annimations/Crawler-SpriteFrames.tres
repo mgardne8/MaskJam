@@ -27,6 +27,20 @@ animations = [{
 "texture": SubResource("AtlasTexture_0f175")
 }],
 "loop": true,
+"name": &"ChargeWindup",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ja1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca1vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f175")
+}],
+"loop": true,
 "name": &"Move",
 "speed": 5.0
 }]
