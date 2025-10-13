@@ -454,11 +454,7 @@ tile_map_data = PackedByteArray("AABBAAUAAAALAAUAAABCAAUAAAALAAUAAABDAAUAAAALAAU
 tile_set = SubResource("TileSet_8gbba")
 
 [node name="Player" parent="." instance=ExtResource("2_bo1nx")]
-<<<<<<< HEAD
 position = Vector2(-167, -31)
-=======
-position = Vector2(481, 13)
->>>>>>> 1a59350ada4c5534774a40940f70e8923bf84748
 collision_mask = 63
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
