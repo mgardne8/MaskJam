@@ -18,7 +18,7 @@ func _on_kill_box_body_entered(body: Node2D) -> void:
 		if player.colour_mask == colour_mask:
 			die()
 		else:
-			player.die()
+			player.damage_player(self)
 	
 
 

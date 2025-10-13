@@ -1,7 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://di42c14wr2c0w"]
+[gd_scene load_steps=6 format=3 uid="uid://di42c14wr2c0w"]
 
-[ext_resource type="Script" uid="uid://b3r07ti6ut6lp" path="res://Scenes/Enemies/ST_Charge_Charger.gd" id="1_3os1o"]
+[ext_resource type="Texture2D" uid="uid://calutbm20sh6f" path="res://Art/armsmash.png" id="1_3os1o"]
 
-[node name="Armbush" type="Node"]
-script = ExtResource("1_3os1o")
-metadata/_custom_type_script = "uid://b3r07ti6ut6lp"
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1x67"]
+atlas = ExtResource("1_3os1o")
+region = Rect2(0, 0, 1450, 1450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dskp5"]
+atlas = ExtResource("1_3os1o")
+region = Rect2(1450, 0, 1450, 1450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b3oi"]
+atlas = ExtResource("1_3os1o")
+region = Rect2(2900, 0, 1450, 1450)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kmmer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1x67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dskp5")
+}, {
+"duration": 99999.0,
+"texture": SubResource("AtlasTexture_7b3oi")
+}],
+"loop": true,
+"name": &"Smash",
+"speed": 11.0
+}]
+
+[node name="Armbush" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kmmer")
+animation = &"Smash"
+frame_progress = 0.5266338
