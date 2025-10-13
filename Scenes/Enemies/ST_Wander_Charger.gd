@@ -19,8 +19,9 @@ func Update(_delta: float):
 	if %WallChecker.is_colliding() and $FlipCD.is_stopped() and %WallChecker.get_collider().name != "Player":
 		enemy.change_dir()
 		$FlipCD.start()
-	if %PlayerDetector.get_collider().name == "Player" and %ChargeCD.is_stopped():
-		Transitioned.emit(self,"Charge")
+	if %PlayerDetector.is_colliding():
+		if %PlayerDetector.get_collider().name == "Player" and %ChargeCD.is_stopped():
+			Transitioned.emit(self,"Charge")
 
 
 func Exit():
