@@ -869,3 +869,4 @@ rotation = 3.1415927
 
 [node name="EnemyCharger" parent="." instance=ExtResource("9_ynf5e")]
 position = Vector2(850, 180)
+charge_speed = 800

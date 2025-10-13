@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bv1atsta3pqk8"]
+[gd_scene load_steps=14 format=3 uid="uid://bv1atsta3pqk8"]
 
 [ext_resource type="Script" uid="uid://b66jlq0g8sxsd" path="res://Scenes/Enemies/enemy_charger.gd" id="1_0jxlg"]
 [ext_resource type="SpriteFrames" uid="uid://dwtdjvc2kf5lf" path="res://Annimations/Crawler-SpriteFrames.tres" id="1_kg5a0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b0oo156fnck51" path="res://Art/cloudpoof.png" id="3_2gblp"]
 [ext_resource type="Script" uid="uid://dl7pl1iut4n7m" path="res://Scenes/Enemies/ST_Wander.gd" id="3_5hbsb"]
 [ext_resource type="Script" uid="uid://b3r07ti6ut6lp" path="res://Scenes/Enemies/ST_Charge.gd" id="5_ktx8l"]
+[ext_resource type="Script" uid="uid://ctnkax5hqadai" path="res://Scripts/Global/state.gd" id="7_mtf6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jxlg"]
 size = Vector2(65, 20)
@@ -44,6 +45,7 @@ animations = [{
 
 [node name="EnemyCharger" type="CharacterBody2D"]
 script = ExtResource("1_0jxlg")
+charge_speed = 600
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -104,6 +106,10 @@ metadata/_custom_type_script = "uid://ctnkax5hqadai"
 
 [node name="ChargeDelay" type="Timer" parent="StateMachine/Charge"]
 one_shot = true
+
+[node name="Stunned" type="Node" parent="StateMachine"]
+script = ExtResource("7_mtf6k")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
 
 [node name="PlayerDetector" type="RayCast2D" parent="."]
 unique_name_in_owner = true

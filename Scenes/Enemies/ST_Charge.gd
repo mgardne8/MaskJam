@@ -15,8 +15,20 @@ func Enter():
 	enemy.velocity = Vector2(0,0)
 	
 
+func Update(_delta: float):
+	if %WallChecker.get_collider() is not Player:
+		Transitioned.emit(self,"Stunned")
+	
+
+
+func Exit():
+	%PoofLaunch.pause()
+	%PoofLaunch.visible = false
+
 func _on_charge_delay_timeout() -> void:
 	%PoofCharging.visible = false
-	%PoofLaunch. visible = true
-	%PoofLaunch.play("Poof")
+	%PoofCharging.pause()
+	#%PoofLaunch. visible = true
+	#%PoofLaunch.play("Poof")
 	enemy.velocity = direction_hold * enemy.charge_speed
+	
