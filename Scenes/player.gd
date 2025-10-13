@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("colour_m"):
 		$ColorState.send_event("Change M")
 
+	print(colour_mask)
 	current_colour = Vector4(
 		lerp(current_colour.x,Global.colourDict[colour_mask].x,5*delta),
 		lerp(current_colour.y,Global.colourDict[colour_mask].y,5*delta),
@@ -36,7 +37,12 @@ func _physics_process(delta: float) -> void:
 		1)
 
 	$AnimatedSprite2D.material.set_shader_parameter("colour", current_colour)
-	
+
+func set_layers(layerDict: Dictionary) -> void:
+	for layer in layerDict.keys():
+		set_collision_layer_value(layer,layerDict[layer])
+		set_collision_mask_value(layer,layerDict[layer])
+
 func die():
 	#Todo: Player Die Script
 	print("PLAYER DIE")
@@ -194,47 +200,16 @@ func _on_wall_jumping_state_physics_processing(delta: float) -> void:
 # Mask Changes
 func _on_k_state_entered() -> void:
 	colour_mask = Global.Colour_States.K
-	set_collision_layer_value(2,true)
-	set_collision_mask_value(2,true)
-	set_collision_layer_value(3,false)
-	set_collision_mask_value(3,false)
-	set_collision_layer_value(4,false)
-	set_collision_mask_value(4,false)
-	set_collision_layer_value(5,false)
-	set_collision_mask_value(5,false)
+	set_layers({2:true,3:false,4:false,5:false})
 
-
-func _on_c_state_exited() -> void:
+func _on_c_state_entered() -> void:
 	colour_mask = Global.Colour_States.C
-	set_collision_layer_value(2,false)
-	set_collision_mask_value(2,false)
-	set_collision_layer_value(3,true)
-	set_collision_mask_value(3,true)
-	set_collision_layer_value(4,false)
-	set_collision_mask_value(4,false)
-	set_collision_layer_value(5,false)
-	set_collision_mask_value(5,false)
-
+	set_layers({2:false,3:true,4:false,5:false})
 
 func _on_y_state_entered() -> void:
 	colour_mask = Global.Colour_States.Y
-	set_collision_layer_value(2,false)
-	set_collision_mask_value(2,false)
-	set_collision_layer_value(3,false)
-	set_collision_mask_value(3,false)
-	set_collision_layer_value(4,true)
-	set_collision_mask_value(4,true)
-	set_collision_layer_value(5,false)
-	set_collision_mask_value(5,false)
-
+	set_layers({2:false,3:false,4:true,5:false})
 
 func _on_m_state_entered() -> void:
 	colour_mask = Global.Colour_States.M
-	set_collision_layer_value(2,false)
-	set_collision_mask_value(2,false)
-	set_collision_layer_value(3,false)
-	set_collision_mask_value(3,false)
-	set_collision_layer_value(4,false)
-	set_collision_mask_value(4,false)
-	set_collision_layer_value(5,true)
-	set_collision_mask_value(5,true)
+	set_layers({2:false,3:false,4:false,5:true})
