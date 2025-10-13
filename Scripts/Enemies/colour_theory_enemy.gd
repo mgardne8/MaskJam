@@ -1,9 +1,13 @@
-extends Enemy
+extends CharacterBody2D
 
-@export var colour_mask_2 = Global.Colour_States.K
+@export var speed = 30
+@export var start_dir = -1
+var direction : Vector2 
+@export var mass = 15
 var visual_colour = Vector4(0,0,0,0)
 @export var  enemy_colours_left : Array[Global.Colour_States]
 var colour_remaining_count : int
+
 func READY():
 	colour_remaining_count = enemy_colours_left.size()
 	for colour in enemy_colours_left:
@@ -12,7 +16,7 @@ func READY():
 	$BaseSprite.material.set_shader_parameter("colour", visual_colour)
 	$BaseSprite.play("Move")
 
-func movement(delta):
+func _physics_process(delta: float) -> void:
 	velocity = speed*direction
 
 	if not is_on_floor():
@@ -32,7 +36,10 @@ func colour_drain(colour_to_drain):
 		$BaseSprite.material.set_shader_parameter("colour", visual_colour)
 	else:
 		die()
-
+		
+func die(): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
+	#death annimation
+	queue_free()
 
 func _on_killbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 		if body.name == "Player":
