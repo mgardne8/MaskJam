@@ -32,29 +32,12 @@ func die():
 
 ##Killbox area (hitting fromt he side)
 func _on_killbox_base_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if body.name == "Player":
-		var player : Player = body
-		if player.colour_mask == colour_mask_base:
-			die()
-		else:
-			player.die()
+	player_collision(body,colour_mask_base,self)
 
 
 func _on_parts_1_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if body.name == "Player":
-		var player : Player = body
-		if player.colour_mask == colour_mask_part1:
-			$Parts1.queue_free()
-		else:
-			player.die()
+	player_collision(body,colour_mask_part1,$Parts1)
 
 
 func _on_parts_2_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if body.name == "Player":
-			var player : Player = body
-			if player.colour_mask == colour_mask_part2:
-				player.velocity.y = player.JUMP_VELOCITY*1.5
-				player.jump_count = 0
-				$Parts2.queue_free()
-			else:
-				player.die()
+	player_bounce_collision(body,colour_mask_part2, $Parts2)

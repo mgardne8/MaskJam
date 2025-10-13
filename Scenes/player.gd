@@ -5,7 +5,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const COYOTE_TIME_LIMIT = 0.2
 const MAX_JUMPS = 1
-const WALL_PUSHBACK = 40000
+const WALL_PUSHBACK = 300
 const WALL_JUMP_DISABLE_TIME = .2
 
 var direction = 0.0

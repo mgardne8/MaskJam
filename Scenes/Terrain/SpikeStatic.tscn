@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://r2kv1a73s3in"]
+
+[ext_resource type="Shader" uid="uid://b1qeda71dkdeh" path="res://Scenes/Terrain/Grow.gdshader" id="1_fmxwc"]
+[ext_resource type="Texture2D" uid="uid://dwo3m2nk7n8ws" path="res://Art/SpikeRed.png" id="2_l3r61"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5q81q"]
+shader = ExtResource("1_fmxwc")
+
+[node name="SpikeStatic" type="Area2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5q81q")
+texture = ExtResource("2_l3r61")

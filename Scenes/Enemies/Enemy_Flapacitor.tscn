@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://c56enxijp1gvm"]
+
+[ext_resource type="Script" uid="uid://pqoovolppxlj" path="res://Scenes/Enemies/enemy_flapacitor.gd" id="1_32asi"]
+[ext_resource type="Texture2D" uid="uid://7uoyk8pv4eyc" path="res://Art/Flappacitor.png" id="1_gcjld"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32asi"]
+atlas = ExtResource("1_gcjld")
+region = Rect2(0, 0, 985, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srskf"]
+atlas = ExtResource("1_gcjld")
+region = Rect2(985, 0, 985, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hilaq"]
+atlas = ExtResource("1_gcjld")
+region = Rect2(1970, 0, 985, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piqqg"]
+atlas = ExtResource("1_gcjld")
+region = Rect2(1970, 1000, 985, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srj6a"]
+atlas = ExtResource("1_gcjld")
+region = Rect2(985, 1000, 985, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fv6j"]
+atlas = ExtResource("1_gcjld")
+region = Rect2(0, 1000, 985, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ag40"]
+atlas = ExtResource("1_gcjld")
+region = Rect2(0, 2000, 985, 1000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1irod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32asi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srskf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hilaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_piqqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srj6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fv6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ag40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srskf")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apbxx"]
+size = Vector2(33, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32asi"]
+size = Vector2(25, 6)
+
+[node name="EnemyFlapacitor" type="CharacterBody2D"]
+script = ExtResource("1_32asi")
+
+[node name="BaseSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_1irod")
+animation = &"Move"
+frame_progress = 0.71921074
+
+[node name="KillBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
+position = Vector2(-10.5, 37)
+shape = SubResource("RectangleShape2D_apbxx")
+
+[node name="BounceBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceBox"]
+position = Vector2(-10.5, 15)
+shape = SubResource("RectangleShape2D_32asi")
+
+[connection signal="body_entered" from="KillBox" to="." method="_on_kill_box_body_entered"]
+[connection signal="body_entered" from="BounceBox" to="." method="_on_bounce_box_body_entered"]

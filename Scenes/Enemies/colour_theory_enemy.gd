@@ -10,6 +10,7 @@ func READY():
 		visual_colour = visual_colour + Global.colourDict[colour]
 	visual_colour = visual_colour/colour_remaining_count
 	$BaseSprite.material.set_shader_parameter("colour", visual_colour)
+	$BaseSprite.play("Move")
 
 func movement(delta):
 	velocity = speed*direction
@@ -34,18 +35,15 @@ func colour_drain(colour_to_drain):
 
 
 func _on_killbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	pass # Replace with function body.
-
-
-
-func _on_bounce_area_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+		if body.name == "Player":
 			var player : Player = body
 			if enemy_colours_left.has(player.colour_mask):
-				player.velocity.y = player.JUMP_VELOCITY*1.5 #replace this with a player function (bounce)
+				player.velocity = (player.position - position).normalized() * 400
 				player.jump_count = 0
 				colour_drain(player.colour_mask)
 			else:
 				player.die()
+
+
 	
 	

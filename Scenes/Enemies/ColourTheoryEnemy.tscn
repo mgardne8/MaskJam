@@ -1,47 +1,70 @@
-[gd_scene load_steps=8 format=3 uid="uid://vlyqgyn7hciy"]
+[gd_scene load_steps=11 format=3 uid="uid://vlyqgyn7hciy"]
 
 [ext_resource type="Script" uid="uid://dajo1bij4cx5q" path="res://Scenes/Enemies/colour_theory_enemy.gd" id="1_p0b0a"]
-[ext_resource type="Texture2D" uid="uid://dk86wgdtuaalt" path="res://Art/Enemy_Chip.png" id="2_0f175"]
 [ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Scenes/Enemies/Shader.gdshader" id="2_ca1vt"]
+[ext_resource type="Texture2D" uid="uid://cm5xocsuii5pi" path="res://Art/Enemy_Crawler.png" id="2_p0b0a"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ja1c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0f175"]
 shader = ExtResource("2_ca1vt")
 shader_parameter/colour = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ja1c"]
+atlas = ExtResource("2_p0b0a")
+region = Rect2(1648, 0, 824, 551)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca1vt"]
+atlas = ExtResource("2_p0b0a")
+region = Rect2(824, 0, 824, 551)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f175"]
+atlas = ExtResource("2_p0b0a")
+region = Rect2(0, 0, 824, 551)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ct6qi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ja1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca1vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f175")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ca1vt"]
 radius = 13.0
-height = 70.0
+height = 60.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ja1c"]
-size = Vector2(71, 26)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_03p7o"]
-size = Vector2(67, 2)
+size = Vector2(65, 29)
 
 [node name="ColourTheoryEnemy" type="CharacterBody2D"]
 script = ExtResource("1_p0b0a")
+start_dir = 1
 
-[node name="BaseSprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_7ja1c")
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_0f175")
+[node name="BaseSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_0f175")
+position = Vector2(6.9999995, -1.9999999)
+scale = Vector2(0.12, 0.12)
+sprite_frames = SubResource("SpriteFrames_ct6qi")
+animation = &"Move"
+frame_progress = 0.10200484
 
 [node name="CharacterBody" type="CollisionShape2D" parent="."]
-position = Vector2(1, 4)
+position = Vector2(2, 7)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ca1vt")
 
 [node name="Killbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox"]
-position = Vector2(1.5, 3)
+position = Vector2(1.5, -6.5)
 shape = SubResource("RectangleShape2D_7ja1c")
 
-[node name="BounceArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceArea"]
-position = Vector2(1.5, -11)
-shape = SubResource("RectangleShape2D_03p7o")
-
 [connection signal="body_shape_entered" from="Killbox" to="." method="_on_killbox_body_shape_entered"]
-[connection signal="body_entered" from="BounceArea" to="." method="_on_bounce_area_body_entered"]

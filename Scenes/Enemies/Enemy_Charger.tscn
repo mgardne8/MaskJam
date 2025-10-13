@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bv1atsta3pqk8"]
+
+[node name="EnemyCharger" type="CharacterBody2D"]
