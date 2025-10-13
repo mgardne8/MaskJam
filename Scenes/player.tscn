@@ -131,10 +131,10 @@ sprite_frames = SubResource("SpriteFrames_cvnsp")
 animation = &"JUMP"
 
 [node name="RayCast2D-LEFT" type="RayCast2D" parent="."]
-target_position = Vector2(-20, 0)
+target_position = Vector2(-22, 0)
 
 [node name="RayCast2D-RIGHT" type="RayCast2D" parent="."]
-target_position = Vector2(20, 0)
+target_position = Vector2(22, 0)
 
 [node name="StateChart" type="Node" parent="."]
 script = ExtResource("6_f1ek2")

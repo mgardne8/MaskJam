@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -500.0
 const JUMP_COYOTE_LIMIT = 0.2
 const JUMP_COUNT_MAX = 2
 const JUMP_WALL_DURATION = 0.15
@@ -14,6 +14,9 @@ var jump_count = 0
 var jump_wall_time = 0.0
 var jump_wall_last_side = null
 
+var colour_mask = Global.Colour_States.K
+var current_colour = Global.colourDict[colour_mask]
+
 func _ready() -> void:
 	var colour_mask = Global.Colour_States.K
 	set_collision_layer_value(1,true)
@@ -24,7 +27,64 @@ func _ready() -> void:
 	set_collision_mask_value(5,false)
 	$AnimatedSprite2D.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 
+# TEMPORARY TO BE MOVED LATER
+func _physics_process(delta: float) -> void:
+		#colour change controls
+	if Input.is_action_just_pressed("colour_k"):
+		print('k')
+		colour_mask = Global.Colour_States.K
+		set_collision_layer_value(2,true)
+		set_collision_mask_value(2,true)
+		set_collision_layer_value(3,false)
+		set_collision_mask_value(3,false)
+		set_collision_layer_value(4,false)
+		set_collision_mask_value(4,false)
+		set_collision_layer_value(5,false)
+		set_collision_mask_value(5,false)
+		
+	if Input.is_action_just_pressed("colour_c"):
+		colour_mask = Global.Colour_States.C
+		set_collision_layer_value(2,false)
+		set_collision_mask_value(2,false)
+		set_collision_layer_value(3,true)
+		set_collision_mask_value(3,true)
+		set_collision_layer_value(4,false)
+		set_collision_mask_value(4,false)
+		set_collision_layer_value(5,false)
+		set_collision_mask_value(5,false)
+		
+	if Input.is_action_just_pressed("colour_y"):
+		colour_mask = Global.Colour_States.Y
+		set_collision_layer_value(2,false)
+		set_collision_mask_value(2,false)
+		set_collision_layer_value(3,false)
+		set_collision_mask_value(3,false)
+		set_collision_layer_value(4,true)
+		set_collision_mask_value(4,true)
+		set_collision_layer_value(5,false)
+		set_collision_mask_value(5,false)
+		
+	if Input.is_action_just_pressed("colour_m"):
+		colour_mask = Global.Colour_States.M
+		set_collision_layer_value(2,false)
+		set_collision_mask_value(2,false)
+		set_collision_layer_value(3,false)
+		set_collision_mask_value(3,false)
+		set_collision_layer_value(4,false)
+		set_collision_mask_value(4,false)
+		set_collision_layer_value(5,true)
+		set_collision_mask_value(5,true)
+
+	current_colour = Vector4(
+		lerp(current_colour.x,Global.colourDict[colour_mask].x,5*delta),
+		lerp(current_colour.y,Global.colourDict[colour_mask].y,5*delta),
+		lerp(current_colour.z,Global.colourDict[colour_mask].z,5*delta),
+		1)
+
+	$AnimatedSprite2D.material.set_shader_parameter("colour", current_colour)
+	
 func die():
+	#Todo: Player Die Script
 	print("PLAYER DIE")
 
 # Movement Functions
@@ -37,9 +97,8 @@ func CalcMovement(delta: float) -> void:
 		($"RayCast2D-RIGHT".is_colliding() and Input.is_action_pressed("move_right"))
 	):
 		velocity = (get_gravity()*.15) # from += to =
-		print('.1 gravity')
 	else:
-		velocity.y = max(velocity.y + (get_gravity().y * (delta*1.2)),-SPEED)
+		velocity.y = max(velocity.y + (get_gravity().y * (delta)),-SPEED)
 	
 	if direction:
 		#velocity.x = lerp(velocity.x,direction*SPEED,3*delta)
@@ -48,7 +107,6 @@ func CalcMovement(delta: float) -> void:
 		if is_on_floor():
 			#velocity.x = move_toward(velocity.x, 0, SPEED*5*delta)
 			velocity.x = 0
-			print(velocity.x)
 		else: # less horizonal friction in the air
 			velocity.x = move_toward(velocity.x, 0, SPEED*delta)
 	
@@ -72,25 +130,26 @@ func CalcMovement(delta: float) -> void:
 
 func CalcJump(delta: float) -> void:
 	if not jump_wall_time and Input.is_action_just_pressed("jump") and (
-		(is_on_floor() or jump_coyote_time < JUMP_COYOTE_LIMIT) or
-		(jump_count < JUMP_COUNT_MAX)
+		(is_on_floor() or jump_coyote_time < JUMP_COYOTE_LIMIT) or (jump_count < JUMP_COUNT_MAX)
 	):
 		$StateChart.send_event("Jump")
-		velocity.y = JUMP_VELOCITY
-		if not is_on_floor() and jump_count > 0:
-			velocity.x *= 2
+		velocity.y = JUMP_VELOCITY if jump_count == 0 else JUMP_VELOCITY*1.5
+		#if not is_on_floor() and jump_count > 0:
+		#	velocity.x *= 2
 
 func CalcWallJump(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and (
-		$"RayCast2D-LEFT".is_colliding() or $"RayCast2D-RIGHT".is_colliding()
+		($"RayCast2D-LEFT".is_colliding() and jump_wall_last_side != $"RayCast2D-LEFT") or
+		($"RayCast2D-RIGHT".is_colliding() and jump_wall_last_side != $"RayCast2D-RIGHT")
 	):
 		$StateChart.send_event("Wall Jump")
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY*2
 		jump_wall_time = 0.00001
 
 func CalcWallJumpMove(delta: float) -> void:
 	var wj_dir := 1 if jump_wall_last_side == $"RayCast2D-LEFT" else -1
 	velocity.x = move_toward(velocity.x, SPEED*wj_dir, JUMP_WALL_STRENGTH)
+	velocity.y -= JUMP_WALL_STRENGTH*.5
 	
 	
 # State and Event Processing
@@ -123,7 +182,6 @@ func _on_walking_state_physics_processing(delta: float) -> void:
 func _on_jumping_state_entered() -> void:
 	jump_count += 1
 	$AnimatedSprite2D.play("JUMP")
-	print('JUMP')
 
 func _on_jumping_state_physics_processing(delta: float) -> void:
 	CalcMovement(delta)
@@ -163,7 +221,6 @@ func _on_wall_jumping_state_entered() -> void:
 
 func _on_wall_jumping_state_physics_processing(delta: float) -> void:
 	if jump_wall_time < JUMP_WALL_DURATION:
-		print('wall jumping')
 		jump_wall_time += delta
 		CalcMovement(delta)
 		CalcWallJumpMove(delta)
@@ -171,4 +228,11 @@ func _on_wall_jumping_state_physics_processing(delta: float) -> void:
 	else:
 		jump_wall_time = 0.0
 		$StateChart.send_event("WallJumpEnd")
-	pass # Replace with function body.
+	
+	#Recalculate sprite flip as we mess with x momentum after movement
+	if velocity.x > 0:
+		$AnimatedSprite2D.flip_h = false
+	elif velocity.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		pass
