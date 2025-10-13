@@ -173,7 +173,7 @@ position = Vector2(3, -35)
 scale = Vector2(0.14969607, 0.17857143)
 sprite_frames = SubResource("SpriteFrames_r72e4")
 animation = &"Stunned"
-frame_progress = 0.9302322
+frame_progress = 0.34525886
 script = ExtResource("7_mtf6k")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
