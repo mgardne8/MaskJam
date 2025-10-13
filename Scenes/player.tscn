@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://d01j4f253dh61"]
+[gd_scene load_steps=23 format=3 uid="uid://d01j4f253dh61"]
 
 [ext_resource type="Script" uid="uid://dq84t65h5eo5t" path="res://Scenes/player.gd" id="1_f1ek2"]
 [ext_resource type="Texture2D" uid="uid://dnxj1e55wf00i" path="res://Art/TheDude/Idle.png" id="2_cvnsp"]
 [ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_fkybt"]
-[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_tx1dd"]
 [ext_resource type="Texture2D" uid="uid://cwimwsruupi2t" path="res://Art/TheDude/Run.png" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://cddsu0cugxf14" path="res://Art/TheDude/InAir.png" id="3_vgqql"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="6_f1ek2"]
@@ -121,13 +120,6 @@ animations = [{
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 35
 script = ExtResource("1_f1ek2")
-
-[node name="StateChartDebugger" parent="." instance=ExtResource("2_tx1dd")]
-offset_left = -308.0
-offset_top = -134.0
-offset_right = -27.0
-offset_bottom = 31.0
-initial_node_to_watch = NodePath("../ColorState")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_v0iea")
