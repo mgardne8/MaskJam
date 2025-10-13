@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://di42c14wr2c0w"]
+
+[ext_resource type="Script" uid="uid://b3r07ti6ut6lp" path="res://Scenes/Enemies/ST_Charge_Charger.gd" id="1_3os1o"]
+
+[node name="Armbush" type="Node"]
+script = ExtResource("1_3os1o")
+metadata/_custom_type_script = "uid://b3r07ti6ut6lp"
