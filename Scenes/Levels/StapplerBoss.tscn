@@ -1,3 +1,187 @@
-[gd_scene format=3 uid="uid://nybtl84jetwm"]
+[gd_scene load_steps=21 format=3 uid="uid://nybtl84jetwm"]
+
+[ext_resource type="Texture2D" uid="uid://eu4f1ong3hkb" path="res://Art/minimal-tilemap.png" id="1_rej0j"]
+[ext_resource type="PackedScene" uid="uid://11socosgsegx" path="res://Scenes/Bosses/Stapler/NOTWORKING/RemoverPhysics.tscn" id="2_5kdbf"]
+[ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Scenes/player.tscn" id="2_qwk34"]
+[ext_resource type="PackedScene" uid="uid://c1d3ighrediwb" path="res://Scenes/Bosses/Stapler/Stapler.tscn" id="4_5kdbf"]
+[ext_resource type="Texture2D" uid="uid://c1xgjwt6b3oux" path="res://Art/ArmMid.png" id="4_ml00b"]
+[ext_resource type="Texture2D" uid="uid://0c865mgtysdv" path="res://Art/ArmTip.png" id="6_y7nqb"]
+[ext_resource type="Texture2D" uid="uid://gp4pm0d7ejpd" path="res://Art/ArmBase.png" id="7_c5gyk"]
+[ext_resource type="Texture2D" uid="uid://cqwtmu672jpa6" path="res://Art/StaplerRemover.png" id="8_w1gd5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8crqk"]
+texture = ExtResource("1_rej0j")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_5kdbf"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_8crqk")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mq2q"]
+atlas = ExtResource("8_w1gd5")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj7g6"]
+atlas = ExtResource("8_w1gd5")
+region = Rect2(900, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls5fl"]
+atlas = ExtResource("8_w1gd5")
+region = Rect2(1800, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o64vt"]
+atlas = ExtResource("8_w1gd5")
+region = Rect2(0, 900, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d355m"]
+atlas = ExtResource("8_w1gd5")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eynuk"]
+atlas = ExtResource("8_w1gd5")
+region = Rect2(900, 900, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jbka"]
+atlas = ExtResource("8_w1gd5")
+region = Rect2(0, 900, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxxir"]
+atlas = ExtResource("8_w1gd5")
+region = Rect2(900, 900, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7vwg"]
+atlas = ExtResource("8_w1gd5")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8heb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mq2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj7g6")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ls5fl")
+}, {
+"duration": 99989.0,
+"texture": SubResource("AtlasTexture_o64vt")
+}],
+"loop": true,
+"name": &"Bite",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d355m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eynuk")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jbka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxxir")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_d7vwg")
+}],
+"loop": true,
+"name": &"Release",
+"speed": 3.0
+}]
 
 [node name="StapplerBoss" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, -3)
+tile_set = SubResource("TileSet_5kdbf")
+format = 2
+layer_0/tile_data = PackedInt32Array(458753, 65536, 0, 458754, 65536, 0, 458755, 65536, 0, 458756, 65536, 0, 458757, 65536, 0, 458758, 65536, 0, 458759, 65536, 0, 458760, 65536, 0, 458761, 65536, 0, 458762, 65536, 0, 458763, 65536, 0, 458764, 65536, 0, 458765, 65536, 0, 458766, 65536, 0, 458767, 65536, 0, 458768, 65536, 0, 458781, 65536, 0, 458782, 65536, 0, 458785, 65536, 0, 458784, 65536, 0, 458783, 65536, 0, 458780, 65536, 0, 458779, 65536, 0, 458778, 65536, 0, 458777, 65536, 0, 458776, 65536, 0, 458775, 65536, 0, 458774, 65536, 0, 458773, 65536, 0, 458772, 65536, 0, 458771, 65536, 0, 458770, 65536, 0, 458769, 65536, 0, 524282, 65536, 0, 524283, 65536, 0, 524284, 65536, 0, 524285, 65536, 0, 524286, 65536, 0, 524287, 65536, 0, 458752, 65536, 0, 458786, 65536, 0, 458787, 65536, 0, 458788, 65536, 0, 458789, 65536, 0, 458790, 65536, 0, 458791, 65536, 0, 458792, 65536, 0, 458793, 65536, 0, 458794, 65536, 0, 458795, 65536, 0, 458796, 65536, 0, 458797, 65536, 0, 458798, 65536, 0, 458799, 65536, 0, 458800, 65536, 0, 458801, 65536, 0, 458802, 65536, 0, 458803, 65536, 0, 458804, 65536, 0, 458805, 65536, 0, 458806, 65536, 0, 458807, 65536, 0, 458808, 65536, 0, 458809, 65536, 0, 524281, 65536, 0, 524280, 65536, 0, 524279, 65536, 0, 524278, 65536, 0)
+
+[node name="Base" parent="." instance=ExtResource("2_5kdbf")]
+position = Vector2(947, 1892)
+scale = Vector2(-1, 1)
+
+[node name="Stapler" parent="." instance=ExtResource("4_5kdbf")]
+position = Vector2(1078, -326.99997)
+scale = Vector2(1.1, 1.1)
+
+[node name="Player" parent="." instance=ExtResource("2_qwk34")]
+position = Vector2(551, -54)
+
+[node name="ArmMid" type="Sprite2D" parent="Player"]
+visible = false
+position = Vector2(471.99997, -443.99994)
+rotation = -2.4399703
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_ml00b")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(62, -83)
+offset = Vector2(0, -90)
+
+[node name="ArmTip" type="Sprite2D" parent="Player"]
+position = Vector2(-852, -162.00002)
+rotation = 2.0751965
+texture = ExtResource("6_y7nqb")
+
+[node name="Stapler" parent="Player" instance=ExtResource("4_5kdbf")]
+visible = false
+position = Vector2(366, -257)
+
+[node name="ArmMid" type="Sprite2D" parent="."]
+position = Vector2(-521.00006, -315.00003)
+rotation = 1.9512781
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("4_ml00b")
+
+[node name="ArmBase" type="Sprite2D" parent="."]
+position = Vector2(-902.00006, -550.00006)
+rotation = 2.0682151
+texture = ExtResource("7_c5gyk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-50.99999, -78)
+rotation = 0.4886922
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_u8heb")
+animation = &"Idle"

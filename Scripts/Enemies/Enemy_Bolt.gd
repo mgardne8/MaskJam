@@ -24,7 +24,7 @@ func movement(delta): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
 
 	
 func die(): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
-	#death annimation
+	Global.gain_ink(colour_mask)
 	queue_free()
 
 ##Killbox area (hitting fromt he side) ##THIS SHOULD BE REMOVED FROM THE BASE SCRIPT

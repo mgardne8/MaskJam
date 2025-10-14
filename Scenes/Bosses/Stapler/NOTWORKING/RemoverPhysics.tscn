@@ -1,0 +1,211 @@
+[gd_scene load_steps=18 format=3 uid="uid://11socosgsegx"]
+
+[ext_resource type="Script" uid="uid://gapafgmgwuoa" path="res://Scenes/Bosses/Stapler/NOTWORKING/Boss_remover.gd" id="1_ixh7v"]
+[ext_resource type="Texture2D" uid="uid://cqwtmu672jpa6" path="res://Art/StaplerRemover.png" id="1_os8p5"]
+[ext_resource type="Texture2D" uid="uid://ufo33afyy2db" path="res://Art/ArmSupport.png" id="2_1512r"]
+[ext_resource type="Texture2D" uid="uid://c1xgjwt6b3oux" path="res://Art/ArmMid.png" id="3_e2ehg"]
+[ext_resource type="Texture2D" uid="uid://gp4pm0d7ejpd" path="res://Art/ArmBase.png" id="4_uifsy"]
+[ext_resource type="Texture2D" uid="uid://0c865mgtysdv" path="res://Art/ArmTip.png" id="5_0do6x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mq2q"]
+atlas = ExtResource("1_os8p5")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj7g6"]
+atlas = ExtResource("1_os8p5")
+region = Rect2(900, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls5fl"]
+atlas = ExtResource("1_os8p5")
+region = Rect2(1800, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o64vt"]
+atlas = ExtResource("1_os8p5")
+region = Rect2(0, 900, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d355m"]
+atlas = ExtResource("1_os8p5")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eynuk"]
+atlas = ExtResource("1_os8p5")
+region = Rect2(900, 900, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jbka"]
+atlas = ExtResource("1_os8p5")
+region = Rect2(0, 900, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxxir"]
+atlas = ExtResource("1_os8p5")
+region = Rect2(900, 900, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7vwg"]
+atlas = ExtResource("1_os8p5")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bkids"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mq2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj7g6")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ls5fl")
+}, {
+"duration": 99989.0,
+"texture": SubResource("AtlasTexture_o64vt")
+}],
+"loop": true,
+"name": &"Bite",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d355m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eynuk")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jbka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxxir")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_d7vwg")
+}],
+"loop": true,
+"name": &"Release",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uifsy"]
+radius = 12.166181
+
+[node name="Base" type="StaticBody2D"]
+position = Vector2(17, -58)
+script = ExtResource("1_ixh7v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-711, -115)
+rotation = -3.1415927
+scale = Vector2(2, -2)
+texture = ExtResource("2_1512r")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-2, 0)
+polygon = PackedVector2Array(-1070, -191, -1201, -448, -1119, -560, -714, -303, -488, -146, -435, -130, -312, -186, -193, -124, -237, -14, -557, 49, -386, 310, -1144, 309, -946, 61)
+
+[node name="BaseArm" type="RigidBody2D" parent="."]
+position = Vector2(-223.00002, -446)
+rotation = -1.4486233
+gravity_scale = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BaseArm"]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(-432, -132, -361, -232, -197, -376, -194, -447, -136, -478, -78, -474, -57, -407, -114, -349, -203, -245, -256, -175, -248, -86, -258, -27, -337, 4, -460, -33, -429, -147)
+
+[node name="Sprite2D" type="Sprite2D" parent="BaseArm"]
+position = Vector2(-162.40265, -286.2645)
+rotation = -5.5414205
+scale = Vector2(-1.5, 1.5)
+texture = ExtResource("4_uifsy")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="BaseArm"]
+position = Vector2(-339, -96)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+softness = 12.73
+
+[node name="MidArm" type="RigidBody2D" parent="."]
+position = Vector2(-380.00003, -421)
+rotation = -1.3404129
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="MidArm"]
+z_index = -1
+position = Vector2(65.495094, -89.16502)
+rotation = 2.8064895
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_e2ehg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MidArm"]
+polygon = PackedVector2Array(-194, -384, -154, -266, -94, -13, -13, -12, 10, -57, -69, -327, -34, -380, -68, -491, -157, -492)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="MidArm"]
+visible = false
+position = Vector2(-124, -403)
+node_a = NodePath("../../BaseArm")
+node_b = NodePath("..")
+softness = 6.41
+
+[node name="ExtenderArm" type="RigidBody2D" parent="MidArm"]
+position = Vector2(13.764155, -55.565727)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="MidArm/ExtenderArm"]
+position = Vector2(-31, -96)
+rotation = -0.19198622
+node_a = NodePath("..")
+node_b = NodePath("../..")
+stiffness = 48.7
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="MidArm/ExtenderArm"]
+position = Vector2(-83, -85)
+rotation = -0.19198622
+node_a = NodePath("..")
+node_b = NodePath("../..")
+stiffness = 51.6
+
+[node name="GrooveJoint2D" type="GrooveJoint2D" parent="MidArm/ExtenderArm"]
+position = Vector2(-120.99999, -388.99997)
+rotation = -0.20943952
+node_a = NodePath("../..")
+node_b = NodePath("..")
+bias = 0.9
+length = 154.0
+
+[node name="Sprite2D" type="Sprite2D" parent="MidArm/ExtenderArm"]
+z_index = -2
+position = Vector2(-72.00001, -168)
+rotation = 2.9286625
+scale = Vector2(0.7, 0.8)
+texture = ExtResource("5_0do6x")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MidArm/ExtenderArm"]
+polygon = PackedVector2Array(-94, -10, -168, -407, -84, -419, 2, -29, 14, 47, -100, 70)
+
+[node name="StapleHead" type="Area2D" parent="MidArm/ExtenderArm"]
+unique_name_in_owner = true
+position = Vector2(231.72777, 351.6294)
+rotation = 1.3421582
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="MidArm/ExtenderArm/StapleHead"]
+position = Vector2(15, 65)
+polygon = PackedVector2Array(-87, -5, -44, 20, -13, 42, -16, 76, -2, 78, 11, 71, 70, 71, 68, 2, 79, -89, -78, -68, -93, -12)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MidArm/ExtenderArm/StapleHead"]
+unique_name_in_owner = true
+position = Vector2(11.0000305, 64)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_bkids")
+animation = &"Bite"
+frame_progress = 0.087012716
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(762, 498.00006)
+scale = Vector2(-54.39976, 24.434677)
+shape = SubResource("CircleShape2D_uifsy")

@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://hqdc7kbu4xih"]
+
+[ext_resource type="Script" uid="uid://bwhd13f0p0124" path="res://Scenes/Terrain/ink_drop_point.gd" id="1_qsf6h"]
+[ext_resource type="Texture2D" uid="uid://bef7awn4mg3dv" path="res://Art/InkDropPoint.png" id="2_t8f2w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7h5cu"]
+size = Vector2(111, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h5cu"]
+atlas = ExtResource("2_t8f2w")
+region = Rect2(698, 0, 698, 292)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgnta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h5cu")
+}],
+"loop": true,
+"name": &"KC",
+"speed": 5.0
+}]
+
+[node name="InkDropPoint" type="Area2D"]
+script = ExtResource("1_qsf6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, -18)
+shape = SubResource("RectangleShape2D_7h5cu")
+
+[node name="DrainCycle" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.9999998, -23)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_rgnta")
+animation = &"KC"
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="timeout" from="DrainCycle" to="." method="_on_drain_cycle_timeout"]

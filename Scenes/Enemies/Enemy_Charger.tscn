@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b1r015wd0qvah" path="res://Scripts/Global/StateMachine.tscn" id="2_ibusk"]
 [ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_tl84j"]
 [ext_resource type="Texture2D" uid="uid://b0oo156fnck51" path="res://Art/cloudpoof.png" id="3_2gblp"]
-[ext_resource type="Script" uid="uid://dl7pl1iut4n7m" path="res://Scenes/Enemies/ST_Wander_Charger.gd" id="3_5hbsb"]
-[ext_resource type="Script" uid="uid://b3r07ti6ut6lp" path="res://Scenes/Enemies/ST_Charge_Charger.gd" id="5_ktx8l"]
-[ext_resource type="Script" uid="uid://6avj880pvk53" path="res://Scenes/Enemies/ST_Stunned_Charger.gd" id="7_mtf6k"]
+[ext_resource type="Script" uid="uid://dl7pl1iut4n7m" path="res://Scripts/Enemies/Charger/ST_Wander_Charger.gd" id="3_5hbsb"]
+[ext_resource type="Script" uid="uid://b3r07ti6ut6lp" path="res://Scripts/Enemies/Charger/ST_Charge_Charger.gd" id="5_ktx8l"]
+[ext_resource type="Script" uid="uid://6avj880pvk53" path="res://Scripts/Enemies/Charger/ST_Stunned_Charger.gd" id="7_mtf6k"]
 [ext_resource type="Texture2D" uid="uid://dp8bqqkvgvxwh" path="res://Art/Shittystars.png" id="8_3ijh5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hjb3s"]

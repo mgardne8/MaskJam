@@ -30,4 +30,4 @@ func _on_bounce_box_body_entered(body: Node2D) -> void:
 			player.jump_count = 0
 			die()
 		else:
-			player.die()
+			player.damage_player(self)

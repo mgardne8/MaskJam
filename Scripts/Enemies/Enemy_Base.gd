@@ -53,5 +53,5 @@ func player_bounce_collision(body,mask, object :Node2D):
 				player.damage_player(object)
 
 func die(): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
-	#death annimation
+	Global.gain_ink(colour_mask)
 	queue_free()

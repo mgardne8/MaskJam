@@ -20,6 +20,9 @@ func change_dir():  ##Call this only when we want to flip enemy around (if we ca
 	scale.x = -1
 	direction.x = -direction.x
 
+func die():
+	Global.gain_ink(colour_mask)
+	queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
@@ -27,6 +30,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if player.colour_mask == colour_mask:
 			player.velocity.y = player.JUMP_VELOCITY*1.5
 			player.jump_count = 0
-			queue_free()
+			die()
 		else:
 			player.damage_player(self)

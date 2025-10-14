@@ -17,6 +17,11 @@ var current_colour = Global.colourDict[colour_mask]
 
 # TEMPORARY TO BE MOVED LATER
 func _physics_process(delta: float) -> void:
+	
+	#Hud for ink counts 
+	%InkCountHud.text = "K = " + str(Global.ink_counts[0]) + "  : C = " + str(Global.ink_counts[1]) + " : Y = " + str(Global.ink_counts[2]) +" : M = " + str(Global.ink_counts[3])
+	
+	
 		#colour change controls
 	if Input.is_action_just_pressed("colour_k"):
 		$ColorState.send_event("Change K")
@@ -40,7 +45,7 @@ func set_layers(layerDict: Dictionary) -> void:
 		set_collision_layer_value(layer,layerDict[layer])
 		set_collision_mask_value(layer,layerDict[layer])
 
-func damage_player():
+func damage_player(object : Node2D):
 	#Todo: Player Die Script
 	print("PLAYER DIE")
 
@@ -181,6 +186,7 @@ func _on_wall_jumping_state_physics_processing(delta: float) -> void:
 	else:
 		jump_wall_time = 0.0
 		$PlayerState.send_event("WallJumpEnd")
+
 
 
 # Mask Changes

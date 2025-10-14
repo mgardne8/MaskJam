@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1ey4kdf0kf4r"]
+
+[ext_resource type="Texture2D" uid="uid://c67fawoluovin" path="res://Art/Clipster.png" id="1_ia3pg"]
+[ext_resource type="Script" uid="uid://cr6jjbh75doer" path="res://Scenes/Terrain/clipsters.gd" id="1_rjakd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjakd"]
+atlas = ExtResource("1_ia3pg")
+region = Rect2(0, 0, 852, 631)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrsag"]
+atlas = ExtResource("1_ia3pg")
+region = Rect2(852, 0, 852, 631)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifrvw"]
+atlas = ExtResource("1_ia3pg")
+region = Rect2(0, 631, 852, 631)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f6qw"]
+atlas = ExtResource("1_ia3pg")
+region = Rect2(852, 631, 852, 631)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y2oer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjakd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrsag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifrvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f6qw")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="Clipsters" type="Area2D"]
+script = ExtResource("1_rjakd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_y2oer")
+animation = &"Idle"
+frame_progress = 0.19094045
