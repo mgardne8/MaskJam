@@ -153,6 +153,14 @@ metadata/_custom_type_script = "uid://couw105c3bde4"
 script = ExtResource("7_tx1dd")
 initial_state = NodePath("Idle")
 
+[node name="Knockback" type="Node" parent="PlayerState/Root"]
+script = ExtResource("8_gymyn")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="Bounced" type="Node" parent="PlayerState/Root"]
+script = ExtResource("8_gymyn")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
 [node name="Idle" type="Node" parent="PlayerState/Root"]
 script = ExtResource("8_gymyn")
 
