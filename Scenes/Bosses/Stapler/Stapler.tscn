@@ -1,23 +1,12 @@
-[gd_scene load_steps=40 format=3 uid="uid://c1d3ighrediwb"]
+[gd_scene load_steps=29 format=3 uid="uid://c1d3ighrediwb"]
 
 [ext_resource type="Script" uid="uid://dpfdccrcwm08a" path="res://Scenes/Bosses/Stapler/stapler.gd" id="1_4chhv"]
-[ext_resource type="Texture2D" uid="uid://byx4ywquuppex" path="res://Art/StapplerPropper.png" id="1_ospwp"]
 [ext_resource type="Texture2D" uid="uid://dd4eqhwq5cjvk" path="res://Art/StaplerBossIdle.png" id="2_2jecf"]
 [ext_resource type="Texture2D" uid="uid://c6sffrjrf6qup" path="res://Art/StaplerBossCharge.png" id="3_ruvih"]
 [ext_resource type="Texture2D" uid="uid://codr1g261k3vc" path="res://Art/StaplerBossFire.png" id="5_73ukn"]
 [ext_resource type="PackedScene" uid="uid://b1r015wd0qvah" path="res://Scripts/Global/StateMachine.tscn" id="6_73ukn"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2jecf"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(1050, 1050, 1050, 1050)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4chhv"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(2100, 1050, 1050, 1050)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yonkw"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(3150, 1050, 1050, 1050)
+[ext_resource type="Script" uid="uid://bc2hj7lyhn7ex" path="res://Scenes/Bosses/Stapler/ST_idle_stapler.gd" id="6_ioqdt"]
+[ext_resource type="Script" uid="uid://cdc8uhvhy87jv" path="res://Scenes/Bosses/Stapler/ST_transition_charge_stapler.gd" id="7_ioqdt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52yua"]
 atlas = ExtResource("3_ruvih")
@@ -34,18 +23,6 @@ region = Rect2(0, 2048, 2048, 2048)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pousg"]
 atlas = ExtResource("3_ruvih")
 region = Rect2(0, 2048, 2048, 2048)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ruvih"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(0, 0, 1050, 1050)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_73ukn"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(1050, 0, 1050, 1050)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ioqdt"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(2100, 0, 1050, 1050)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_teyp1"]
 atlas = ExtResource("2_2jecf")
@@ -71,18 +48,6 @@ region = Rect2(0, 2048, 2048, 2048)
 atlas = ExtResource("2_2jecf")
 region = Rect2(2048, 2048, 2048, 2048)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jt3fg"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(0, 0, 1050, 1050)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1t5j8"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(3150, 0, 1050, 1050)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6el8v"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(1050, 1050, 1050, 1050)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_2mws7"]
 atlas = ExtResource("3_ruvih")
 region = Rect2(0, 0, 2048, 2048)
@@ -107,55 +72,8 @@ region = Rect2(4096, 2048, 2048, 2048)
 atlas = ExtResource("3_ruvih")
 region = Rect2(6144, 2048, 2048, 2048)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cnmvu"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(1050, 1050, 1050, 1050)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yc8l4"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(0, 1050, 1050, 1050)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vmiaj"]
-atlas = ExtResource("1_ospwp")
-region = Rect2(0, 0, 1050, 1050)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_teyp1"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2jecf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4chhv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yonkw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4chhv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yonkw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4chhv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yonkw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2jecf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2jecf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2jecf")
-}],
-"loop": true,
-"name": &"ChargeUp",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_52yua")
@@ -178,42 +96,52 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hvt0c")
 }],
-"loop": true,
-"name": &"ChargeUpNew",
+"loop": false,
+"name": &"ChargeUp",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pousg")
 }],
-"loop": true,
+"loop": false,
 "name": &"Fire",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ruvih")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ruvih")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ruvih")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_73ukn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ioqdt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_73ukn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ruvih")
-}],
-"loop": true,
-"name": &"Idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -239,21 +167,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vnogn")
 }],
 "loop": true,
-"name": &"IdleNew",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jt3fg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1t5j8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6el8v")
-}],
-"loop": true,
-"name": &"TransitionToCharge",
+"name": &"Idle",
 "speed": 6.0
 }, {
 "frames": [{
@@ -266,8 +180,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qxm6i")
 }],
-"loop": true,
-"name": &"TransitionToChargeNew",
+"loop": false,
+"name": &"TransitionToCharge",
 "speed": 5.0
 }, {
 "frames": [{
@@ -281,22 +195,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_ppey2")
 }],
 "loop": true,
-"name": &"TransitionToIdleNew",
+"name": &"TransitionToIdle",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cnmvu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yc8l4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vmiaj")
-}],
-"loop": true,
-"name": &"TransitionsToIdle",
-"speed": 6.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gt2q5"]
@@ -362,17 +262,36 @@ animations = [{
 script = ExtResource("1_4chhv")
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(-2, 0)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_teyp1")
-animation = &"ChargeUpNew"
+animation = &"ChargeUp"
+frame = 6
+frame_progress = 1.0
 
 [node name="ProtectileSprite" type="AnimatedSprite2D" parent="BodySprite"]
+unique_name_in_owner = true
+visible = false
 position = Vector2(-1206.6666, 296.66666)
 sprite_frames = SubResource("SpriteFrames_qeyrc")
 animation = &"FireProjectile"
-frame_progress = 0.71256125
 
 [node name="StateMachine" parent="." instance=ExtResource("6_73ukn")]
 
-[connection signal="animation_finished" from="BodySprite" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="Idle_Stapler" type="Node" parent="StateMachine"]
+script = ExtResource("6_ioqdt")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[node name="StartCharge" type="Timer" parent="StateMachine/Idle_Stapler"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="Transition-Charge_Stapler" type="Node" parent="StateMachine"]
+script = ExtResource("7_ioqdt")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[connection signal="animation_finished" from="BodySprite" to="." method="_on_body_sprite_animation_finished"]
+[connection signal="animation_finished" from="BodySprite" to="StateMachine/Transition-Charge_Stapler" method="_on_body_sprite_animation_finished"]
+[connection signal="timeout" from="StateMachine/Idle_Stapler/StartCharge" to="StateMachine/Idle_Stapler" method="_on_start_charge_timeout"]
