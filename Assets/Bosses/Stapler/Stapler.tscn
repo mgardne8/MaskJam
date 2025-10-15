@@ -1,12 +1,15 @@
-[gd_scene load_steps=29 format=3 uid="uid://c1d3ighrediwb"]
+[gd_scene load_steps=32 format=3 uid="uid://c1d3ighrediwb"]
 
-[ext_resource type="Script" uid="uid://dpfdccrcwm08a" path="res://Scenes/Bosses/Stapler/stapler.gd" id="1_4chhv"]
+[ext_resource type="Script" uid="uid://dpfdccrcwm08a" path="res://Assets/Bosses/Stapler/stapler.gd" id="1_4chhv"]
 [ext_resource type="Texture2D" uid="uid://dd4eqhwq5cjvk" path="res://Art/StaplerBossIdle.png" id="2_2jecf"]
 [ext_resource type="Texture2D" uid="uid://c6sffrjrf6qup" path="res://Art/StaplerBossCharge.png" id="3_ruvih"]
 [ext_resource type="Texture2D" uid="uid://codr1g261k3vc" path="res://Art/StaplerBossFire.png" id="5_73ukn"]
 [ext_resource type="PackedScene" uid="uid://b1r015wd0qvah" path="res://Scripts/Global/StateMachine.tscn" id="6_73ukn"]
-[ext_resource type="Script" uid="uid://bc2hj7lyhn7ex" path="res://Scenes/Bosses/Stapler/ST_idle_stapler.gd" id="6_ioqdt"]
-[ext_resource type="Script" uid="uid://cdc8uhvhy87jv" path="res://Scenes/Bosses/Stapler/ST_transition_charge_stapler.gd" id="7_ioqdt"]
+[ext_resource type="Script" uid="uid://bc2hj7lyhn7ex" path="res://Assets/Bosses/Stapler/ST_idle_stapler.gd" id="6_ioqdt"]
+[ext_resource type="Script" uid="uid://cdc8uhvhy87jv" path="res://Assets/Bosses/Stapler/ST_transition_charge_stapler.gd" id="7_ioqdt"]
+[ext_resource type="Script" uid="uid://coi3cyjprgx5m" path="res://Assets/Bosses/Stapler/ST_charge_stapler.gd" id="8_jt3fg"]
+[ext_resource type="Script" uid="uid://bejdah23v75qx" path="res://Assets/Bosses/Stapler/ST_fire_stapler.gd" id="9_1t5j8"]
+[ext_resource type="Script" uid="uid://bkfb28d0lo62" path="res://Assets/Bosses/Stapler/ST_transition_idle_stapler.gd" id="10_6el8v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52yua"]
 atlas = ExtResource("3_ruvih")
@@ -277,7 +280,8 @@ position = Vector2(-1206.6666, 296.66666)
 sprite_frames = SubResource("SpriteFrames_qeyrc")
 animation = &"FireProjectile"
 
-[node name="StateMachine" parent="." instance=ExtResource("6_73ukn")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("6_73ukn")]
+initial_state = NodePath("Idle_Stapler")
 
 [node name="Idle_Stapler" type="Node" parent="StateMachine"]
 script = ExtResource("6_ioqdt")
@@ -285,13 +289,43 @@ metadata/_custom_type_script = "uid://ctnkax5hqadai"
 
 [node name="StartCharge" type="Timer" parent="StateMachine/Idle_Stapler"]
 unique_name_in_owner = true
-wait_time = 3.0
+wait_time = 4.562
 one_shot = true
 
 [node name="Transition-Charge_Stapler" type="Node" parent="StateMachine"]
 script = ExtResource("7_ioqdt")
 metadata/_custom_type_script = "uid://ctnkax5hqadai"
 
-[connection signal="animation_finished" from="BodySprite" to="." method="_on_body_sprite_animation_finished"]
+[node name="TransitionTime" type="Timer" parent="StateMachine/Transition-Charge_Stapler"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Charge_Stapler" type="Node" parent="StateMachine"]
+script = ExtResource("8_jt3fg")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[node name="ChargeTime" type="Timer" parent="StateMachine/Charge_Stapler"]
+one_shot = true
+
+[node name="Fire_Stapler" type="Node" parent="StateMachine"]
+script = ExtResource("9_1t5j8")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[node name="FireTime" type="Timer" parent="StateMachine/Fire_Stapler"]
+wait_time = 2.659
+one_shot = true
+
+[node name="Transition-Idle_Stapler" type="Node" parent="StateMachine"]
+script = ExtResource("10_6el8v")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[node name="TransitionTimeTI" type="Timer" parent="StateMachine/Transition-Idle_Stapler"]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="animation_finished" from="BodySprite" to="StateMachine/Transition-Charge_Stapler" method="_on_body_sprite_animation_finished"]
 [connection signal="timeout" from="StateMachine/Idle_Stapler/StartCharge" to="StateMachine/Idle_Stapler" method="_on_start_charge_timeout"]
+[connection signal="timeout" from="StateMachine/Transition-Charge_Stapler/TransitionTime" to="StateMachine/Transition-Charge_Stapler" method="_on_transition_time_timeout"]
+[connection signal="timeout" from="StateMachine/Charge_Stapler/ChargeTime" to="StateMachine/Charge_Stapler" method="_on_charge_time_timeout"]
+[connection signal="timeout" from="StateMachine/Fire_Stapler/FireTime" to="StateMachine/Fire_Stapler" method="_on_fire_time_timeout"]
+[connection signal="timeout" from="StateMachine/Transition-Idle_Stapler/TransitionTimeTI" to="StateMachine/Transition-Idle_Stapler" method="_on_transition_time_timeout"]

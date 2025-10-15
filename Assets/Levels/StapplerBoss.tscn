@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://nybtl84jetwm"]
 
 [ext_resource type="Texture2D" uid="uid://eu4f1ong3hkb" path="res://Art/minimal-tilemap.png" id="1_rej0j"]
-[ext_resource type="PackedScene" uid="uid://11socosgsegx" path="res://Scenes/Bosses/Stapler/NOTWORKING/RemoverPhysics.tscn" id="2_5kdbf"]
-[ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Scenes/player.tscn" id="2_qwk34"]
-[ext_resource type="PackedScene" uid="uid://c1d3ighrediwb" path="res://Scenes/Bosses/Stapler/Stapler.tscn" id="4_5kdbf"]
+[ext_resource type="PackedScene" uid="uid://11socosgsegx" path="res://Assets/Bosses/Stapler/NOTWORKING/RemoverPhysics.tscn" id="2_5kdbf"]
+[ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Assets/player.tscn" id="2_qwk34"]
+[ext_resource type="PackedScene" uid="uid://c1d3ighrediwb" path="res://Assets/Bosses/Stapler/Stapler.tscn" id="4_5kdbf"]
 [ext_resource type="Texture2D" uid="uid://c1xgjwt6b3oux" path="res://Art/ArmMid.png" id="4_ml00b"]
 [ext_resource type="Texture2D" uid="uid://0c865mgtysdv" path="res://Art/ArmTip.png" id="6_y7nqb"]
 [ext_resource type="Texture2D" uid="uid://gp4pm0d7ejpd" path="res://Art/ArmBase.png" id="7_c5gyk"]

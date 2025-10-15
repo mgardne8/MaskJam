@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://og7afg0g0ykd"]
+
+[ext_resource type="Script" uid="uid://cu405sfwacfru" path="res://Assets/Terrain/bounce_pad.gd" id="1_vxg1h"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_mnank"]
+[ext_resource type="Texture2D" uid="uid://ojcrwc6gha2l" path="res://Art/BouncePad.png" id="2_rreto"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wfex"]
+shader = ExtResource("2_mnank")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnank"]
+atlas = ExtResource("2_rreto")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wfex"]
+atlas = ExtResource("2_rreto")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icrx6"]
+atlas = ExtResource("2_rreto")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufho6"]
+atlas = ExtResource("2_rreto")
+region = Rect2(900, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au44y"]
+atlas = ExtResource("2_rreto")
+region = Rect2(0, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mpxs"]
+atlas = ExtResource("2_rreto")
+region = Rect2(300, 300, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x27dt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnank")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wfex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icrx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufho6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au44y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mpxs")
+}],
+"loop": true,
+"name": &"Bounce",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rreto"]
+size = Vector2(36, 24.5)
+
+[node name="BouncePad" type="Area2D"]
+script = ExtResource("1_vxg1h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_1wfex")
+position = Vector2(-2, -29)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_x27dt")
+animation = &"Bounce"
+frame_progress = 0.6534737
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -12)
+shape = SubResource("RectangleShape2D_rreto")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

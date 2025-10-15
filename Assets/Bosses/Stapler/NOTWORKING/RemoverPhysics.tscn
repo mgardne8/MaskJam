@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://11socosgsegx"]
 
-[ext_resource type="Script" uid="uid://gapafgmgwuoa" path="res://Scenes/Bosses/Stapler/NOTWORKING/Boss_remover.gd" id="1_ixh7v"]
+[ext_resource type="Script" uid="uid://gapafgmgwuoa" path="res://Assets/Bosses/Stapler/NOTWORKING/Boss_remover.gd" id="1_ixh7v"]
 [ext_resource type="Texture2D" uid="uid://cqwtmu672jpa6" path="res://Art/StaplerRemover.png" id="1_os8p5"]
 [ext_resource type="Texture2D" uid="uid://ufo33afyy2db" path="res://Art/ArmSupport.png" id="2_1512r"]
 [ext_resource type="Texture2D" uid="uid://c1xgjwt6b3oux" path="res://Art/ArmMid.png" id="3_e2ehg"]
