@@ -8,7 +8,7 @@ var ink_counts = {Global.Colour_States.K: 0, Global.Colour_States.C: 0 , Global.
 #dictionary of scnese for spawning in the Stapler boss
 var AlmalgomEnemyDict = {0:"res://Assets/Enemies/Amalgoms/BoltAmalgom.tscn", 1:"res://Assets/Enemies/Amalgoms/BoltAmalgom.tscn",2:"res://Assets/Enemies/Amalgoms/BoltAmalgom.tscn"}
 
-var Levels : Dictionary = {0: "res://Scenes/Levels/Level_KC.tscn", 1:"res://Scenes/Levels/StapplerBoss.tscn", 2: "res://Scenes/Levels/Level_KCY.tscn"}
+var Levels : Dictionary = {0: "res://Levels/Level_KC.tscn", 1:"res://Levels/StaplerBossLevel.tscn", 2: "res://Levels/Level_KCY.tscn"}
 var current_Level = 0
 #InkGathering from enemies:
 func gain_ink(ink : Global.Colour_States):

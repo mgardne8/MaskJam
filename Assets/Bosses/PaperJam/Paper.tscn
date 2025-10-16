@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvaw54bhkhfmc"]
+
+[ext_resource type="Texture2D" uid="uid://b2q5fn5aig0a4" path="res://Art/paper.png" id="1_iedxm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5bpk"]
+size = Vector2(2521, 11)
+
+[node name="Paper" type="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1261.5, 0.5)
+shape = SubResource("RectangleShape2D_x5bpk")
+
+[node name="Paper" type="Sprite2D" parent="."]
+position = Vector2(421, 0)
+texture = ExtResource("1_iedxm")
+
+[node name="Paper2" type="Sprite2D" parent="."]
+position = Vector2(1264, 0)
+texture = ExtResource("1_iedxm")
+
+[node name="Paper3" type="Sprite2D" parent="."]
+position = Vector2(2106, 0)
+texture = ExtResource("1_iedxm")

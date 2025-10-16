@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1ioyx5o8x5er"]
+
+[ext_resource type="Script" uid="uid://ihckg57akode" path="res://Assets/Bosses/PaperJam/paper_jam.gd" id="1_aadpg"]
+[ext_resource type="Texture2D" uid="uid://cuein4j0kpa3h" path="res://Art/Roller.png" id="2_rpb5k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vrug2"]
+radius = 226.0354
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3yr02"]
+radius = 220.00227
+
+[node name="PaperJam" type="Area2D"]
+script = ExtResource("1_aadpg")
+
+[node name="TopRoll" type="Sprite2D" parent="."]
+position = Vector2(-16, -223)
+texture = ExtResource("2_rpb5k")
+
+[node name="BotRoll" type="Sprite2D" parent="."]
+position = Vector2(-14, 231)
+texture = ExtResource("2_rpb5k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-19, -257)
+shape = SubResource("CircleShape2D_vrug2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 193)
+shape = SubResource("CircleShape2D_3yr02")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

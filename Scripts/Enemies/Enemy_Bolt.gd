@@ -39,7 +39,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 ##Speacial killbox if hitting from above to bounce player up ##THIS SHOULD BE REMOVED FROM THE BASE SCRIPT
 func _on_bounce_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if body.name == "Player":
+	if body is Player:
 			var player : Player = body
 			if player.colour_mask == colour_mask:
 				player.velocity.y = player.JUMP_VELOCITY*1.5

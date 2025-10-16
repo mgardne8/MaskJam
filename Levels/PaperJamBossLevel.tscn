@@ -1,0 +1,127 @@
+[gd_scene load_steps=12 format=4 uid="uid://bq5qdstllw8wv"]
+
+[ext_resource type="Texture2D" uid="uid://eu4f1ong3hkb" path="res://Art/minimal-tilemap.png" id="1_1p60b"]
+[ext_resource type="Script" uid="uid://fpmshtyuxox8" path="res://Levels/paper_jam_boss_level.gd" id="1_vuxna"]
+[ext_resource type="PackedScene" uid="uid://d1ioyx5o8x5er" path="res://Assets/Bosses/PaperJam/PaperJam.tscn" id="2_lx06c"]
+[ext_resource type="PackedScene" uid="uid://dvaw54bhkhfmc" path="res://Assets/Bosses/PaperJam/Paper.tscn" id="4_efbns"]
+[ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Assets/player.tscn" id="5_hycop"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nfrdl"]
+texture = ExtResource("1_1p60b")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_lx06c"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_nfrdl")
+
+[sub_resource type="Curve2D" id="Curve2D_8nupl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2495, 0, 0, 0, 0, 0, -941.7504, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_q0smb"]
+resource_name = "MovePaper"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 29.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.044655e-05, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ee38m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.044655e-05]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vlcp6"]
+_data = {
+&"MovePaper": SubResource("Animation_q0smb"),
+&"RESET": SubResource("Animation_ee38m")
+}
+
+[node name="PaperJamBoss_Level" type="Node2D"]
+script = ExtResource("1_vuxna")
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAJAAEAAAABAAIAAAAKAAEAAAABAAIAAAALAAEAAAABAAIAAAAMAAEAAAABAAIAAAANAAEAAAABAAIAAAAOAAEAAAABAAIAAAAPAAEAAAABAAIAAAAQAAEAAAABAAIAAAARAAEAAAABAAIAAAASAAEAAAABAAIAAAATAAEAAAABAAIAAAAUAAEAAAABAAIAAAAVAAEAAAABAAIAAAAWAAEAAAABAAIAAAAXAAEAAAABAAIAAAAYAAEAAAABAAIAAAAZAAEAAAABAAIAAAAaAAEAAAABAAIAAAAbAAEAAAABAAIAAAAcAAEAAAABAAIAAAAdAAEAAAABAAIAAAAeAAEAAAABAAIAAAAfAAEAAAABAAIAAAAgAAEAAAABAAIAAAAhAAEAAAABAAIAAAAiAAEAAAABAAIAAAAjAAEAAAABAAIAAAAkAAEAAAABAAIAAAAlAAEAAAABAAIAAAAmAAEAAAABAAIAAAAnAAEAAAABAAIAAAAoAAEAAAABAAIAAAApAAEAAAABAAIAAAAqAAEAAAABAAIAAAArAAEAAAABAAIAAAAsAAEAAAABAAIAAAAtAAEAAAABAAIAAAAuAAEAAAABAAIAAAAvAAEAAAABAAIAAAAwAAEAAAABAAIAAAAxAAEAAAABAAIAAAAyAAEAAAABAAIAAAAzAAEAAAABAAIAAAA0AAEAAAABAAIAAAA1AAEAAAABAAIAAAA2AAEAAAABAAIAAAA3AAEAAAABAAIAAAA4AAEAAAABAAIAAAA5AAEAAAABAAIAAAA6AAEAAAABAAIAAAA7AAEAAAABAAIAAAA8AAEAAAABAAIAAAA9AAEAAAABAAIAAAA+AAEAAAABAAIAAAA/AAEAAAABAAIAAABAAAEAAAABAAIAAABBAAEAAAABAAIAAABCAAEAAAABAAIAAABDAAEAAAABAAIAAABEAAEAAAABAAIAAABFAAEAAAABAAIAAABGAAEAAAABAAIAAABHAAEAAAABAAIAAABIAAEAAAABAAIAAABJAAEAAAABAAIAAABKAAEAAAABAAIAAABLAAEAAAABAAIAAABMAAEAAAABAAIAAABNAAEAAAABAAIAAABOAAEAAAABAAIAAABPAAEAAAABAAIAAABQAAEAAAABAAIAAABRAAEAAAABAAIAAABSAAEAAAABAAIAAABTAAEAAAABAAIAAABUAAEAAAABAAIAAABVAAEAAAABAAIAAABWAAEAAAABAAIAAABXAAEAAAABAAIAAABYAAEAAAABAAIAAABZAAEAAAABAAIAAABaAAEAAAABAAIAAABbAAEAAAABAAIAAABcAAEAAAABAAIAAABdAAEAAAABAAIAAABeAAEAAAABAAIAAABfAAEAAAABAAIAAAA=")
+tile_set = SubResource("TileSet_lx06c")
+
+[node name="PaperJam" parent="." instance=ExtResource("2_lx06c")]
+position = Vector2(28, 12)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(145.01416, 0)
+scale = Vector2(0.94187814, 1)
+curve = SubResource("Curve2D_8nupl")
+
+[node name="Paper" parent="Path2D" instance=ExtResource("4_efbns")]
+position = Vector2(2494.9631, 0)
+rotation = -3.1415925
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(2494.9631, 0)
+rotation = 3.1415927
+progress = 0.07026969
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
+remote_path = NodePath("../../Paper")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_vlcp6")
+}
+
+[node name="Player" parent="." instance=ExtResource("5_hycop")]
+position = Vector2(381, -42)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
