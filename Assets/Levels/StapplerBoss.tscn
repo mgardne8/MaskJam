@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://nybtl84jetwm"]
+[gd_scene load_steps=20 format=3 uid="uid://nybtl84jetwm"]
 
 [ext_resource type="Texture2D" uid="uid://eu4f1ong3hkb" path="res://Art/minimal-tilemap.png" id="1_rej0j"]
 [ext_resource type="PackedScene" uid="uid://11socosgsegx" path="res://Assets/Bosses/Stapler/NOTWORKING/RemoverPhysics.tscn" id="2_5kdbf"]
 [ext_resource type="PackedScene" uid="uid://c1d3ighrediwb" path="res://Assets/Bosses/Stapler/Stapler.tscn" id="4_5kdbf"]
 [ext_resource type="Texture2D" uid="uid://c1xgjwt6b3oux" path="res://Art/ArmMid.png" id="4_ml00b"]
 [ext_resource type="Texture2D" uid="uid://gp4pm0d7ejpd" path="res://Art/ArmBase.png" id="7_c5gyk"]
+[ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Assets/player.tscn" id="7_ciogu"]
 [ext_resource type="Texture2D" uid="uid://cqwtmu672jpa6" path="res://Art/StaplerRemover.png" id="8_w1gd5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8crqk"]
@@ -161,5 +162,9 @@ scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_u8heb")
 animation = &"Idle"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(383, -169)
+[node name="Player" parent="." instance=ExtResource("7_ciogu")]
+position = Vector2(384, 59)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(417, -283)
+scale = Vector2(1.3, 1.3)

@@ -13,5 +13,4 @@ func Exit():
 
 
 func _on_fire_time_timeout() -> void:
-	print("timeout")
 	Transitioned.emit(self,"Transition-Idle_Stapler")

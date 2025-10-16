@@ -29,7 +29,7 @@ func die(): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
 
 ##Killbox area (hitting fromt he side) ##THIS SHOULD BE REMOVED FROM THE BASE SCRIPT
 func _on_area_2d_body_entered(body: Node2D) -> void:
-		if body.name == "Player":
+		if body is Player:
 			var player : Player = body
 			if player.colour_mask == colour_mask:
 				die()
