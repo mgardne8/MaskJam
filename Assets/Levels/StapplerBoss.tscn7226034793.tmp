@@ -63,6 +63,5 @@ position = Vector2(-2, -153)
 zoom = Vector2(1.5, 1.5)
 
 [node name="BoltAmalgom" parent="." instance=ExtResource("8_kduq5")]
-position = Vector2(661, 1)
-colour_mask_part1 = 2
-colour_mask = 3
+position = Vector2(715, -54)
+colour_mask_part1 = 1

@@ -276,6 +276,7 @@ frame_progress = 1.0
 [node name="ProtectileSprite" type="AnimatedSprite2D" parent="BodySprite"]
 unique_name_in_owner = true
 visible = false
+z_index = 2
 position = Vector2(-1206.6666, 296.66666)
 sprite_frames = SubResource("SpriteFrames_qeyrc")
 animation = &"FireProjectile"
@@ -307,12 +308,17 @@ metadata/_custom_type_script = "uid://ctnkax5hqadai"
 [node name="ChargeTime" type="Timer" parent="StateMachine/Charge_Stapler"]
 one_shot = true
 
-[node name="Fire_Stapler" type="Node" parent="StateMachine"]
+[node name="Fire_Stapler" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss")]
 script = ExtResource("9_1t5j8")
+boss = NodePath("../..")
 metadata/_custom_type_script = "uid://ctnkax5hqadai"
 
 [node name="FireTime" type="Timer" parent="StateMachine/Fire_Stapler"]
 wait_time = 2.659
+one_shot = true
+
+[node name="SpawnDelay" type="Timer" parent="StateMachine/Fire_Stapler"]
+wait_time = 0.8
 one_shot = true
 
 [node name="Transition-Idle_Stapler" type="Node" parent="StateMachine"]
@@ -324,11 +330,13 @@ wait_time = 0.3
 one_shot = true
 
 [node name="Enemy_Spawner" type="Marker2D" parent="."]
-position = Vector2(-370, 266)
+unique_name_in_owner = true
+position = Vector2(-222, 302)
 
 [connection signal="animation_finished" from="BodySprite" to="StateMachine/Transition-Charge_Stapler" method="_on_body_sprite_animation_finished"]
 [connection signal="timeout" from="StateMachine/Idle_Stapler/StartCharge" to="StateMachine/Idle_Stapler" method="_on_start_charge_timeout"]
 [connection signal="timeout" from="StateMachine/Transition-Charge_Stapler/TransitionTime" to="StateMachine/Transition-Charge_Stapler" method="_on_transition_time_timeout"]
 [connection signal="timeout" from="StateMachine/Charge_Stapler/ChargeTime" to="StateMachine/Charge_Stapler" method="_on_charge_time_timeout"]
 [connection signal="timeout" from="StateMachine/Fire_Stapler/FireTime" to="StateMachine/Fire_Stapler" method="_on_fire_time_timeout"]
+[connection signal="timeout" from="StateMachine/Fire_Stapler/SpawnDelay" to="StateMachine/Fire_Stapler" method="_on_spawn_delay_timeout"]
 [connection signal="timeout" from="StateMachine/Transition-Idle_Stapler/TransitionTimeTI" to="StateMachine/Transition-Idle_Stapler" method="_on_transition_time_timeout"]

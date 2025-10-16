@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://ifcqb0s8pi5o"]
+
+[ext_resource type="Script" uid="uid://ciayw4wq0t1pi" path="res://Assets/Enemies/Amalgoms/bolt_amalgom.gd" id="1_8tgxe"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_q1nf5"]
+[ext_resource type="SpriteFrames" uid="uid://eoscv5dwalxl" path="res://Annimations/BoltAmalgom.tres" id="3_q1nf5"]
+[ext_resource type="Texture2D" uid="uid://d1xxtck2cxkr3" path="res://Art/Staple.png" id="4_q1nf5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3y8b"]
+radius = 27.294687
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxccq"]
+resource_local_to_scene = true
+shader = ExtResource("2_q1nf5")
+shader_parameter/colour = Color(0, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhp2p"]
+radius = 32.01562
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b23fk"]
+radius = 3.0
+height = 48.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1nf5"]
+resource_local_to_scene = true
+shader = ExtResource("2_q1nf5")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_quu50"]
+radius = 27.0
+
+[node name="BoltAmalgom" type="CharacterBody2D"]
+script = ExtResource("1_8tgxe")
+
+[node name="CharacterBody" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_s3y8b")
+
+[node name="BaseSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_lxccq")
+position = Vector2(-1.9073486e-06, -1.9073486e-06)
+scale = Vector2(0.1, 0.1)
+sprite_frames = ExtResource("3_q1nf5")
+animation = &"Move"
+
+[node name="Killbox" type="Area2D" parent="."]
+
+[node name="Area" type="CollisionShape2D" parent="Killbox"]
+position = Vector2(-1, 7)
+shape = SubResource("CircleShape2D_bhp2p")
+
+[node name="BounceArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceArea"]
+position = Vector2(-2, -26)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_b23fk")
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+position = Vector2(-19, 1)
+collision_mask = 31
+
+[node name="RayCastWall" type="RayCast2D" parent="."]
+rotation = 1.5707964
+target_position = Vector2(9.616506e-07, 22)
+
+[node name="Part1" type="Area2D" parent="."]
+
+[node name="Part1Sprite" type="AnimatedSprite2D" parent="Part1"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_q1nf5")
+position = Vector2(38.000004, -30)
+rotation = 1.4643313
+scale = Vector2(0.08, 0.08)
+sprite_frames = ExtResource("3_q1nf5")
+animation = &"Move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Part1"]
+position = Vector2(36, -29)
+shape = SubResource("CircleShape2D_quu50")
+
+[node name="Part1BounceArea" type="Area2D" parent="Part1"]
+
+[node name="Part1BounceCollision" type="CollisionShape2D" parent="Part1/Part1BounceArea"]
+position = Vector2(36, -54)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_b23fk")
+
+[node name="Staple" type="Sprite2D" parent="."]
+position = Vector2(20, -6.999998)
+rotation = 0.4886922
+scale = Vector2(0.12084449, 0.21970382)
+texture = ExtResource("4_q1nf5")
+
+[connection signal="body_entered" from="Killbox" to="." method="_on_killbox_body_entered"]
+[connection signal="body_entered" from="BounceArea" to="." method="_on_bounce_area_body_entered"]
+[connection signal="body_entered" from="Part1" to="." method="_on_part_1_body_entered"]
+[connection signal="body_entered" from="Part1/Part1BounceArea" to="." method="_on_part_1_bounce_area_body_entered"]
