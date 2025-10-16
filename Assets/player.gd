@@ -1,27 +1,28 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -500.0
-const JUMP_COUNT_MAX = 2
-const JUMP_WALL_DURATION = 0.15
-const JUMP_WALL_STRENGTH = 50
+const SPEED: float = 300.0
+const JUMP_VELOCITY: float = -500.0
+const JUMP_COUNT_MAX: int = 2
+const JUMP_WALL_DURATION: float = 0.15
+const JUMP_WALL_STRENGTH: float = 50
 
-var direction = 0.0
-var jump_count = 0
-var jump_wall_time = 0.0
-var jump_wall_last_side = null
+var direction: float = 0.0
+var jump_count: int = 0
+var jump_wall_time: float = 0.0
+var jump_wall_last_side: RayCast2D = null
 
-var colour_mask = Global.Colour_States.K
-var current_colour = Global.colourDict[colour_mask]
+var colour_mask: int = Global.Colour_States.K
+var current_colour: Vector4 = Global.colourDict[colour_mask]
+
+var bounce_vector: Vector2 = Vector2(0,0)
+var bounce_duration: float = 0.0
+var bounce_timer: float = 0.0
+
 
 # TEMPORARY TO BE MOVED LATER
 func _physics_process(delta: float) -> void:
-	
-	#Hud for ink counts 
-	%InkCountHud.text = "K = " + str(Global.ink_counts[0]) + "  : C = " + str(Global.ink_counts[1]) + " : Y = " + str(Global.ink_counts[2]) +" : M = " + str(Global.ink_counts[3])
-	
-	
+		
 		#colour change controls
 	if Input.is_action_just_pressed("colour_k"):
 		$ColorState.send_event("Change K")
@@ -96,6 +97,10 @@ func CalcWallJumpMove(delta: float) -> void:
 	velocity.x = SPEED*wj_dir
 	velocity.y -= JUMP_WALL_STRENGTH*.5
 	
+func GetBounced(direction: Vector2, duration: float) -> void:
+	bounce_vector = direction
+	bounce_duration = duration
+	$PlayerState.send_event("Bounce")
 	
 # State and Event Processing
 ##Idle
@@ -187,7 +192,21 @@ func _on_wall_jumping_state_physics_processing(delta: float) -> void:
 		jump_wall_time = 0.0
 		$PlayerState.send_event("WallJumpEnd")
 
+##Bounce
+func _on_bounced_state_entered() -> void:
+	$AnimatedSprite2D.play("JUMP")
+	jump_count = 0 # Reset jump count on bouncepad
+	bounce_timer = 0.0
 
+func _on_bounced_state_physics_processing(delta: float) -> void:
+	if bounce_timer < bounce_duration:
+		bounce_timer += delta
+		CalcMovement(delta)
+		velocity += bounce_vector
+		move_and_slide()
+	else:
+		$PlayerState.send_event("BounceEnd")
+		bounce_timer = 0.0
 
 # Mask Changes
 func _on_k_state_entered() -> void:

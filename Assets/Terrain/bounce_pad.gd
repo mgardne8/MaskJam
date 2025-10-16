@@ -2,7 +2,10 @@ extends Area2D
 
 
 
-@export var colour_mask= Global.Colour_States.K
+@export var colour_mask = Global.Colour_States.K
+@export var bounce_vector:Vector2 = Vector2(0,-400)
+@export var bounce_duration:float = 0.2
+
 var player : Player
 
 func _ready():
@@ -35,7 +38,9 @@ func _ready():
 
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body is Player:
-		print("BOING")
-		player = body
-		player.velocity.y += player.JUMP_VELOCITY*50
+		if body.colour_mask == self.colour_mask:
+			print("BOING")
+			body.GetBounced(bounce_vector,bounce_duration)
+		else:
+			print("WRONG COLOR")
 	

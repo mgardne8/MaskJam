@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://ojcrwc6gha2l" path="res://Art/BouncePad.png" id="2_rreto"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1wfex"]
-resource_local_to_scene = true
 shader = ExtResource("2_mnank")
 shader_parameter/colour = Color(0, 0, 0, 1)
 
@@ -64,6 +63,7 @@ size = Vector2(36, 24.5)
 
 [node name="BouncePad" type="Area2D"]
 script = ExtResource("1_vxg1h")
+colour_mask = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_1wfex")

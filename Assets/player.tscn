@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d01j4f253dh61"]
+[gd_scene load_steps=25 format=3 uid="uid://d01j4f253dh61"]
 
 [ext_resource type="Script" uid="uid://dq84t65h5eo5t" path="res://Assets/player.gd" id="1_f1ek2"]
 [ext_resource type="Texture2D" uid="uid://dnxj1e55wf00i" path="res://Art/TheDude/Idle.png" id="2_cvnsp"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="7_tx1dd"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="8_gymyn"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="9_pu2lt"]
+[ext_resource type="Script" uid="uid://obqljqlbvyu8" path="res://Assets/hud.gd" id="11_uwngq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0iea"]
 radius = 12.0
@@ -161,6 +162,18 @@ metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 script = ExtResource("8_gymyn")
 metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 
+[node name="Bounce" type="Node" parent="PlayerState/Root/Bounced"]
+script = ExtResource("9_pu2lt")
+to = NodePath("../../Bounced")
+event = &"Bounce"
+delay_in_seconds = "0.0"
+
+[node name="Bounce End" type="Node" parent="PlayerState/Root/Bounced"]
+script = ExtResource("9_pu2lt")
+to = NodePath("../../Jumping")
+event = &"BounceEnd"
+delay_in_seconds = "0.0"
+
 [node name="Idle" type="Node" parent="PlayerState/Root"]
 script = ExtResource("8_gymyn")
 
@@ -182,6 +195,12 @@ to = NodePath("../../Walking")
 event = &"Moved"
 delay_in_seconds = "0.0"
 
+[node name="Bounce" type="Node" parent="PlayerState/Root/Idle"]
+script = ExtResource("9_pu2lt")
+to = NodePath("../../Bounced")
+event = &"Bounce"
+delay_in_seconds = "0.0"
+
 [node name="Walking" type="Node" parent="PlayerState/Root"]
 script = ExtResource("8_gymyn")
 
@@ -201,6 +220,12 @@ delay_in_seconds = "0.0"
 script = ExtResource("9_pu2lt")
 to = NodePath("../../Idle")
 event = &"Stopped"
+delay_in_seconds = "0.0"
+
+[node name="Bounce" type="Node" parent="PlayerState/Root/Walking"]
+script = ExtResource("9_pu2lt")
+to = NodePath("../../Bounced")
+event = &"Bounce"
 delay_in_seconds = "0.0"
 
 [node name="Falling" type="Node" parent="PlayerState/Root"]
@@ -236,6 +261,12 @@ to = NodePath("../../Falling")
 event = &"Fall"
 delay_in_seconds = "0.0"
 
+[node name="Bounce" type="Node" parent="PlayerState/Root/Falling"]
+script = ExtResource("9_pu2lt")
+to = NodePath("../../Bounced")
+event = &"Bounce"
+delay_in_seconds = "0.0"
+
 [node name="Jumping" type="Node" parent="PlayerState/Root"]
 script = ExtResource("8_gymyn")
 
@@ -269,6 +300,12 @@ to = NodePath("../../Wall Jumping")
 event = &"Wall Jump"
 delay_in_seconds = "0.0"
 
+[node name="Bounce" type="Node" parent="PlayerState/Root/Jumping"]
+script = ExtResource("9_pu2lt")
+to = NodePath("../../Bounced")
+event = &"Bounce"
+delay_in_seconds = "0.0"
+
 [node name="Wall Jumping" type="Node" parent="PlayerState/Root"]
 script = ExtResource("8_gymyn")
 
@@ -276,6 +313,12 @@ script = ExtResource("8_gymyn")
 script = ExtResource("9_pu2lt")
 to = NodePath("../../Jumping")
 event = &"WallJumpEnd"
+delay_in_seconds = "0.0"
+
+[node name="Bounce" type="Node" parent="PlayerState/Root/Wall Jumping"]
+script = ExtResource("9_pu2lt")
+to = NodePath("../../Bounced")
+event = &"Bounce"
 delay_in_seconds = "0.0"
 
 [node name="ColorState" type="Node" parent="."]
@@ -395,6 +438,7 @@ event = &"Change M"
 delay_in_seconds = "0.0"
 
 [node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("11_uwngq")
 
 [node name="InkCountHud" type="Label" parent="HUD"]
 unique_name_in_owner = true
@@ -402,6 +446,8 @@ offset_right = 131.0
 offset_bottom = 26.0
 text = "K = 0  : C = 0 : Y = 0 : M = 0"
 
+[connection signal="state_entered" from="PlayerState/Root/Bounced" to="." method="_on_bounced_state_entered"]
+[connection signal="state_physics_processing" from="PlayerState/Root/Bounced" to="." method="_on_bounced_state_physics_processing"]
 [connection signal="state_entered" from="PlayerState/Root/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="state_physics_processing" from="PlayerState/Root/Idle" to="." method="_on_idle_state_physics_processing"]
 [connection signal="state_entered" from="PlayerState/Root/Walking" to="." method="_on_walking_state_entered"]
