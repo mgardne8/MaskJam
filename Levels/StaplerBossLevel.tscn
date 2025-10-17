@@ -1,9 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://nybtl84jetwm"]
+[gd_scene load_steps=25 format=3 uid="uid://nybtl84jetwm"]
 
+[ext_resource type="Script" uid="uid://u8kevo1t2wt8" path="res://Levels/stapler_boss_level.gd" id="1_8h5ot"]
 [ext_resource type="Texture2D" uid="uid://eu4f1ong3hkb" path="res://Art/minimal-tilemap.png" id="1_itita"]
 [ext_resource type="PackedScene" uid="uid://c1d3ighrediwb" path="res://Assets/Bosses/Stapler/Stapler.tscn" id="2_a0lx0"]
 [ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Assets/player.tscn" id="3_ap8pq"]
 [ext_resource type="PackedScene" uid="uid://ifcqb0s8pi5o" path="res://Assets/Enemies/Amalgoms/BoltAmalgom.tscn" id="4_7pj46"]
+[ext_resource type="Texture2D" uid="uid://dsfmjgknfm48f" path="res://Art/RemoveIdle.png" id="4_a0lx0"]
+[ext_resource type="Texture2D" uid="uid://bij0b6y0ekwrj" path="res://Art/RemoverLeaveFrame.png" id="5_ap8pq"]
+[ext_resource type="PackedScene" uid="uid://ctwhpgtn77chk" path="res://Assets/Bosses/Stapler/RemoverAttacker.tscn" id="7_7pj46"]
+[ext_resource type="PackedScene" uid="uid://b1r015wd0qvah" path="res://Scripts/Global/StateMachine.tscn" id="9_vnnd3"]
+[ext_resource type="Script" uid="uid://ctnkax5hqadai" path="res://Scripts/Global/state.gd" id="10_s2lie"]
+[ext_resource type="Script" uid="uid://chpguv0sj71vn" path="res://Assets/Bosses/Stapler/ST_Remover_idle.gd" id="10_vnnd3"]
+[ext_resource type="Script" uid="uid://dmul07vyccp86" path="res://Assets/Bosses/Stapler/ST_remover_bite.gd" id="11_wnwvn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8crqk"]
 texture = ExtResource("1_itita")
@@ -43,7 +51,89 @@ texture = ExtResource("1_itita")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8crqk")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap8pq"]
+atlas = ExtResource("4_a0lx0")
+region = Rect2(0, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pj46"]
+atlas = ExtResource("4_a0lx0")
+region = Rect2(2000, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h5ot"]
+atlas = ExtResource("4_a0lx0")
+region = Rect2(4000, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsp5b"]
+atlas = ExtResource("5_ap8pq")
+region = Rect2(0, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l32di"]
+atlas = ExtResource("5_ap8pq")
+region = Rect2(2000, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnnd3"]
+atlas = ExtResource("5_ap8pq")
+region = Rect2(4000, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2lie"]
+atlas = ExtResource("5_ap8pq")
+region = Rect2(4000, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwvn"]
+atlas = ExtResource("5_ap8pq")
+region = Rect2(2000, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mwbt"]
+atlas = ExtResource("5_ap8pq")
+region = Rect2(0, 0, 2000, 2000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lsp5b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap8pq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pj46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h5ot")
+}],
+"loop": true,
+"name": &"IDLE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsp5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l32di")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnnd3")
+}],
+"loop": true,
+"name": &"LeaveFrame",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2lie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnwvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mwbt")
+}],
+"loop": true,
+"name": &"ReturnFrame",
+"speed": 5.0
+}]
+
 [node name="StapplerBoss_Level" type="Node"]
+script = ExtResource("1_8h5ot")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, -3)
@@ -56,13 +146,51 @@ position = Vector2(1078, -326.99997)
 scale = Vector2(1.1, 1.1)
 
 [node name="Player" parent="." instance=ExtResource("3_ap8pq")]
+unique_name_in_owner = true
 position = Vector2(553, 14)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-2, -153)
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(0.8, 0.8)
+
+[node name="IdleRemover" type="AnimatedSprite2D" parent="Player"]
+unique_name_in_owner = true
+position = Vector2(-438.00003, -280)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_lsp5b")
+animation = &"ReturnFrame"
 
 [node name="BoltAmalgom" parent="." instance=ExtResource("4_7pj46")]
 position = Vector2(661, 1)
 colour_mask_part1 = 2
 colour_mask = 3
+
+[node name="Remover" parent="." instance=ExtResource("7_7pj46")]
+unique_name_in_owner = true
+position = Vector2(-249, -554)
+scale = Vector2(0.4, 0.4)
+
+[node name="Remover_StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("9_vnnd3")]
+initial_state = NodePath("Bite")
+
+[node name="Idle" type="Node" parent="Remover_StateMachine"]
+script = ExtResource("10_vnnd3")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[node name="IdleTime" type="Timer" parent="Remover_StateMachine/Idle"]
+one_shot = true
+
+[node name="Bite" type="Node" parent="Remover_StateMachine"]
+script = ExtResource("11_wnwvn")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[node name="AttackDelay" type="Timer" parent="Remover_StateMachine/Bite"]
+
+[node name="Hold" type="Node" parent="Remover_StateMachine"]
+script = ExtResource("10_s2lie")
+metadata/_custom_type_script = "uid://ctnkax5hqadai"
+
+[node name="HoldDelay" type="Timer" parent="Remover_StateMachine/Hold"]
+
+[connection signal="timeout" from="Remover_StateMachine/Idle/IdleTime" to="Remover_StateMachine/Idle" method="_on_idle_time_timeout"]
+[connection signal="timeout" from="Remover_StateMachine/Bite/AttackDelay" to="Remover_StateMachine/Bite" method="_on_attack_delay_timeout"]

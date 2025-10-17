@@ -28,7 +28,7 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 		draining = true
 		deposit_ink()
 		$DrainCycle.start()
-
+		Global.checkpoint_pos = $SpawnPoint.global_position
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:

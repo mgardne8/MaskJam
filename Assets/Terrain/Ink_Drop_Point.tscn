@@ -37,6 +37,8 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_rgnta")
 animation = &"KC"
 
+[node name="SpawnPoint" type="Marker2D" parent="."]
+
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="timeout" from="DrainCycle" to="." method="_on_drain_cycle_timeout"]

@@ -10,6 +10,11 @@ var AlmalgomEnemyDict = {0:"res://Assets/Enemies/Amalgoms/BoltAmalgom.tscn", 1:"
 
 var Levels : Dictionary = {0: "res://Levels/Level_KC.tscn", 1:"res://Levels/StaplerBossLevel.tscn", 2: "res://Levels/Level_KCY.tscn"}
 var current_Level = 0
+
+var checkpoint_pos = Vector2(-999,-999)
+var previous_checkpoint : Sprite2D = null
+
+
 #InkGathering from enemies:
 func gain_ink(ink : Global.Colour_States):
 	ink_counts[ink] += 1

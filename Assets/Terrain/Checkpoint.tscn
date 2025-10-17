@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b5h4p73md40c6"]
+
+[node name="Checkpoint" type="Sprite2D"]
+
+[node name="Area2D" type="Area2D" parent="."]

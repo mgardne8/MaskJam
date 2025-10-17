@@ -55,7 +55,7 @@ animations = [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_ls5fl")
 }, {
-"duration": 99989.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_o64vt")
 }],
 "loop": true,
@@ -201,7 +201,7 @@ position = Vector2(11.0000305, 64)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_bkids")
 animation = &"Bite"
-frame_progress = 0.087012716
+frame_progress = 0.94017124
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 

@@ -1,0 +1,148 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctwhpgtn77chk"]
+
+[ext_resource type="Script" uid="uid://75qq6m4m6b8i" path="res://Assets/Bosses/Stapler/remover_attacker.gd" id="1_rraon"]
+[ext_resource type="Texture2D" uid="uid://5blrull4wv26" path="res://Art/Bite.png" id="1_vma83"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rraon"]
+atlas = ExtResource("1_vma83")
+region = Rect2(0, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml0yl"]
+atlas = ExtResource("1_vma83")
+region = Rect2(2000, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t447a"]
+atlas = ExtResource("1_vma83")
+region = Rect2(4000, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpscj"]
+atlas = ExtResource("1_vma83")
+region = Rect2(6000, 0, 2000, 2000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xnoil"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rraon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml0yl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t447a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpscj")
+}],
+"loop": true,
+"name": &"Bite",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ajb8g"]
+resource_name = "Attack"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.23333333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Bite"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitBox/CollisionPolygon2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13684233, 0.23528226),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(69.61713, 75.494736), Vector2(130.76724, 119.45681), Vector2(217.11566, 185.09943)]
+}
+
+[sub_resource type="Animation" id="Animation_2n4ev"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Bite"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitBox/CollisionPolygon2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(69.61713, 75.494736)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ira5t"]
+_data = {
+&"Attack": SubResource("Animation_ajb8g"),
+&"RESET": SubResource("Animation_2n4ev")
+}
+
+[node name="Remover" type="CharacterBody2D"]
+script = ExtResource("1_rraon")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.8304596, 121.79216)
+rotation = -0.43633232
+sprite_frames = SubResource("SpriteFrames_xnoil")
+animation = &"Bite"
+offset = Vector2(-600, -200)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ira5t")
+}
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
+position = Vector2(69.61713, 75.494736)
+rotation = -0.43633232
+scale = Vector2(1.0000001, 1.0000001)
+polygon = PackedVector2Array(-390, -218, -121, 101, 39, -146, -311, -307)
