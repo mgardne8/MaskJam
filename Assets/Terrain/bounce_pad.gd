@@ -41,6 +41,7 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 		if body.colour_mask == self.colour_mask:
 			print("BOING")
 			body.GetBounced(bounce_vector,bounce_duration)
+			$AnimatedSprite2D.play("Bounce")
 		else:
 			print("WRONG COLOR")
 	
