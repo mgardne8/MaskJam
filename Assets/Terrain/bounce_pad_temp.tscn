@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2mpqavgo16oq"]
+
+[ext_resource type="PackedScene" uid="uid://og7afg0g0ykd" path="res://Assets/Terrain/BouncePad.tscn" id="1_kyvk7"]
+[ext_resource type="Script" uid="uid://baqj4eoby1qie" path="res://bounce_pad_Temp.gd" id="2_ccmbx"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="3_jr31i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_24smw"]
+resource_local_to_scene = true
+shader = ExtResource("3_jr31i")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[node name="BouncePad" instance=ExtResource("1_kyvk7")]
+script = ExtResource("2_ccmbx")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_24smw")
+
+[node name="DestoryAfter" type="Timer" parent="." index="3"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="DestoryAfter" to="." method="_on_timer_timeout"]

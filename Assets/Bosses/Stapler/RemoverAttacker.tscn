@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctwhpgtn77chk"]
+[gd_scene load_steps=12 format=3 uid="uid://ctwhpgtn77chk"]
 
 [ext_resource type="Script" uid="uid://75qq6m4m6b8i" path="res://Assets/Bosses/Stapler/remover_attacker.gd" id="1_rraon"]
 [ext_resource type="Texture2D" uid="uid://5blrull4wv26" path="res://Art/Bite.png" id="1_vma83"]
+[ext_resource type="Texture2D" uid="uid://bjo7pbqdtyug8" path="res://Art/ExtraArmlengeth.png" id="3_ml0yl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rraon"]
 atlas = ExtResource("1_vma83")
@@ -194,5 +195,13 @@ position = Vector2(69.61713, 75.494736)
 rotation = -0.43633232
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(-390, -218, -121, 101, 63.67369, -207.5347, -311, -307)
+
+[node name="BouncerPoint" type="Marker2D" parent="."]
+position = Vector2(141, -34)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2435.0002, -334.0001)
+rotation = -0.43633232
+texture = ExtResource("3_ml0yl")
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

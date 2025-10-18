@@ -30,14 +30,8 @@ func movement(delta):
 	move_and_slide()
 
 
-func die():
-	#death annimation
-	queue_free()
-
-
 func _on_killbox_body_entered(body: Node2D) -> void:
 	player_collision(body,colour_mask,self)
-
 
 func _on_bounce_area_body_entered(body: Node2D) -> void:
 	player_bounce_collision(body,colour_mask,self)

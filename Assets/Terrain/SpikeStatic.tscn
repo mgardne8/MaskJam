@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://r2kv1a73s3in"]
 
 [ext_resource type="Script" uid="uid://bodg2knamivc7" path="res://Scripts/Terrain and Obstacles/spike_static.gd" id="1_fmxwc"]
-[ext_resource type="Texture2D" uid="uid://dwo3m2nk7n8ws" path="res://Art/SpikeRed.png" id="2_l3r61"]
+[ext_resource type="Texture2D" uid="uid://bx1xwhv3mflse" path="res://Art/Spike2.png" id="2_cso25"]
 
 [sub_resource type="Shader" id="Shader_l3r61"]
 code = "shader_type canvas_item;
@@ -24,31 +24,31 @@ void fragment() {
 shader = SubResource("Shader_l3r61")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmxwc"]
-size = Vector2(21.5, 16)
+size = Vector2(36.011086, 16)
 
 [node name="SpikeStatic" type="Area2D"]
 script = ExtResource("1_fmxwc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_5q81q")
-position = Vector2(-7, -8)
-scale = Vector2(0.04642858, 0.046542574)
-texture = ExtResource("2_l3r61")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_5q81q")
-position = Vector2(7, -8)
-scale = Vector2(0.04642858, 0.04691195)
-texture = ExtResource("2_l3r61")
+position = Vector2(-12.487415, -7.7631254)
+scale = Vector2(0.024732357, 0.028340163)
+texture = ExtResource("2_cso25")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_5q81q")
-position = Vector2(0, -8)
-scale = Vector2(0.04642858, 0.046542574)
-texture = ExtResource("2_l3r61")
+position = Vector2(12.250633, -7.7631254)
+scale = Vector2(0.024732357, 0.028340163)
+texture = ExtResource("2_cso25")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.25, -8)
+position = Vector2(-0.5771551, -8.302902)
 shape = SubResource("RectangleShape2D_fmxwc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5q81q")
+position = Vector2(-0.13868141, -7.800913)
+scale = Vector2(0.024732357, 0.028340163)
+texture = ExtResource("2_cso25")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

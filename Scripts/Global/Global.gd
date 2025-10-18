@@ -11,7 +11,7 @@ var AlmalgomEnemyDict = {0:"res://Assets/Enemies/Amalgoms/BoltAmalgom.tscn", 1:"
 var Levels : Dictionary = {0: "res://Levels/Level_KC.tscn", 1:"res://Levels/StaplerBossLevel.tscn", 2: "res://Levels/Level_KCY.tscn"}
 var current_Level = 0
 
-var checkpoint_pos = Vector2(-999,-999)
+var checkpoint_pos = Vector2(-999999999,-999999999)
 var previous_checkpoint : Sprite2D = null
 
 
@@ -21,10 +21,25 @@ func gain_ink(ink : Global.Colour_States):
 
 func lose_ink(ink :Global.Colour_States):
 	ink_counts[ink] -= 1
+	
+func reload_level():
+	minion_count = 0
+	ChangeScene(Levels[current_Level])
 
 func next_level():
+	checkpoint_pos = Vector2(-999999999,-999999999)
+	minion_count = 0
 	current_Level += 1
 	ChangeScene(Levels[current_Level])
 
 func ChangeScene(_path : String):
 	get_tree().change_scene_to_file(_path)
+	
+	
+	
+	##LEVEL SPECIFIC STUFF
+	
+#Stapler Boss
+var minion_count = 0
+var  minion_max = 5
+	

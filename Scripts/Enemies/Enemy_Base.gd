@@ -38,6 +38,8 @@ func player_collision(body,mask,object : Node2D):
 	if body.name == "Player":
 		var player : Player = body
 		if player.colour_mask == mask:
+			Global.gain_ink(mask)
+			Global.minion_count -= 1
 			object.queue_free()
 		else:
 			player.damage_player()
@@ -50,6 +52,8 @@ func player_bounce_collision(body,mask, object :Node2D):
 			if player.colour_mask == mask:
 				player.velocity.y = player.JUMP_VELOCITY*1.5
 				player.jump_count = 0
+				Global.gain_ink(mask)
+				Global.minion_count -= 1
 				object.queue_free()
 			else:
 				player.damage_player()

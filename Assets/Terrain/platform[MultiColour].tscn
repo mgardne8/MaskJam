@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtwljp3v2wlxb"]
+
+[ext_resource type="Script" uid="uid://dyftt15aqka18" path="res://Scripts/Terrain and Obstacles/PlatformMultiColour.gd" id="1_dyp75"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_kgeqr"]
+[ext_resource type="Texture2D" uid="uid://c0j2ewlvu5tgy" path="res://Art/Platform2.0Base.png" id="3_e0jii"]
+[ext_resource type="Texture2D" uid="uid://brpywf52kbt3t" path="res://Art/PlatformBetween.png" id="4_8puhu"]
+[ext_resource type="Texture2D" uid="uid://cmhwqvhq1h8tu" path="res://Art/PlatformInner.png" id="5_uskg0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_muqv4"]
+resource_local_to_scene = true
+shader = ExtResource("2_kgeqr")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_urbmo"]
+resource_local_to_scene = true
+shader = ExtResource("2_kgeqr")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7lid7"]
+resource_local_to_scene = true
+shader = ExtResource("2_kgeqr")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsosc"]
+size = Vector2(117, 22.8125)
+
+[node name="Platform2" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_dyp75")
+
+[node name="OuterColour" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_muqv4")
+position = Vector2(-3.8146973e-06, 2.000001)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_e0jii")
+
+[node name="MiddleColour" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_urbmo")
+position = Vector2(-2.0000038, -1.0000019)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_8puhu")
+
+[node name="InnerColour" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7lid7")
+position = Vector2(-1.1920929e-07, -3.0000038)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_uskg0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -4.40625)
+shape = SubResource("RectangleShape2D_xsosc")

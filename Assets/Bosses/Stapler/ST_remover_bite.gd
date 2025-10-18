@@ -9,6 +9,7 @@ var direction = Vector2(0,0)
 var attacking = false
 
 func Enter():
+	$"../..".remover_start_pos = %Remover.global_position
 	attacking = false
 	delay_time = rand.randf_range(delay_min,delay_max)
 	$AttackDelay.wait_time = delay_time

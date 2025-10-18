@@ -1,10 +1,11 @@
-extends CharacterBody2D
+extends "res://Assets/Terrain/bounce_pad.gd"
 
-@export var colour_mask= Global.Colour_States.K
+var lifetime = 3
 
 func _ready():
-	$Sprite2D.material.set_shader_parameter("colour",Global.colourDict[colour_mask])
-	
+	$AnimatedSprite2D.material.set_shader_parameter("colour",Global.colourDict[colour_mask])
+	$DestoryAfter.wait_time = lifetime
+	$DestoryAfter.start()
 	if colour_mask == Global.Colour_States.K:
 		set_collision_layer_value(2,true)
 		set_collision_layer_value(3,false)
@@ -28,3 +29,7 @@ func _ready():
 		set_collision_layer_value(3,false)
 		set_collision_layer_value(4,false)
 		set_collision_layer_value(5,true)
+
+
+func _on_timer_timeout() -> void:
+	queue_free()

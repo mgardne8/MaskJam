@@ -15,6 +15,8 @@ func Enter():
 func spawn_enemies():
 	var minions_to_spawn = boss.minion_spawn_count
 	var minionID : int
+	if minions_to_spawn + Global.minion_count > Global.minion_max:
+		minions_to_spawn = Global.minion_max - Global.minion_count
 	while minions_to_spawn > 0:
 		minionID = rand.randi_range(0,2)
 		var minion_path = load(Global.AlmalgomEnemyDict[minionID])
@@ -22,6 +24,7 @@ func spawn_enemies():
 		minion.global_position = Vector2(%Enemy_Spawner.global_position.x + (-30)*minions_to_spawn, %Enemy_Spawner.global_position.y)
 		boss.get_parent().add_child(minion)
 		minions_to_spawn -= 1
+		Global.minion_count += 1
 
 
 

@@ -6,6 +6,9 @@ func _physics_process(delta: float) -> void:
 func playbite():
 	$AnimationPlayer.play("Attack")
 
+func get_bouncer_point():
+	return $BouncerPoint.global_position
+
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Player:

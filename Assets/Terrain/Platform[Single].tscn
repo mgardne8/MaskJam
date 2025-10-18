@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://0c0qgbbb2yuo"]
+
+[ext_resource type="Script" uid="uid://dv14vgnm1tw7w" path="res://Assets/Terrain/platform[single].gd" id="1_r44ad"]
+[ext_resource type="Texture2D" uid="uid://451ayvauy760" path="res://Art/Platform2.0 One Colour.png" id="2_d3cso"]
+[ext_resource type="Material" uid="uid://dsnd5thdl4yxg" path="res://Art/ColourableMat.tres" id="2_g5o2j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5o2j"]
+size = Vector2(115, 26)
+
+[node name="Platform[single]" type="StaticBody2D"]
+script = ExtResource("1_r44ad")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_g5o2j")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_d3cso")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_g5o2j")
