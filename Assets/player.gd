@@ -46,8 +46,8 @@ func set_layers(layerDict: Dictionary) -> void:
 		set_collision_layer_value(layer,layerDict[layer])
 		set_collision_mask_value(layer,layerDict[layer])
 
-func damage_player(object : Node2D):
-	#Todo: Player Die Script
+func damage_player():
+	$Ouch.play(0.5)
 	print("PLAYER DIE")
 
 # Movement Functions
@@ -130,6 +130,7 @@ func _on_walking_state_physics_processing(delta: float) -> void:
 
 ##Jump
 func _on_jumping_state_entered() -> void:
+	$Jump.play(0.6)
 	jump_count += 1
 	$AnimatedSprite2D.play("JUMP")
 

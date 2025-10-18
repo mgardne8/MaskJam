@@ -33,14 +33,16 @@ func READY(): ##EACH ENEMY will override this method to give specific functions 
 func change_dir ():  ##Call this only when we want to flip enemy around (if we call every frame seems to stutter)
 	scale.x = -1
 	direction.x = -direction.x
-
+	
 func player_collision(body,mask,object : Node2D):
 	if body.name == "Player":
 		var player : Player = body
 		if player.colour_mask == mask:
 			object.queue_free()
 		else:
-			player.damage_player(object)
+			player.damage_player()
+			print(player.global_position - self.global_position + Vector2(-200,-200))
+			player.GetBounced(player.global_position - self.global_position + Vector2(-2000,-200), 0.05)
 
 func player_bounce_collision(body,mask, object :Node2D):
 	if body.name == "Player":
@@ -50,7 +52,7 @@ func player_bounce_collision(body,mask, object :Node2D):
 				player.jump_count = 0
 				object.queue_free()
 			else:
-				player.damage_player(object)
+				player.damage_player()
 
 func die(): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
 	Global.gain_ink(colour_mask)

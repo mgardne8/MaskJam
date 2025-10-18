@@ -18,7 +18,7 @@ func _on_kill_box_body_entered(body: Node2D) -> void:
 		if player.colour_mask == colour_mask:
 			die()
 		else:
-			player.damage_player(self)
+			player.damage_player()
 	
 
 
@@ -30,4 +30,4 @@ func _on_bounce_box_body_entered(body: Node2D) -> void:
 			player.jump_count = 0
 			die()
 		else:
-			player.damage_player(self)
+			player.damage_player()

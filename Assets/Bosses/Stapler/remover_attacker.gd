@@ -5,3 +5,10 @@ func _physics_process(delta: float) -> void:
 
 func playbite():
 	$AnimationPlayer.play("Attack")
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body is Player:
+		var player : Player = body
+		player.GetBounced(player.position - self.position, 0.5)
+		player.damage_player()

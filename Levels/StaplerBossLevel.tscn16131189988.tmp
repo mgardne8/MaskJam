@@ -165,6 +165,9 @@ frame = 1
 position = Vector2(661, 1)
 colour_mask_part1 = 2
 colour_mask = 3
+speed = null
+start_dir = null
+mass = null
 
 [node name="Remover" parent="." instance=ExtResource("7_7pj46")]
 unique_name_in_owner = true

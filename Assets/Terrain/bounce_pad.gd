@@ -40,6 +40,9 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 	if body is Player:
 		if body.colour_mask == self.colour_mask:
 			print("BOING")
+			$AudioStreamPlayer2D.pitch_scale = randf_range(1.2,1.4)
+			$AudioStreamPlayer2D.volume_db = randf_range(-.2,0.5)
+			$AudioStreamPlayer2D.play(0.0)
 			body.GetBounced(bounce_vector,bounce_duration)
 			$AnimatedSprite2D.play("Bounce")
 		else:

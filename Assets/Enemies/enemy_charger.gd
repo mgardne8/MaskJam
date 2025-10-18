@@ -35,4 +35,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			player.jump_count = 0
 			die()
 		else:
-			player.damage_player(self)
+			player.damage_player()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://h4qebdi46x2w"
+path="res://.godot/imported/tapping sound.mp3-575a1ef2d33e0858218da7e2dadf0a20.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Raw/tapping sound.mp3"
+dest_files=["res://.godot/imported/tapping sound.mp3-575a1ef2d33e0858218da7e2dadf0a20.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

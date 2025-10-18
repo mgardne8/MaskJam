@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b52h6qqs2frkt"
+path="res://.godot/imported/Manly ouch.mp3-dc32843313ede245d9c31c43a5029abc.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Raw/Manly ouch.mp3"
+dest_files=["res://.godot/imported/Manly ouch.mp3-dc32843313ede245d9c31c43a5029abc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

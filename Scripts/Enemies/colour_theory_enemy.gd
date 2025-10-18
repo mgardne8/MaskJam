@@ -41,7 +41,7 @@ func _on_killbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_inde
 				player.jump_count = 0
 				colour_drain(player.colour_mask)
 			else:
-				player.damage_player(self)
+				player.damage_player()
 
 
 	
