@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b1r015wd0qvah" path="res://Scripts/Global/StateMachine.tscn" id="2_ibusk"]
 [ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_tl84j"]
 [ext_resource type="Texture2D" uid="uid://b0oo156fnck51" path="res://Art/cloudpoof.png" id="3_2gblp"]
-[ext_resource type="Script" uid="uid://dl7pl1iut4n7m" path="res://Assets/Enemies/ST_Wander.gd" id="3_5hbsb"]
+[ext_resource type="Script" uid="uid://dl7pl1iut4n7m" path="res://Scripts/Enemies/Charger/ST_Wander_Charger.gd" id="3_5hbsb"]
 [ext_resource type="Script" uid="uid://b3r07ti6ut6lp" path="res://Scripts/Enemies/Charger/ST_Charge_Charger.gd" id="5_ktx8l"]
 [ext_resource type="Script" uid="uid://6avj880pvk53" path="res://Scripts/Enemies/Charger/ST_Stunned_Charger.gd" id="7_mtf6k"]
 [ext_resource type="Texture2D" uid="uid://dp8bqqkvgvxwh" path="res://Art/Shittystars.png" id="8_3ijh5"]
@@ -133,6 +133,11 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
+[node name="EdgeAvoidCD" type="Timer" parent="StateMachine/Wander"]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
 [node name="Charge" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_ktx8l")
 enemy = NodePath("../..")
@@ -147,6 +152,11 @@ enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://ctnkax5hqadai"
 
 [node name="StunTime" type="Timer" parent="StateMachine/Stunned"]
+one_shot = true
+
+[node name="ColourFlashDelay" type="Timer" parent="StateMachine"]
+wait_time = 0.05
+autostart = true
 
 [node name="PlayerDetector" type="RayCast2D" parent="."]
 unique_name_in_owner = true
@@ -177,7 +187,16 @@ animation = &"Stunned"
 frame_progress = 0.34525886
 script = ExtResource("7_mtf6k")
 
+[node name="RayCastDown" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(29, 0)
+target_position = Vector2(0, 44)
+
+[node name="BounceVector" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="StateMachine/Wander/WanderTime" to="StateMachine/Wander" method="_on_wander_time_timeout"]
 [connection signal="timeout" from="StateMachine/Charge/ChargeDelay" to="StateMachine/Charge" method="_on_charge_delay_timeout"]
 [connection signal="timeout" from="StateMachine/Stunned/StunTime" to="StateMachine/Stunned" method="_on_stun_time_timeout"]
+[connection signal="timeout" from="StateMachine/ColourFlashDelay" to="." method="_on_colour_flash_delay_timeout"]
