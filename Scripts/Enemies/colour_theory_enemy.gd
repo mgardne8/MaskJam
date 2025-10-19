@@ -13,7 +13,8 @@ func READY():
 
 func movement(delta):
 	velocity = speed*direction
-
+	if $RayCastWall.is_colliding():
+		change_dir()
 	if not is_on_floor():
 		velocity += get_gravity()*mass * delta
 	move_and_slide()

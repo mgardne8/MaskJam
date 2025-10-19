@@ -39,6 +39,7 @@ sprite_frames = SubResource("SpriteFrames_rgnta")
 animation = &"KC"
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(8, -33)
 
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

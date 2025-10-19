@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://1dja6va7esps"]
+
+[ext_resource type="Texture2D" uid="uid://bk00l5gxwyfg3" path="res://Art/Enemy_Bolt.png" id="1_62nxe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpjh0"]
+atlas = ExtResource("1_62nxe")
+region = Rect2(0, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64p1g"]
+atlas = ExtResource("1_62nxe")
+region = Rect2(800, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3v75"]
+atlas = ExtResource("1_62nxe")
+region = Rect2(1600, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnatq"]
+atlas = ExtResource("1_62nxe")
+region = Rect2(2400, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyblw"]
+atlas = ExtResource("1_62nxe")
+region = Rect2(3200, 0, 800, 800)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpjh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64p1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3v75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnatq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyblw")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 6.0
+}]

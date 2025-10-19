@@ -1,3 +1,48 @@
-[gd_scene format=3 uid="uid://ckkpthap8n8wc"]
+[gd_scene load_steps=10 format=3 uid="uid://ckkpthap8n8wc"]
+
+[ext_resource type="Script" uid="uid://dyftt15aqka18" path="res://Scripts/Terrain and Obstacles/PlatformMultiColour.gd" id="1_ix2tb"]
+[ext_resource type="Material" uid="uid://dsnd5thdl4yxg" path="res://Art/ColourableMat.tres" id="2_oiljl"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_vweo8"]
+[ext_resource type="Texture2D" uid="uid://bppicfq6wti1i" path="res://Art/WallOneColour.png" id="3_ix2tb"]
+[ext_resource type="Texture2D" uid="uid://d2ua8xgg8a6pr" path="res://Art/WallMiddle.png" id="4_vweo8"]
+[ext_resource type="Texture2D" uid="uid://je75fiibfoea" path="res://Art/WallInner.png" id="5_oiljl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xsbec"]
+resource_local_to_scene = true
+shader = ExtResource("2_vweo8")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l26n2"]
+resource_local_to_scene = true
+shader = ExtResource("2_vweo8")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uin74"]
+size = Vector2(35, 204)
 
 [node name="Wall[multi]" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ix2tb")
+
+[node name="OuterColour" type="Sprite2D" parent="."]
+material = ExtResource("2_oiljl")
+position = Vector2(-3.8146973e-06, 2.000001)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_ix2tb")
+
+[node name="MiddleColour" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_xsbec")
+position = Vector2(2, 15)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("4_vweo8")
+
+[node name="InnerColour" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_l26n2")
+position = Vector2(-7.1054274e-15, 8.999999)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_oiljl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_uin74")

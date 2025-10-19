@@ -1,16 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvaw54bhkhfmc"]
+[gd_scene load_steps=8 format=3 uid="uid://dvaw54bhkhfmc"]
 
 [ext_resource type="PackedScene" uid="uid://b0503ccq7j4o" path="res://Assets/Bosses/PaperJam/paperfloor.tscn" id="1_x5bpk"]
 [ext_resource type="PackedScene" uid="uid://drnh6dk7tj0i" path="res://Assets/Terrain/Wall[Single].tscn" id="2_x5bpk"]
+[ext_resource type="PackedScene" uid="uid://ckkpthap8n8wc" path="res://Assets/Terrain/Wall[Multi].tscn" id="3_fcheq"]
+[ext_resource type="PackedScene" uid="uid://0c0qgbbb2yuo" path="res://Assets/Terrain/Platform[Single].tscn" id="4_fhn08"]
+[ext_resource type="PackedScene" uid="uid://r2kv1a73s3in" path="res://Art/SpikeStatic.tscn" id="5_ols7g"]
+[ext_resource type="PackedScene" uid="uid://bbmf76x11s3gy" path="res://Assets/Enemies/Enemy_Bolt.tscn" id="6_fhn08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5bpk"]
-size = Vector2(3367, 11)
+size = Vector2(13473, 9.5)
 
 [node name="Paper" type="AnimatableBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1684.5, 0.5)
-shape = SubResource("RectangleShape2D_x5bpk")
+position = Vector2(-13474, 1)
 
 [node name="Paper" parent="." instance=ExtResource("1_x5bpk")]
 position = Vector2(421, 0)
@@ -61,18 +62,81 @@ position = Vector2(12211.509, -0.5)
 position = Vector2(13053.509, -0.5)
 
 [node name="Wall[single]" parent="." instance=ExtResource("2_x5bpk")]
-position = Vector2(1216, 2)
+position = Vector2(12478, 17)
 
 [node name="Wall[single]2" parent="." instance=ExtResource("2_x5bpk")]
-position = Vector2(1902, -1)
+position = Vector2(12411, -16)
 
 [node name="Wall[single]3" parent="." instance=ExtResource("2_x5bpk")]
-position = Vector2(1956, -51)
+position = Vector2(12336, -57)
 
-[node name="Wall[single]4" parent="." instance=ExtResource("2_x5bpk")]
-position = Vector2(2245, -57)
+[node name="Wall[single]6" parent="." instance=ExtResource("2_x5bpk")]
+position = Vector2(11907, -56)
 colour_mask = 1
 
-[node name="Wall[single]5" parent="." instance=ExtResource("2_x5bpk")]
-position = Vector2(2348, -57)
+[node name="Wall[single]7" parent="." instance=ExtResource("2_x5bpk")]
+position = Vector2(11887, -56)
+colour_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6737.5, 0.25)
+shape = SubResource("RectangleShape2D_x5bpk")
+
+[node name="Wall[multi]" parent="." instance=ExtResource("3_fcheq")]
+position = Vector2(10982, -111)
+colour_mask = Array[int]([0, 2, 2])
+
+[node name="Wall[multi]2" parent="." instance=ExtResource("3_fcheq")]
+position = Vector2(11479, -108)
+colour_mask = Array[int]([2, 1, 1])
+
+[node name="Platform[single]" parent="." instance=ExtResource("4_fhn08")]
+position = Vector2(10497, -76)
 colour_mask = 1
+
+[node name="Platform[single]2" parent="." instance=ExtResource("4_fhn08")]
+position = Vector2(10227, -75)
+colour_mask = 2
+
+[node name="SpikeStatic" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10557, -4)
+
+[node name="SpikeStatic2" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10525, -4)
+
+[node name="SpikeStatic3" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10493, -4)
+
+[node name="SpikeStatic4" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10461, -4)
+
+[node name="SpikeStatic5" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10429, -4)
+
+[node name="SpikeStatic6" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10397, -4)
+
+[node name="SpikeStatic7" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10365, -4)
+
+[node name="SpikeStatic8" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10333, -4)
+
+[node name="SpikeStatic9" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10301, -4)
+
+[node name="SpikeStatic10" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10269, -4)
+
+[node name="SpikeStatic11" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10237, -4)
+
+[node name="SpikeStatic12" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10205, -4)
+
+[node name="SpikeStatic13" parent="." instance=ExtResource("5_ols7g")]
+position = Vector2(10173, -4)
+
+[node name="EnemyBolt" parent="." instance=ExtResource("6_fhn08")]
+position = Vector2(12083, -35)
+colour_mask = 2

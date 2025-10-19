@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbmf76x11s3gy"]
+[gd_scene load_steps=8 format=3 uid="uid://bbmf76x11s3gy"]
 
 [ext_resource type="Script" uid="uid://bdkjbpg0f6103" path="res://Scripts/Enemies/Enemy_Bolt.gd" id="1_64p1g"]
 [ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_64p1g"]
-[ext_resource type="Texture2D" uid="uid://bk00l5gxwyfg3" path="res://Art/Enemy_Bolt.png" id="2_jk4gd"]
+[ext_resource type="SpriteFrames" uid="uid://1dja6va7esps" path="res://Annimations/Enemy_Bolt.tres" id="3_20kbd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_64p1g"]
 radius = 21.023796
@@ -11,49 +11,6 @@ radius = 21.023796
 resource_local_to_scene = true
 shader = ExtResource("2_64p1g")
 shader_parameter/colour = Color(0, 1, 1, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fpjh0"]
-atlas = ExtResource("2_jk4gd")
-region = Rect2(0, 0, 800, 800)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_64p1g"]
-atlas = ExtResource("2_jk4gd")
-region = Rect2(800, 0, 800, 800)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c3v75"]
-atlas = ExtResource("2_jk4gd")
-region = Rect2(1600, 0, 800, 800)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bnatq"]
-atlas = ExtResource("2_jk4gd")
-region = Rect2(2400, 0, 800, 800)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iyblw"]
-atlas = ExtResource("2_jk4gd")
-region = Rect2(3200, 0, 800, 800)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xaqjv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fpjh0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_64p1g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c3v75")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bnatq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iyblw")
-}],
-"loop": true,
-"name": &"Move",
-"speed": 6.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_idtok"]
 radius = 25.019993
@@ -75,7 +32,7 @@ shape = SubResource("CircleShape2D_64p1g")
 material = SubResource("ShaderMaterial_c3v75")
 position = Vector2(-1.9073486e-06, -1.9073486e-06)
 scale = Vector2(0.08, 0.08)
-sprite_frames = SubResource("SpriteFrames_xaqjv")
+sprite_frames = ExtResource("3_20kbd")
 animation = &"Move"
 
 [node name="Killbox" type="Area2D" parent="."]

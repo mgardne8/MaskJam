@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://c56enxijp1gvm"]
+[gd_scene load_steps=14 format=3 uid="uid://c56enxijp1gvm"]
 
 [ext_resource type="Script" uid="uid://pqoovolppxlj" path="res://Scripts/Enemies/enemy_flapacitor.gd" id="1_32asi"]
 [ext_resource type="Texture2D" uid="uid://7uoyk8pv4eyc" path="res://Art/Flappacitor.png" id="1_gcjld"]
+[ext_resource type="Material" uid="uid://dsnd5thdl4yxg" path="res://Art/ColourableMat.tres" id="2_0b005"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32asi"]
 atlas = ExtResource("1_gcjld")
@@ -67,12 +68,13 @@ animations = [{
 size = Vector2(33, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32asi"]
-size = Vector2(25, 6)
+size = Vector2(33, 6)
 
 [node name="EnemyFlapacitor" type="CharacterBody2D"]
 script = ExtResource("1_32asi")
 
 [node name="BaseSprite" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_0b005")
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_1irod")
 animation = &"Move"

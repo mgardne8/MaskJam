@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://r2kv1a73s3in"]
 
-[ext_resource type="Script" uid="uid://bodg2knamivc7" path="res://Scripts/Terrain and Obstacles/spike_static.gd" id="1_fmxwc"]
+[ext_resource type="Script" uid="uid://bodg2knamivc7" path="res://spike_static.gd" id="1_fmxwc"]
 [ext_resource type="Texture2D" uid="uid://bx1xwhv3mflse" path="res://Art/Spike2.png" id="2_cso25"]
 
 [sub_resource type="Shader" id="Shader_l3r61"]

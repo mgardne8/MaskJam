@@ -4,6 +4,7 @@ extends Enemy
 @onready var start_pos = self.global_position
 
 func READY():
+	$BaseSprite.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 	$BaseSprite.play("Move")
 	
 
@@ -24,11 +25,4 @@ func _on_kill_box_body_entered(body: Node2D) -> void:
 
 
 func _on_bounce_box_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		var player : Player = body
-		if player.colour_mask == colour_mask:
-			player.velocity.y = player.JUMP_VELOCITY*1.5
-			player.jump_count = 0
-			die()
-		else:
-			player.damage_player()
+	player_bounce_collision(body,colour_mask,self)
