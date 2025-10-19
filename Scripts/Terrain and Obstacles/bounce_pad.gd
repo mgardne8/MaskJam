@@ -1,6 +1,6 @@
 extends Area2D
 
-
+class_name Bounce_Pad
 
 @export var colour_mask = Global.Colour_States.K
 @export var bounce_vector:Vector2 = Vector2(0,-400)

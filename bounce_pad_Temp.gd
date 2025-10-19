@@ -1,4 +1,4 @@
-extends "res://Assets/Terrain/bounce_pad.gd"
+extends Bounce_Pad
 
 var lifetime = 3
 
