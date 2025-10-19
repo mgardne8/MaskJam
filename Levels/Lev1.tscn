@@ -249,9 +249,9 @@ position = Vector2(3561, -134)
 scale = Vector2(2.1, 0.5)
 colour_mask = 1
 
-[node name="Platform[single]4" parent="Platform[single]4" instance=ExtResource("7_wdwxn")]
-position = Vector2(2953, 118)
-scale = Vector2(2, 0.5)
+[node name="Platform[single]16" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(9762.3, -75)
+scale = Vector2(4.2, 0.25)
 colour_mask = 1
 
 [node name="Platform[single]5" parent="." instance=ExtResource("7_wdwxn")]
@@ -318,24 +318,24 @@ position = Vector2(5074, -523)
 scale = Vector2(2.1, 0.2)
 colour_mask = 1
 
-[node name="Platform[single]4" parent="Platform[single]8" instance=ExtResource("7_wdwxn")]
-position = Vector2(2953, 118)
-scale = Vector2(2, 0.5)
+[node name="Platform[single]20" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(27886.928, -623.68005)
+scale = Vector2(8.819998, 0.02)
 colour_mask = 1
 
-[node name="Platform[single]8" parent="Platform[single]8" instance=ExtResource("7_wdwxn")]
-position = Vector2(4662.0005, -527)
-scale = Vector2(2.1, 0.2)
+[node name="Platform[single]19" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(11275.3, -499.4)
+scale = Vector2(4.199999, 0.09999999)
 colour_mask = 1
 
-[node name="Platform[single]4" parent="Platform[single]8/Platform[single]8" instance=ExtResource("7_wdwxn")]
-position = Vector2(2953, 118)
-scale = Vector2(2, 0.5)
+[node name="Platform[single]18" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(14864.2, -628.4)
+scale = Vector2(4.4099994, 0.040000003)
 colour_mask = 1
 
-[node name="Platform[single]9" parent="Platform[single]8" instance=ExtResource("7_wdwxn")]
-position = Vector2(4852, -525)
-scale = Vector2(2.1, 0.2)
+[node name="Platform[single]17" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(15263.199, -628)
+scale = Vector2(4.4099994, 0.040000003)
 
 [node name="Platform[single]9" parent="." instance=ExtResource("7_wdwxn")]
 position = Vector2(5263.999, -519)
@@ -347,24 +347,24 @@ position = Vector2(4833.0005, -523)
 scale = Vector2(2.1, 0.2)
 colour_mask = 1
 
-[node name="Platform[single]4" parent="Platform[single]12" instance=ExtResource("7_wdwxn")]
-position = Vector2(2953, 118)
-scale = Vector2(2, 0.5)
+[node name="Platform[single]24" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(11034.301, -499.4)
+scale = Vector2(4.2, 0.1)
 colour_mask = 1
 
-[node name="Platform[single]8" parent="Platform[single]12" instance=ExtResource("7_wdwxn")]
-position = Vector2(4662.0005, -527)
-scale = Vector2(2.1, 0.2)
+[node name="Platform[single]23" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(14623.201, -628.4)
+scale = Vector2(4.4099994, 0.040000003)
 colour_mask = 1
 
-[node name="Platform[single]4" parent="Platform[single]12/Platform[single]8" instance=ExtResource("7_wdwxn")]
-position = Vector2(2953, 118)
-scale = Vector2(2, 0.5)
+[node name="Platform[single]22" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(27645.928, -623.68005)
+scale = Vector2(8.819998, 0.02)
 colour_mask = 1
 
-[node name="Platform[single]9" parent="Platform[single]12" instance=ExtResource("7_wdwxn")]
-position = Vector2(4852, -525)
-scale = Vector2(2.1, 0.2)
+[node name="Platform[single]21" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(15022.199, -628)
+scale = Vector2(4.4099994, 0.040000003)
 
 [node name="Platform[single]13" parent="." instance=ExtResource("7_wdwxn")]
 position = Vector2(4833, -518)
@@ -376,24 +376,24 @@ position = Vector2(5455.999, -524)
 scale = Vector2(2.1, 0.2)
 colour_mask = 1
 
-[node name="Platform[single]4" parent="Platform[single]10" instance=ExtResource("7_wdwxn")]
-position = Vector2(2953, 118)
-scale = Vector2(2, 0.5)
+[node name="Platform[single]28" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(11657.299, -500.4)
+scale = Vector2(4.2, 0.1)
 colour_mask = 1
 
-[node name="Platform[single]8" parent="Platform[single]10" instance=ExtResource("7_wdwxn")]
-position = Vector2(4662.0005, -527)
-scale = Vector2(2.1, 0.2)
+[node name="Platform[single]27" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(15246.199, -629.4)
+scale = Vector2(4.4099994, 0.040000003)
 colour_mask = 1
 
-[node name="Platform[single]4" parent="Platform[single]10/Platform[single]8" instance=ExtResource("7_wdwxn")]
-position = Vector2(2953, 118)
-scale = Vector2(2, 0.5)
+[node name="Platform[single]26" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(28268.928, -624.68005)
+scale = Vector2(8.819999, 0.020000001)
 colour_mask = 1
 
-[node name="Platform[single]9" parent="Platform[single]10" instance=ExtResource("7_wdwxn")]
-position = Vector2(4852, -525)
-scale = Vector2(2.1, 0.2)
+[node name="Platform[single]25" parent="." instance=ExtResource("7_wdwxn")]
+position = Vector2(15645.198, -629)
+scale = Vector2(4.4099994, 0.040000003)
 
 [node name="Platform[single]11" parent="." instance=ExtResource("7_wdwxn")]
 position = Vector2(5645.998, -520)
