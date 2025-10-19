@@ -14,16 +14,18 @@ func Enter():
 	
 
 func Update(_delta: float):
-	
-	enemy.velocity = enemy.direction * wander_speed
+	if not %RayCastDown.is_colliding() and %EdgeAvoidCD.is_stopped():
+		enemy.change_dir()
+		%EdgeAvoidCD.start()
 	if %WallChecker.is_colliding() and $FlipCD.is_stopped() and %WallChecker.get_collider().name != "Player":
+		print("wall Collision")
 		enemy.change_dir()
 		$FlipCD.start()
 	if %PlayerDetector.is_colliding():
 		if %PlayerDetector.get_collider().name == "Player" and %ChargeCD.is_stopped():
 			Transitioned.emit(self,"Charge")
-
-
+	enemy.velocity = enemy.direction * wander_speed
+		
 func Exit():
 	$WanderTime.stop()
 
@@ -35,3 +37,6 @@ func _on_wander_time_timeout() -> void:
 	wait_time_randomizer()
 	enemy.change_dir()
 	$WanderTime.start()
+
+
+	
