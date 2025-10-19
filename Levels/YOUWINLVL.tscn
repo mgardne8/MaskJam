@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://6mjsqonyn6jn"]
+
+[ext_resource type="Script" uid="uid://c7x5sbm1gox26" path="res://Levels/youwinlvl.gd" id="1_w1mpm"]
+
+[node name="Youwinlvl" type="MarginContainer"]
+offset_right = 1151.0
+offset_bottom = 653.0
+script = ExtResource("1_w1mpm")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "YOU WIN GOOD JOB!
+
+THANKS FOR PLAYING!
+
+Click to try again...or dont THANKS"
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

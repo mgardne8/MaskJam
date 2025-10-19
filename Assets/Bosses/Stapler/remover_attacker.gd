@@ -14,4 +14,5 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var player : Player = body
 		player.GetBounced(player.position - self.position, 0.5)
+		print("GOT EM")
 		player.damage_player()

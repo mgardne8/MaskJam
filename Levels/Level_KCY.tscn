@@ -80,7 +80,7 @@ position = Vector2(2795, 746)
 colour_mask = 1
 
 [node name="Player" parent="." instance=ExtResource("3_771sa")]
-position = Vector2(372, -103)
+position = Vector2(150, -64)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(4, 9)
@@ -355,7 +355,7 @@ rotation = 4.66352
 scale = Vector2(3, 3)
 colour_mask = 2
 bounce_vector = Vector2(-2000, -50)
-bounce_duration = 4.0
+bounce_duration = 1.0
 
 [node name="Wall[single]" parent="." instance=ExtResource("9_y27a7")]
 position = Vector2(13637, -305)
@@ -426,7 +426,7 @@ position = Vector2(14882, -2158)
 
 [node name="InkDropPoint4" parent="." instance=ExtResource("7_5rw4i")]
 position = Vector2(11481, -1646)
-ink_requirements = Array[int]([0, 0, 1, 1])
+ink_requirements = Array[int]([0])
 
 [node name="NewAreaDoor" parent="." node_paths=PackedStringArray("drop_point") instance=ExtResource("11_24coj")]
 position = Vector2(11587, -1668)
@@ -448,3 +448,8 @@ text = "Wow, you found Yellow during that fight?!?
 position = Vector2(60, 85.00001)
 scale = Vector2(0.4, 0.4)
 texture = SubResource("AtlasTexture_xeffo")
+
+[node name="EnemyBolt10" parent="." instance=ExtResource("2_dp48y")]
+position = Vector2(11569, -1672)
+speed = 0
+start_dir = 1

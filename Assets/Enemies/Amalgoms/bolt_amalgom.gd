@@ -25,6 +25,9 @@ func movement(delta):
 	if not is_on_floor():
 		velocity += get_gravity()*mass * delta
 	
+	if $RayCastWall.is_colliding() and $RayCastWall.get_collider() is not Player:
+		change_dir()
+	
 	if not $RayCastDown.is_colliding():
 		change_dir()
 	move_and_slide()
@@ -32,14 +35,23 @@ func movement(delta):
 
 func _on_killbox_body_entered(body: Node2D) -> void:
 	player_collision(body,colour_mask,self)
-
+	if body is Player:
+		if body.colour_mask == colour_mask and $CollisionCD.is_stopped():
+			Global.minion_count -= 1
+			$CollisionCD.start()
+	print(Global.minion_count)
 func _on_bounce_area_body_entered(body: Node2D) -> void:
 	player_bounce_collision(body,colour_mask,self)
-
+	if body is Player:
+		if body.colour_mask == colour_mask and $CollisionCD.is_stopped():
+			Global.minion_count -= 1
+			$CollisionCD.start()
+	print(Global.minion_count)
 
 func _on_part_1_bounce_area_body_entered(body: Node2D) -> void:
 	player_bounce_collision(body,colour_mask_part1,$Part1)
-
+	print(Global.minion_count)
 
 func _on_part_1_body_entered(body: Node2D) -> void:
 	player_collision(body,colour_mask_part1,$Part1)
+	print(Global.minion_count)

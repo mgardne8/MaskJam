@@ -25,7 +25,7 @@ layout_mode = 2
 
 [node name="GameName" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "MASKJAM"
+text = "INKBOI Learns to Mask"
 
 [node name="Click to Start" type="Label" parent="HBoxContainer/VBoxContainer/GameName"]
 layout_mode = 0

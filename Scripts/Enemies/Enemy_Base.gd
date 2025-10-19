@@ -56,7 +56,6 @@ func player_bounce_collision(body,mask, object :Node2D):
 				player.velocity.y = player.JUMP_VELOCITY*1.5
 				player.jump_count = 0
 				Global.gain_ink(mask)
-				Global.minion_count -= 1
 				object.queue_free()
 			else:
 				player.damage_player()

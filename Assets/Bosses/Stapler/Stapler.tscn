@@ -264,6 +264,11 @@ animations = [{
 [node name="Stapler" type="Area2D"]
 script = ExtResource("1_4chhv")
 
+[node name="SpawnBetweenDelay" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.6
+one_shot = true
+
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-2, 0)
@@ -332,8 +337,9 @@ one_shot = true
 
 [node name="Enemy_Spawner" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-288, 143)
+position = Vector2(-181, 152)
 
+[connection signal="timeout" from="SpawnBetweenDelay" to="StateMachine/Fire_Stapler" method="_on_spawn_between_delay_timeout"]
 [connection signal="animation_finished" from="BodySprite" to="StateMachine/Transition-Charge_Stapler" method="_on_body_sprite_animation_finished"]
 [connection signal="timeout" from="StateMachine/Idle_Stapler/StartCharge" to="StateMachine/Idle_Stapler" method="_on_start_charge_timeout"]
 [connection signal="timeout" from="StateMachine/Transition-Charge_Stapler/TransitionTime" to="StateMachine/Transition-Charge_Stapler" method="_on_transition_time_timeout"]

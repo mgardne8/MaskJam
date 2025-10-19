@@ -2,7 +2,7 @@ extends Node
 
 var remover_start_pos = Vector2(0,0)
 var Ink_requirement : Array[Global.Colour_States]
-var ink_requirement_count = 15
+var ink_requirement_count = 8
 @onready var rand = RandomNumberGenerator.new()
 
 func _ready() -> void:

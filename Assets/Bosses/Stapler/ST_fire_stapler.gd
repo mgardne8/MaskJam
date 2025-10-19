@@ -23,6 +23,7 @@ func spawn_enemies():
 		var minion = minion_path.instantiate()
 		minion.global_position = Vector2(%Enemy_Spawner.global_position.x + (-30)*minions_to_spawn, %Enemy_Spawner.global_position.y)
 		boss.get_parent().add_child(minion)
+		minion.speed = 80
 		minions_to_spawn -= 1
 		Global.minion_count += 1
 

@@ -198,6 +198,12 @@ unique_name_in_owner = true
 position = Vector2(-805, -869)
 scale = Vector2(0.8, 0.8)
 
+[node name="RemoverAttackZone" type="Area2D" parent="Remover"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Remover/RemoverAttackZone"]
+position = Vector2(63.749992, 2.4999998)
+polygon = PackedVector2Array(-279.99994, 90, 92.49994, 239.99994, 192.5, -38.75, -223.74994, -115)
+
 [node name="Remover_StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("9_vnnd3")]
 initial_state = NodePath("Idle")
 
@@ -243,6 +249,7 @@ colour_mask = Array[int]([0, 0])
 position = Vector2(487, -670)
 drop_point = NodePath("../InkDropPoint")
 
+[connection signal="body_entered" from="Remover/RemoverAttackZone" to="Remover_StateMachine/Bite" method="_on_remover_attack_zone_body_entered"]
 [connection signal="timeout" from="Remover_StateMachine/Idle/IdleTime" to="Remover_StateMachine/Idle" method="_on_idle_time_timeout"]
 [connection signal="timeout" from="Remover_StateMachine/Bite/AttackDelay" to="Remover_StateMachine/Bite" method="_on_attack_delay_timeout"]
 [connection signal="timeout" from="Remover_StateMachine/Hold/HoldDelay" to="Remover_StateMachine/Hold" method="_on_hold_delay_timeout"]

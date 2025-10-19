@@ -32,3 +32,11 @@ func _on_attack_delay_timeout() -> void:
 	target = %Player.global_position
 	direction = (%Player.global_position - %Remover.global_position).normalized()
 	%Remover.rotate(direction.angle())
+
+
+func _on_remover_attack_zone_body_entered(body: Node2D) -> void:
+	if body is Player:
+		var player : Player = body
+		player.GetBounced(player.position - %Remover.position, 0.5)
+		print("GOT EM")
+		player.damage_player()

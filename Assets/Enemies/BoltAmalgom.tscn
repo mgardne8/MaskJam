@@ -61,7 +61,7 @@ collision_mask = 31
 
 [node name="RayCastWall" type="RayCast2D" parent="."]
 rotation = 1.5707964
-target_position = Vector2(9.616506e-07, 22)
+target_position = Vector2(2.360415e-06, 54)
 
 [node name="Part1" type="Area2D" parent="."]
 
@@ -93,6 +93,11 @@ texture = ExtResource("4_q1nf5")
 
 [node name="TurnCD" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
+
+[node name="CollisionCD" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="body_entered" from="Killbox" to="." method="_on_killbox_body_entered"]
 [connection signal="body_entered" from="BounceArea" to="." method="_on_bounce_area_body_entered"]

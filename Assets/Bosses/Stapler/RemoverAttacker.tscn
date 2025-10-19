@@ -70,14 +70,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitBox/CollisionPolygon2D:position")
+tracks/2/path = NodePath("HitBox/CollisionPolygon2D:build_mode")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.63, 0.6333333, 0.69, 0.7701757, 0.78, 0.8686156, 0.88),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(36.000004, 70.00001), Vector2(69.61713, 75.494736), Vector2(43.00001, 68.00001), Vector2(130.76724, 119.45681), Vector2(126, 66.00001), Vector2(217.11566, 185.09943), Vector2(166, 108.00002)]
+"times": PackedFloat32Array(0.6334912, 0.7670317),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -86,22 +86,22 @@ tracks/3/path = NodePath("HitBox/CollisionPolygon2D:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.63, 0.78, 0.88),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.6334912, 0.7670317),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [PackedVector2Array(-390, -218, -121, 101, 63.67369, -207.5347, -311, -307), PackedVector2Array(-305.37924, -189.84595, -93.08588, 31.623016, 11.789398, -174.3531, -253.57065, -274.9216), PackedVector2Array(-186.22543, -118.836334, -34.598503, 59.999496, 46.080032, -49.128723, -157.25287, -204.6302)]
+"values": [PackedVector2Array(-304.95923, -189.59564, 19.2547, 148.00421, 180.6851, -231.31119, -200.48935, -346.16324), PackedVector2Array(-304.95923, -189.59564, -32.460995, 138.23268, 172.69443, -81.6678, -200.48935, -346.16324)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HitBox/CollisionPolygon2D:build_mode")
+tracks/4/path = NodePath("HitBox/CollisionPolygon2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.78, 0.88),
+"times": PackedFloat32Array(0.6334912, 0.7670317),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 0]
+"update": 0,
+"values": [Vector2(-47.999977, 101.00001), Vector2(106.99998, 103.00001)]
 }
 
 [sub_resource type="Animation" id="Animation_2n4ev"]
@@ -133,14 +133,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitBox/CollisionPolygon2D:position")
+tracks/2/path = NodePath("HitBox/CollisionPolygon2D:build_mode")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(69.61713, 75.494736)]
+"update": 1,
+"values": [0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -152,19 +152,19 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(-390, -218, -121, 101, 63.67369, -207.5347, -311, -307)]
+"values": [PackedVector2Array(-304.95923, -189.59564, 19.2547, 148.00421, 180.6851, -231.31119, -200.48935, -346.16324)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HitBox/CollisionPolygon2D:build_mode")
+tracks/4/path = NodePath("HitBox/CollisionPolygon2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Vector2(-47.999977, 101.00001)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ira5t"]
@@ -191,10 +191,10 @@ libraries = {
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
-position = Vector2(69.61713, 75.494736)
+position = Vector2(-47.999977, 101.00001)
 rotation = -0.43633232
 scale = Vector2(1.0000001, 1.0000001)
-polygon = PackedVector2Array(-390, -218, -121, 101, 63.67369, -207.5347, -311, -307)
+polygon = PackedVector2Array(-304.95923, -189.59564, 19.2547, 148.00421, 180.6851, -231.31119, -200.48935, -346.16324)
 
 [node name="BouncerPoint" type="Marker2D" parent="."]
 position = Vector2(141, -34)
