@@ -1,7 +1,5 @@
 extends Enemy
 
-@export var wander_distance = 600
-@onready var start_pos = self.global_position
 
 func READY():
 	$BaseSprite.play("Move")
@@ -9,8 +7,9 @@ func READY():
 
 func movement(delta): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
 	velocity = speed*direction
-	move_and_slide()
 
+
+	move_and_slide()
 
 
 func _on_kill_box_body_entered(body: Node2D) -> void:
