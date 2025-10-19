@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://4i1p7wto15x0"]
+[gd_scene load_steps=17 format=4 uid="uid://4i1p7wto15x0"]
 
 [ext_resource type="Texture2D" uid="uid://eu4f1ong3hkb" path="res://Art/minimal-tilemap.png" id="1_m26nb"]
 [ext_resource type="PackedScene" uid="uid://bbmf76x11s3gy" path="res://Assets/Enemies/Enemy_Bolt.tscn" id="2_dp48y"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://drnh6dk7tj0i" path="res://Assets/Terrain/Wall[Single].tscn" id="9_y27a7"]
 [ext_resource type="PackedScene" uid="uid://c56enxijp1gvm" path="res://Assets/Enemies/Enemy_Flapacitor.tscn" id="10_4e72r"]
 [ext_resource type="PackedScene" uid="uid://dcksluhrh2dvh" path="res://Assets/Terrain/NewAreaDoor.tscn" id="11_24coj"]
+[ext_resource type="PackedScene" uid="uid://b1ey4kdf0kf4r" path="res://Assets/Terrain/Clipsters.tscn" id="12_8w0qx"]
+[ext_resource type="Texture2D" uid="uid://dcmalsgo8vg0w" path="res://Art/HUD/keyboard-&-mouse_sheet_double.png" id="13_7jl4m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lif2w"]
 texture = ExtResource("1_m26nb")
@@ -50,6 +52,10 @@ texture = ExtResource("1_m26nb")
 [sub_resource type="TileSet" id="TileSet_tyclf"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lif2w")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeffo"]
+atlas = ExtResource("13_7jl4m")
+region = Rect2(1802.1614, 1685.4205, 111.32007, 82.28003)
 
 [node name="LevelKcy" type="Node"]
 
@@ -425,3 +431,20 @@ ink_requirements = Array[int]([0, 0, 1, 1])
 [node name="NewAreaDoor" parent="." node_paths=PackedStringArray("drop_point") instance=ExtResource("11_24coj")]
 position = Vector2(11587, -1668)
 drop_point = NodePath("../InkDropPoint4")
+
+[node name="Clipsters" parent="." instance=ExtResource("12_8w0qx")]
+position = Vector2(71, -307)
+scale = Vector2(2, 2)
+
+[node name="Label" type="Label" parent="Clipsters"]
+offset_left = -3.0
+offset_top = 18.0
+offset_right = 350.0
+offset_bottom = 67.0
+text = "Wow, you found Yellow during that fight?!?
+[Press Right Arrow] to put on the Yellow Mask"
+
+[node name="Sprite2D" type="Sprite2D" parent="Clipsters"]
+position = Vector2(60, 85.00001)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_xeffo")
