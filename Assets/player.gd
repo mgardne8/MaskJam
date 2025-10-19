@@ -50,6 +50,10 @@ func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.material.set_shader_parameter("colour", current_colour)
 	
 	self.health_cooldown_timer += delta
+	
+	# hacky hack hack
+	if self.velocity.y > 4000:
+		self.damage_player()
 
 func set_layers(layerDict: Dictionary) -> void:
 	for layer in layerDict.keys():
