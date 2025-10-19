@@ -9,7 +9,7 @@ size = Vector2(115, 26)
 
 [node name="Platform[single]" type="StaticBody2D"]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 32
 script = ExtResource("1_r44ad")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

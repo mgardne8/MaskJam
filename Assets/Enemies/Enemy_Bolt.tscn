@@ -100,5 +100,9 @@ rotation = 1.5707964
 target_position = Vector2(1.4861872e-06, 34)
 collision_mask = 33
 
+[node name="TurnCD" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="body_entered" from="Killbox" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="BounceArea" to="." method="_on_bounce_area_body_shape_entered"]

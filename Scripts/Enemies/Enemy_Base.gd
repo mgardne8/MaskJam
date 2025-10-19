@@ -31,8 +31,11 @@ func READY(): ##EACH ENEMY will override this method to give specific functions 
 	pass
 
 func change_dir ():  ##Call this only when we want to flip enemy around (if we call every frame seems to stutter)
-	scale.x = -1
-	direction.x = -direction.x
+	if $TurnCD.is_stopped():
+		scale.x = -1
+		direction.x = -direction.x
+		$TurnCD.start()
+	
 	
 func player_collision(body,mask,object : Node2D):
 	if body.name == "Player":

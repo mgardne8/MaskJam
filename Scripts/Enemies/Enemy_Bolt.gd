@@ -22,6 +22,11 @@ func movement(delta): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
 		change_dir()
 	move_and_slide()
 
+func change_dir():
+	if $TurnCD.is_stopped():
+		scale.x = -1
+		direction.x = -direction.x
+		$TurnCD.start()
 	
 func die(): ## BASE METHOD TO BE OVERITEN BY SPECIFIC ENEMY
 	Global.gain_ink(colour_mask)

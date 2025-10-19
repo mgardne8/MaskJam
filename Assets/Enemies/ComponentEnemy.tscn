@@ -78,6 +78,8 @@ polygon = PackedVector2Array(-51, -32, -23, -45, -11, -46, -2, -43, 11, -37, 20,
 position = Vector2(-59, 8)
 collision_mask = 31
 
+[node name="TurnCD" type="Timer" parent="."]
+
 [connection signal="body_shape_entered" from="Parts1" to="." method="_on_parts_1_body_shape_entered"]
 [connection signal="body_shape_entered" from="KillboxBase" to="." method="_on_killbox_base_body_shape_entered"]
 [connection signal="body_shape_entered" from="Parts2" to="." method="_on_parts_2_body_shape_entered"]
