@@ -25,14 +25,21 @@ layout_mode = 2
 
 [node name="GameName" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.954565, 0.8902043, 0.44956762, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 50
 text = "INKBOI Learns to Mask"
 
 [node name="Click to Start" type="Label" parent="HBoxContainer/VBoxContainer/GameName"]
 layout_mode = 0
-offset_left = -4.0
-offset_top = 232.0
-offset_right = 908.0
-offset_bottom = 255.0
+offset_left = 37.0
+offset_top = 158.0
+offset_right = 949.0
+offset_bottom = 181.0
+theme_override_colors/font_color = Color(0.11372549, 0.99215686, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 25
 text = "Click anywhere to start."
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

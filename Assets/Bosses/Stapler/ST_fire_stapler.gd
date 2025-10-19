@@ -1,6 +1,6 @@
 extends State
 
-#var minion_path = preload("res://Assets/Enemies/Amalgoms/BoltAmalgom.tscn")
+var minion_path = preload("res://Assets/Enemies/Amalgoms/BoltAmalgom.tscn")
 @export var boss : Stapler_Boss
 @onready var rand = RandomNumberGenerator.new()
 
@@ -19,7 +19,6 @@ func spawn_enemies():
 		minions_to_spawn = Global.minion_max - Global.minion_count
 	while minions_to_spawn > 0:
 		minionID = rand.randi_range(0,2)
-		var minion_path = load(Global.AlmalgomEnemyDict[minionID])
 		var minion = minion_path.instantiate()
 		minion.global_position = Vector2(%Enemy_Spawner.global_position.x + (-30)*minions_to_spawn, %Enemy_Spawner.global_position.y)
 		boss.get_parent().add_child(minion)
