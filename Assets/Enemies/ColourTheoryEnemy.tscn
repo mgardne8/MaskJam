@@ -39,5 +39,7 @@ position = Vector2(1.5, -6.5)
 shape = SubResource("RectangleShape2D_7ja1c")
 
 [node name="TurnCD" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="body_shape_entered" from="Killbox" to="." method="_on_killbox_body_shape_entered"]

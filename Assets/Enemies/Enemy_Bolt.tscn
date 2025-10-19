@@ -59,8 +59,8 @@ animations = [{
 radius = 25.019993
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64p1g"]
-radius = 3.0
-height = 36.0
+radius = 7.0
+height = 56.0
 
 [node name="EnemyBolt" type="CharacterBody2D"]
 collision_layer = 32
@@ -87,7 +87,7 @@ shape = SubResource("CircleShape2D_idtok")
 [node name="BounceArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BounceArea"]
-position = Vector2(0, -20)
+position = Vector2(-3, -17)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_64p1g")
 
