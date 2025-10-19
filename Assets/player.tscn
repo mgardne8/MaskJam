@@ -451,6 +451,14 @@ delay_in_seconds = "0.0"
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("11_uwngq")
 
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+offset_right = 240.0
+offset_bottom = 160.0
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+
 [node name="InkCountHud" type="Label" parent="HUD"]
 unique_name_in_owner = true
 offset_right = 131.0
