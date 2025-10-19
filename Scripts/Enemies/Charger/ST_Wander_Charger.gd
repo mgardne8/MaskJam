@@ -4,19 +4,17 @@ class_name Wander_Charger
 @export var enemy : Enemy_Charger
 @onready var rand = RandomNumberGenerator.new()
 var wander_speed = 60
-var moving : bool 
 
 func Enter():
+	%ColourFlashDelay.wait_time = 0.3
 	wait_time_randomizer()
 	$WanderTime.start()
-	moving = true
 	%BodySprite.play("Move")
 	
 
 func Update(_delta: float):
 	if not %RayCastDown.is_colliding() and %EdgeAvoidCD.is_stopped():
 		enemy.change_dir()
-		%EdgeAvoidCD.start()
 	if %WallChecker.is_colliding() and $FlipCD.is_stopped() and %WallChecker.get_collider().name != "Player":
 		print("wall Collision")
 		enemy.change_dir()

@@ -89,8 +89,8 @@ material = SubResource("ShaderMaterial_hjb3s")
 position = Vector2(3.3881318e-21, 5.9604645e-08)
 scale = Vector2(0.16, 0.16)
 sprite_frames = ExtResource("1_kg5a0")
-animation = &"ChargeWindup"
-frame_progress = 0.2990331
+animation = &"Move"
+frame_progress = 0.9675381
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.5, 22)
@@ -118,6 +118,11 @@ rotation = -1.5707964
 target_position = Vector2(-1.6610328e-06, 38)
 collision_mask = 63
 
+[node name="EdgeAvoidCD" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_ibusk")]
 initial_state = NodePath("Wander")
 
@@ -130,11 +135,6 @@ metadata/_custom_type_script = "uid://ctnkax5hqadai"
 one_shot = true
 
 [node name="FlipCD" type="Timer" parent="StateMachine/Wander"]
-wait_time = 0.2
-one_shot = true
-
-[node name="EdgeAvoidCD" type="Timer" parent="StateMachine/Wander"]
-unique_name_in_owner = true
 wait_time = 0.2
 one_shot = true
 
@@ -155,7 +155,8 @@ metadata/_custom_type_script = "uid://ctnkax5hqadai"
 one_shot = true
 
 [node name="ColourFlashDelay" type="Timer" parent="StateMachine"]
-wait_time = 0.05
+unique_name_in_owner = true
+wait_time = 0.3
 autostart = true
 
 [node name="PlayerDetector" type="RayCast2D" parent="."]

@@ -6,6 +6,8 @@ class_name Charge_Charger
 var direction_hold 
 
 func Enter():
+	print("startingcharge")
+	%ColourFlashDelay.wait_time = 0.05
 	$ChargeDelay.wait_time = enemy.charge_windup
 	%PoofCharging.visible = true
 	$ChargeDelay.start()

@@ -24,9 +24,10 @@ func _physics_process(delta: float) -> void:
 		%BodySprite.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 		
 func change_dir():  ##Call this only when we want to flip enemy around (if we call every frame seems to stutter)
-	print("ChargerSpecific Change Dir")
-	scale.x = -1
-	direction.x = -direction.x
+	if %EdgeAvoidCD.is_stopped():
+		scale.x = -1
+		direction.x = -direction.x
+		%EdgeAvoidCD.start()
 
 func die():
 	Global.gain_ink(colour_mask)
