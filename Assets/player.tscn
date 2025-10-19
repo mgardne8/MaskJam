@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d01j4f253dh61"]
+[gd_scene load_steps=29 format=3 uid="uid://d01j4f253dh61"]
 
 [ext_resource type="Script" uid="uid://dq84t65h5eo5t" path="res://Assets/player.gd" id="1_f1ek2"]
 [ext_resource type="Texture2D" uid="uid://dnxj1e55wf00i" path="res://Art/TheDude/Idle.png" id="2_cvnsp"]
@@ -12,7 +12,9 @@
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="8_gymyn"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="9_pu2lt"]
 [ext_resource type="Script" uid="uid://obqljqlbvyu8" path="res://Assets/hud.gd" id="11_uwngq"]
+[ext_resource type="Script" uid="uid://dlm4a5sbvy1fp" path="res://Assets/health_bar.gd" id="13_bg7ob"]
 [ext_resource type="AudioStream" uid="uid://dygdnkbmh4d2a" path="res://Sounds/Raw/Jump Grunt.mp3" id="13_vbai1"]
+[ext_resource type="Texture2D" uid="uid://dyaqdbj4xkpxe" path="res://Art/Heart_Empty.png" id="14_mrs5c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0iea"]
 radius = 12.0
@@ -454,6 +456,32 @@ unique_name_in_owner = true
 offset_right = 131.0
 offset_bottom = 26.0
 text = "K = 0  : C = 0 : Y = 0 : M = 0"
+
+[node name="HealthBar" type="HBoxContainer" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_right = 426.0
+offset_bottom = 190.0
+grow_horizontal = 0
+scale = Vector2(0.25, 0.25)
+script = ExtResource("13_bg7ob")
+
+[node name="1" type="TextureRect" parent="HUD/HealthBar"]
+layout_mode = 2
+texture = ExtResource("14_mrs5c")
+stretch_mode = 2
+
+[node name="2" type="TextureRect" parent="HUD/HealthBar"]
+layout_mode = 2
+texture = ExtResource("14_mrs5c")
+stretch_mode = 2
+
+[node name="3" type="TextureRect" parent="HUD/HealthBar"]
+layout_mode = 2
+texture = ExtResource("14_mrs5c")
+stretch_mode = 2
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_vbai1")

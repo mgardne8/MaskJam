@@ -19,7 +19,12 @@ var bounce_vector: Vector2 = Vector2(0,0)
 var bounce_duration: float = 0.0
 var bounce_timer: float = 0.0
 
+var health: int = 3
+var health_cooldown_limit: float = .5
+var health_cooldown_timer: float = 999
+
 func _ready() -> void:
+	$HUD/HealthBar.update_health(self.health)
 	if Global.checkpoint_pos != Vector2(-999999999,-999999999):
 		global_position = Global.checkpoint_pos
 
@@ -43,6 +48,8 @@ func _physics_process(delta: float) -> void:
 		1)
 
 	$AnimatedSprite2D.material.set_shader_parameter("colour", current_colour)
+	
+	self.health_cooldown_timer += delta
 
 func set_layers(layerDict: Dictionary) -> void:
 	for layer in layerDict.keys():
@@ -50,8 +57,18 @@ func set_layers(layerDict: Dictionary) -> void:
 		set_collision_mask_value(layer,layerDict[layer])
 
 func damage_player():
-	#$Ouch.play(0.5)
-	print("PLAYER DIE")
+	if health_cooldown_timer > health_cooldown_limit:
+		#$Ouch.play(0.5)
+		print("Ouch")
+		self.health -= 1
+		self.health_cooldown_timer = 0
+		$HUD/HealthBar.update_health(self.health)
+		if self.health == 0:
+			kill_player()
+
+func kill_player():
+	print("Dead")
+	pass
 
 # Movement Functions
 func CalcMovement(delta: float) -> void:
