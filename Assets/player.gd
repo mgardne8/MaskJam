@@ -64,11 +64,7 @@ func damage_player():
 		self.health_cooldown_timer = 0
 		$HUD/HealthBar.update_health(self.health)
 		if self.health == 0:
-			kill_player()
-
-func kill_player():
-	print("Dead")
-	pass
+			get_tree().reload_current_scene()
 
 # Movement Functions
 func CalcMovement(delta: float) -> void:
