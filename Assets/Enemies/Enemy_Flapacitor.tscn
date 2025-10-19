@@ -90,5 +90,7 @@ shape = SubResource("RectangleShape2D_apbxx")
 position = Vector2(-10.5, 15)
 shape = SubResource("RectangleShape2D_32asi")
 
+[node name="TurnCD" type="Timer" parent="."]
+
 [connection signal="body_entered" from="KillBox" to="." method="_on_kill_box_body_entered"]
 [connection signal="body_entered" from="BounceBox" to="." method="_on_bounce_box_body_entered"]

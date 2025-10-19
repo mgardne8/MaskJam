@@ -91,6 +91,9 @@ rotation = 0.4886922
 scale = Vector2(0.12084449, 0.21970382)
 texture = ExtResource("4_q1nf5")
 
+[node name="TurnCD" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="body_entered" from="Killbox" to="." method="_on_killbox_body_entered"]
 [connection signal="body_entered" from="BounceArea" to="." method="_on_bounce_area_body_entered"]
 [connection signal="body_entered" from="Part1" to="." method="_on_part_1_body_entered"]

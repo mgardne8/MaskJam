@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvaw54bhkhfmc"]
 
 [ext_resource type="PackedScene" uid="uid://b0503ccq7j4o" path="res://Assets/Bosses/PaperJam/paperfloor.tscn" id="1_x5bpk"]
-[ext_resource type="PackedScene" uid="uid://dtwljp3v2wlxb" path="res://Assets/Terrain/platform[MultiColour].tscn" id="2_x5bpk"]
+[ext_resource type="PackedScene" uid="uid://drnh6dk7tj0i" path="res://Assets/Terrain/Wall[Single].tscn" id="2_x5bpk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5bpk"]
 size = Vector2(3367, 11)
@@ -15,26 +15,6 @@ shape = SubResource("RectangleShape2D_x5bpk")
 [node name="Paper" parent="." instance=ExtResource("1_x5bpk")]
 position = Vector2(421, 0)
 
-[node name="Platform2" parent="." instance=ExtResource("2_x5bpk")]
-position = Vector2(2275, -130)
-rotation = 1.5707964
-scale = Vector2(3, 1)
-
-[node name="Platform3" parent="." instance=ExtResource("2_x5bpk")]
-position = Vector2(1848, -128)
-rotation = 1.5707964
-scale = Vector2(3, 1)
-
-[node name="Platform4" parent="." instance=ExtResource("2_x5bpk")]
-position = Vector2(1306, -132.00002)
-rotation = 1.5707964
-scale = Vector2(3, 1)
-
-[node name="Platform5" parent="." instance=ExtResource("2_x5bpk")]
-position = Vector2(1287, -131)
-rotation = 1.5707964
-scale = Vector2(3, 1)
-
 [node name="Paper2" parent="." instance=ExtResource("1_x5bpk")]
 position = Vector2(1263, 0)
 
@@ -42,4 +22,57 @@ position = Vector2(1263, 0)
 position = Vector2(2106, 0)
 
 [node name="Paper4" parent="." instance=ExtResource("1_x5bpk")]
-position = Vector2(2948, -5)
+position = Vector2(2948, 0)
+
+[node name="Paper5" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(3789.5085, -0.008617401)
+
+[node name="Paper6" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(4631.509, -0.008617401)
+
+[node name="Paper7" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(5474.509, -0.008617401)
+
+[node name="Paper8" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(6316.509, -0.008617401)
+
+[node name="Paper9" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(7158, -0.49137878)
+
+[node name="Paper10" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(8000, -0.49137878)
+
+[node name="Paper11" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(8843, -0.49137878)
+
+[node name="Paper12" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(9685, -0.49137878)
+
+[node name="Paper13" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(10526.509, -0.5)
+
+[node name="Paper14" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(11368.509, -0.5)
+
+[node name="Paper15" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(12211.509, -0.5)
+
+[node name="Paper16" parent="." instance=ExtResource("1_x5bpk")]
+position = Vector2(13053.509, -0.5)
+
+[node name="Wall[single]" parent="." instance=ExtResource("2_x5bpk")]
+position = Vector2(1216, 2)
+
+[node name="Wall[single]2" parent="." instance=ExtResource("2_x5bpk")]
+position = Vector2(1902, -1)
+
+[node name="Wall[single]3" parent="." instance=ExtResource("2_x5bpk")]
+position = Vector2(1956, -51)
+
+[node name="Wall[single]4" parent="." instance=ExtResource("2_x5bpk")]
+position = Vector2(2245, -57)
+colour_mask = 1
+
+[node name="Wall[single]5" parent="." instance=ExtResource("2_x5bpk")]
+position = Vector2(2348, -57)
+colour_mask = 1
