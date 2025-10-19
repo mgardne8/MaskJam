@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://drnh6dk7tj0i"]
+
+[ext_resource type="Script" uid="uid://dv14vgnm1tw7w" path="res://Scripts/Terrain and Obstacles/platform[single].gd" id="1_38g4h"]
+[ext_resource type="Texture2D" uid="uid://bppicfq6wti1i" path="res://Art/WallOneColour.png" id="2_0oot4"]
+[ext_resource type="Shader" uid="uid://d1rhew4ybwfr5" path="res://Shaders/Shader.gdshader" id="2_titvo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7evh"]
+resource_local_to_scene = true
+shader = ExtResource("2_titvo")
+shader_parameter/colour = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_titvo"]
+size = Vector2(15.75, 100)
+
+[node name="Wall[single]" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_38g4h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_v7evh")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_0oot4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.125, 0)
+shape = SubResource("RectangleShape2D_titvo")

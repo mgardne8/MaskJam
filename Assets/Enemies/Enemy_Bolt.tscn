@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bk00l5gxwyfg3" path="res://Art/Enemy_Bolt.png" id="2_jk4gd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_64p1g"]
-radius = 13.341664
+radius = 21.023796
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c3v75"]
 resource_local_to_scene = true
@@ -56,11 +56,11 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_idtok"]
-radius = 17.0
+radius = 25.019993
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64p1g"]
 radius = 3.0
-height = 20.0
+height = 36.0
 
 [node name="EnemyBolt" type="CharacterBody2D"]
 collision_layer = 32
@@ -68,26 +68,26 @@ collision_mask = 31
 script = ExtResource("1_64p1g")
 
 [node name="CharacterBody" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 4)
+position = Vector2(-1, 8)
 shape = SubResource("CircleShape2D_64p1g")
 
 [node name="BaseSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_c3v75")
 position = Vector2(-1.9073486e-06, -1.9073486e-06)
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.08, 0.08)
 sprite_frames = SubResource("SpriteFrames_xaqjv")
 animation = &"Move"
 
 [node name="Killbox" type="Area2D" parent="."]
 
 [node name="Area" type="CollisionShape2D" parent="Killbox"]
-position = Vector2(-1, 1)
+position = Vector2(-1, 5)
 shape = SubResource("CircleShape2D_idtok")
 
 [node name="BounceArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BounceArea"]
-position = Vector2(0, -14)
+position = Vector2(0, -20)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_64p1g")
 
@@ -97,7 +97,8 @@ collision_mask = 31
 
 [node name="RayCastWall" type="RayCast2D" parent="."]
 rotation = 1.5707964
-target_position = Vector2(9.616506e-07, 22)
+target_position = Vector2(1.4861872e-06, 34)
+collision_mask = 33
 
 [connection signal="body_entered" from="Killbox" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="BounceArea" to="." method="_on_bounce_area_body_shape_entered"]

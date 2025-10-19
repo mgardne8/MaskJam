@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://hqdc7kbu4xih"]
 
-[ext_resource type="Script" uid="uid://bwhd13f0p0124" path="res://Assets/Terrain/ink_drop_point.gd" id="1_qsf6h"]
+[ext_resource type="Script" uid="uid://bwhd13f0p0124" path="res://Scripts/Terrain and Obstacles/ink_drop_point.gd" id="1_qsf6h"]
 [ext_resource type="Texture2D" uid="uid://bef7awn4mg3dv" path="res://Art/InkDropPoint.png" id="2_t8f2w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7h5cu"]
@@ -22,6 +22,7 @@ animations = [{
 }]
 
 [node name="InkDropPoint" type="Area2D"]
+z_index = -1
 script = ExtResource("1_qsf6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

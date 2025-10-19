@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8ry30cn16myv"
+path="res://.godot/imported/Steve Video Game - Full .wav-977335ece3552afe60f608ebef00d24f.sample"
+
+[deps]
+
+source_file="res://Sounds/Steve Video Game - Full .wav"
+dest_files=["res://.godot/imported/Steve Video Game - Full .wav-977335ece3552afe60f608ebef00d24f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

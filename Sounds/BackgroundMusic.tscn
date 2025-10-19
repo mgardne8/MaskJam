@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjkh44il1ao07"]
+
+[ext_resource type="AudioStream" uid="uid://8ry30cn16myv" path="res://Sounds/Steve Video Game - Full .wav" id="1_3lc0u"]
+[ext_resource type="Script" uid="uid://bwe6deqhxkxm2" path="res://Sounds/background_music.gd" id="2_grhe6"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_3lc0u")
+volume_db = -20.0
+autoplay = true
+script = ExtResource("2_grhe6")

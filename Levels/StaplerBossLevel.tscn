@@ -185,7 +185,7 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="IdleRemover" type="AnimatedSprite2D" parent="Player"]
 unique_name_in_owner = true
-position = Vector2(-750, -416.99997)
+position = Vector2(-746, -419.00003)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_lsp5b")
 animation = &"ReturnFrame"

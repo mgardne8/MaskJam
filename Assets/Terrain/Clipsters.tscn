@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b1ey4kdf0kf4r"]
 
 [ext_resource type="Texture2D" uid="uid://c67fawoluovin" path="res://Art/Clipster.png" id="1_ia3pg"]
-[ext_resource type="Script" uid="uid://cr6jjbh75doer" path="res://Assets/Terrain/clipsters.gd" id="1_rjakd"]
+[ext_resource type="Script" uid="uid://cr6jjbh75doer" path="res://Scripts/Terrain and Obstacles/clipsters.gd" id="1_rjakd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rjakd"]
 atlas = ExtResource("1_ia3pg")

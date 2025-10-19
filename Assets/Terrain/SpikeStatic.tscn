@@ -24,31 +24,31 @@ void fragment() {
 shader = SubResource("Shader_l3r61")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmxwc"]
-size = Vector2(36.011086, 16)
+size = Vector2(31.716583, 15.323841)
 
 [node name="SpikeStatic" type="Area2D"]
 script = ExtResource("1_fmxwc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_5q81q")
-position = Vector2(-12.487415, -7.7631254)
-scale = Vector2(0.024732357, 0.028340163)
+position = Vector2(-11.040703, -7.7631254)
+scale = Vector2(0.021086892, 0.028340163)
 texture = ExtResource("2_cso25")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_5q81q")
-position = Vector2(12.250633, -7.7631254)
-scale = Vector2(0.024732357, 0.028340163)
+position = Vector2(10.250633, -7.7631254)
+scale = Vector2(0.02, 0.028340163)
 texture = ExtResource("2_cso25")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5771551, -8.302902)
+position = Vector2(-0.9615321, -7.964823)
 shape = SubResource("RectangleShape2D_fmxwc")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_5q81q")
 position = Vector2(-0.13868141, -7.800913)
-scale = Vector2(0.024732357, 0.028340163)
+scale = Vector2(0.02, 0.028340163)
 texture = ExtResource("2_cso25")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
