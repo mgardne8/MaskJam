@@ -677,5 +677,7 @@ position = Vector2(7087, -1933)
 drop_point = NodePath("../InkDropPoint3")
 
 [node name="Background" parent="." instance=ExtResource("14_oc2qy")]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 
 [connection signal="body_entered" from="Color Unlocker" to="Color Unlocker" method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://nybtl84jetwm"]
+[gd_scene load_steps=33 format=3 uid="uid://nybtl84jetwm"]
 
 [ext_resource type="Script" uid="uid://u8kevo1t2wt8" path="res://Levels/stapler_boss_level.gd" id="1_8h5ot"]
 [ext_resource type="Texture2D" uid="uid://eu4f1ong3hkb" path="res://Art/minimal-tilemap.png" id="1_itita"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://hqdc7kbu4xih" path="res://Assets/Terrain/Ink_Drop_Point.tscn" id="14_33ant"]
 [ext_resource type="PackedScene" uid="uid://dcksluhrh2dvh" path="res://Assets/Terrain/NewAreaDoor.tscn" id="15_33ant"]
 [ext_resource type="PackedScene" uid="uid://dtwljp3v2wlxb" path="res://Assets/Terrain/platform[MultiColour].tscn" id="15_whpy4"]
+[ext_resource type="PackedScene" uid="uid://dij4owe3wunr1" path="res://Levels/background.tscn" id="16_whpy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8crqk"]
 texture = ExtResource("1_itita")
@@ -248,6 +249,8 @@ colour_mask = Array[int]([0, 0])
 [node name="NewAreaDoor" parent="." node_paths=PackedStringArray("drop_point") instance=ExtResource("15_33ant")]
 position = Vector2(487, -670)
 drop_point = NodePath("../InkDropPoint")
+
+[node name="Background" parent="." instance=ExtResource("16_whpy4")]
 
 [connection signal="body_entered" from="Remover/RemoverAttackZone" to="Remover_StateMachine/Bite" method="_on_remover_attack_zone_body_entered"]
 [connection signal="timeout" from="Remover_StateMachine/Idle/IdleTime" to="Remover_StateMachine/Idle" method="_on_idle_time_timeout"]

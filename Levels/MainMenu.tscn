@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3r1iy0vvjpdc"]
+[gd_scene load_steps=3 format=3 uid="uid://b3r1iy0vvjpdc"]
 
 [ext_resource type="Script" uid="uid://b20uc2wh7seuh" path="res://Levels/main_menu.gd" id="1_yw2i3"]
+[ext_resource type="PackedScene" uid="uid://dij4owe3wunr1" path="res://Levels/background.tscn" id="2_hr4vk"]
 
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -41,5 +42,10 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 25
 text = "Click anywhere to start."
+
+[node name="Background" parent="." instance=ExtResource("2_hr4vk")]
+offset = Vector2(300, 0)
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 300, 0)
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

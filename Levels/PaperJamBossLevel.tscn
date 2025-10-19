@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bq5qdstllw8wv"]
+[gd_scene load_steps=21 format=4 uid="uid://bq5qdstllw8wv"]
 
 [ext_resource type="Script" uid="uid://fpmshtyuxox8" path="res://Levels/paper_jam_boss_level.gd" id="1_vuxna"]
 [ext_resource type="PackedScene" uid="uid://d1ioyx5o8x5er" path="res://Assets/Bosses/PaperJam/PaperJam.tscn" id="2_lx06c"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://hqdc7kbu4xih" path="res://Assets/Terrain/Ink_Drop_Point.tscn" id="13_dycep"]
 [ext_resource type="PackedScene" uid="uid://dcksluhrh2dvh" path="res://Assets/Terrain/NewAreaDoor.tscn" id="14_00pc5"]
 [ext_resource type="PackedScene" uid="uid://0c0qgbbb2yuo" path="res://Assets/Terrain/Platform[Single].tscn" id="15_udjyw"]
+[ext_resource type="PackedScene" uid="uid://dij4owe3wunr1" path="res://Levels/background.tscn" id="16_00pc5"]
 
 [sub_resource type="Curve2D" id="Curve2D_8nupl"]
 _data = {
@@ -225,3 +226,8 @@ position = Vector2(5522, -23)
 
 [node name="SpikeStatic21" parent="." instance=ExtResource("6_efbns")]
 position = Vector2(5554, -23)
+
+[node name="Background" parent="." instance=ExtResource("16_00pc5")]
+offset = Vector2(400, 300)
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 400, 300)

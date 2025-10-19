@@ -442,11 +442,12 @@ offset_left = -3.0
 offset_top = 18.0
 offset_right = 350.0
 offset_bottom = 67.0
+scale = Vector2(1.0207901, 0.9886332)
 text = "Wow, you found Yellow during that fight?!?
 [Press Right Arrow] to put on the Yellow Mask"
 
 [node name="Sprite2D" type="Sprite2D" parent="Clipsters"]
-position = Vector2(60, 85.00001)
+position = Vector2(18.000004, 82.00001)
 scale = Vector2(0.4, 0.4)
 texture = SubResource("AtlasTexture_xeffo")
 
@@ -456,3 +457,5 @@ speed = 0
 start_dir = 1
 
 [node name="Background" parent="." instance=ExtResource("14_xeffo")]
+scale = Vector2(3.25, 3.25)
+transform = Transform2D(3.25, 0, 0, 3.25, 0, 0)
