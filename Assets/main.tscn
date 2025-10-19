@@ -515,7 +515,7 @@ colour_mask = 1
 speed = 0
 
 [node name="EnemyBolt4" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(-104, 348)
+position = Vector2(-196, 337)
 colour_mask = 1
 speed = 0
 
@@ -525,7 +525,7 @@ colour_mask = 1
 speed = 15
 
 [node name="EnemyBolt6" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(-332, 349)
+position = Vector2(-343, 337)
 colour_mask = 1
 speed = 5
 
