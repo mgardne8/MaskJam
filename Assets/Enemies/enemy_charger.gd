@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Enemy_Charger
 
+@export var facing = 1
 var direction = Vector2(1,0)
 @onready var rand = RandomNumberGenerator.new()
 @export var charge_speed = 150
@@ -13,6 +14,8 @@ var direction = Vector2(1,0)
 var invuln = true
 
 func _ready() -> void:
+	if facing == -1:
+		change_dir()
 	%ChargeCD.wait_time = charge_CD
 	#%BodySprite.material.set_shader_parameter("colour", Global.colourDict[colour_mask])
 
