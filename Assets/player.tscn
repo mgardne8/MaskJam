@@ -145,10 +145,10 @@ sprite_frames = SubResource("SpriteFrames_cvnsp")
 animation = &"WALL JUMP"
 
 [node name="RayCast2D-LEFT" type="RayCast2D" parent="."]
-target_position = Vector2(-22, 0)
+target_position = Vector2(-16, 0)
 
 [node name="RayCast2D-RIGHT" type="RayCast2D" parent="."]
-target_position = Vector2(22, 0)
+target_position = Vector2(16, 0)
 
 [node name="Ouch" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_ds5gj")

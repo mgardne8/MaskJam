@@ -85,3 +85,7 @@ Reset={
 2d_physics/layer_4="World-Y"
 2d_physics/layer_5="World-M"
 2d_physics/layer_6="Enemies"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.43239847, 0.65124834, 0.7971728, 1)
