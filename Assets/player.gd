@@ -32,13 +32,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 		
 		#colour change controls
-	if Input.is_action_just_pressed("colour_k"):
+	if Input.is_action_just_pressed("colour_k") and Global.unlocked_k:
 		$ColorState.send_event("Change K")
-	if Input.is_action_just_pressed("colour_c"):
+	if Input.is_action_just_pressed("colour_c") and Global.unlocked_c:
 		$ColorState.send_event("Change C")
-	if Input.is_action_just_pressed("colour_y"):
+	if Input.is_action_just_pressed("colour_y") and Global.unlocked_y:
 		$ColorState.send_event("Change Y")
-	if Input.is_action_just_pressed("colour_m"):
+	if Input.is_action_just_pressed("colour_m") and Global.unlocked_m:
 		$ColorState.send_event("Change M")
 
 	current_colour = Vector4(

@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=4 uid="uid://dbh5v6doojd55"]
+[gd_scene load_steps=20 format=4 uid="uid://dbh5v6doojd55"]
 
 [ext_resource type="Texture2D" uid="uid://eu4f1ong3hkb" path="res://Art/minimal-tilemap.png" id="1_psi6i"]
 [ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Assets/player.tscn" id="2_am2cp"]
 [ext_resource type="Texture2D" uid="uid://dcmalsgo8vg0w" path="res://Art/HUD/keyboard-&-mouse_sheet_double.png" id="3_am2cp"]
+[ext_resource type="Script" uid="uid://bf4xtk6aj17hc" path="res://Levels/color_unlocker.gd" id="3_gc2bw"]
 [ext_resource type="PackedScene" uid="uid://bbmf76x11s3gy" path="res://Assets/Enemies/Enemy_Bolt.tscn" id="4_hr13c"]
 [ext_resource type="PackedScene" uid="uid://hqdc7kbu4xih" path="res://Assets/Terrain/Ink_Drop_Point.tscn" id="5_wdwxn"]
 [ext_resource type="PackedScene" uid="uid://r2kv1a73s3in" path="res://Art/SpikeStatic.tscn" id="6_pby23"]
@@ -50,6 +51,9 @@ texture = ExtResource("1_psi6i")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_8bea5")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l72rl"]
+size = Vector2(269, 199)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8bea5"]
 atlas = ExtResource("3_am2cp")
 region = Rect2(908.7274, 267.72736, 102.727295, 102.727295)
@@ -80,6 +84,25 @@ collision_mask = 63
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(80, 26)
+
+[node name="Color Unlocker" type="Area2D" parent="."]
+position = Vector2(4425, 413)
+script = ExtResource("3_gc2bw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Color Unlocker"]
+position = Vector2(66.5, -66.5)
+shape = SubResource("RectangleShape2D_l72rl")
+
+[node name="Unlock Text" type="Label" parent="Color Unlocker"]
+visible = false
+offset_left = -204.0
+offset_top = -211.0
+offset_right = 112.0
+offset_bottom = -110.0
+text = "Hey Nerd, Take this.
+Unlocked \"Cyan Mask\" [Press Left Arrow]
+[Press Down Arrow] to remove mask
+"
 
 [node name="Icons" type="Node" parent="."]
 
@@ -599,3 +622,5 @@ position = Vector2(6192, -1906)
 
 [node name="EnemyCharger" parent="." instance=ExtResource("11_8lye3")]
 position = Vector2(6691, -1891)
+
+[connection signal="body_entered" from="Color Unlocker" to="Color Unlocker" method="_on_body_entered"]

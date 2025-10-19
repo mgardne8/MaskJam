@@ -14,6 +14,10 @@ var current_Level = 0
 var checkpoint_pos = Vector2(-999999999,-999999999)
 var previous_checkpoint : Sprite2D = null
 
+var unlocked_k : bool = true
+var unlocked_c : bool = false
+var unlocked_y : bool = false
+var unlocked_m : bool = false
 
 #InkGathering from enemies:
 func gain_ink(ink : Global.Colour_States):
