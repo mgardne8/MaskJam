@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://4i1p7wto15x0"]
+[gd_scene load_steps=18 format=4 uid="uid://4i1p7wto15x0"]
 
 [ext_resource type="Texture2D" uid="uid://eu4f1ong3hkb" path="res://Art/minimal-tilemap.png" id="1_m26nb"]
 [ext_resource type="PackedScene" uid="uid://bbmf76x11s3gy" path="res://Assets/Enemies/Enemy_Bolt.tscn" id="2_dp48y"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dcksluhrh2dvh" path="res://Assets/Terrain/NewAreaDoor.tscn" id="11_24coj"]
 [ext_resource type="PackedScene" uid="uid://b1ey4kdf0kf4r" path="res://Assets/Terrain/Clipsters.tscn" id="12_8w0qx"]
 [ext_resource type="Texture2D" uid="uid://dcmalsgo8vg0w" path="res://Art/HUD/keyboard-&-mouse_sheet_double.png" id="13_7jl4m"]
+[ext_resource type="PackedScene" uid="uid://dij4owe3wunr1" path="res://Levels/background.tscn" id="14_xeffo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lif2w"]
 texture = ExtResource("1_m26nb")
@@ -453,3 +454,5 @@ texture = SubResource("AtlasTexture_xeffo")
 position = Vector2(11569, -1672)
 speed = 0
 start_dir = 1
+
+[node name="Background" parent="." instance=ExtResource("14_xeffo")]

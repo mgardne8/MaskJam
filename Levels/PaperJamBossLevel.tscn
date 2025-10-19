@@ -93,9 +93,10 @@ libraries = {
 }
 
 [node name="Player" parent="." instance=ExtResource("5_hycop")]
-position = Vector2(276, -120)
+position = Vector2(423, -117)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(9, -19)
 
 [node name="SpikeStatic" parent="." instance=ExtResource("6_efbns")]
 position = Vector2(3317, -24)
@@ -165,7 +166,7 @@ enemy_colours_left = Array[int]([1, 2])
 
 [node name="InkDropPoint" parent="." instance=ExtResource("13_dycep")]
 position = Vector2(5816, -29)
-ink_requirements = Array[int]([2])
+ink_requirements = Array[int]([0])
 
 [node name="NewAreaDoor" parent="." node_paths=PackedStringArray("drop_point") instance=ExtResource("14_00pc5")]
 position = Vector2(5920, -53)
@@ -180,12 +181,14 @@ position = Vector2(5362, -129)
 scale = Vector2(3, 0.5)
 
 [node name="EnemyBolt2" parent="." instance=ExtResource("11_be0ir")]
-position = Vector2(5438, -171)
+position = Vector2(5901, -55)
+speed = 0
+start_dir = 1
 
 [node name="EnemyBolt3" parent="." instance=ExtResource("11_be0ir")]
-position = Vector2(5901, -54)
+position = Vector2(5467, -167)
 colour_mask = 2
-speed = 0
+speed = 50
 
 [node name="SpikeStatic10" parent="." instance=ExtResource("6_efbns")]
 position = Vector2(5202, -23)

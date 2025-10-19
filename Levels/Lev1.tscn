@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dbh5v6doojd55"]
+[gd_scene load_steps=24 format=4 uid="uid://dbh5v6doojd55"]
 
 [ext_resource type="Texture2D" uid="uid://eu4f1ong3hkb" path="res://Art/minimal-tilemap.png" id="1_psi6i"]
 [ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Assets/player.tscn" id="2_am2cp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b1ey4kdf0kf4r" path="res://Assets/Terrain/Clipsters.tscn" id="10_lgcoi"]
 [ext_resource type="PackedScene" uid="uid://bv1atsta3pqk8" path="res://Assets/Enemies/Enemy_Charger.tscn" id="11_8lye3"]
 [ext_resource type="PackedScene" uid="uid://dcksluhrh2dvh" path="res://Assets/Terrain/NewAreaDoor.tscn" id="13_l72rl"]
+[ext_resource type="PackedScene" uid="uid://dij4owe3wunr1" path="res://Levels/background.tscn" id="14_oc2qy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8bea5"]
 texture = ExtResource("1_psi6i")
@@ -674,5 +675,7 @@ ink_requirements = Array[int]([0])
 [node name="NewAreaDoor" parent="." node_paths=PackedStringArray("drop_point") instance=ExtResource("13_l72rl")]
 position = Vector2(7087, -1933)
 drop_point = NodePath("../InkDropPoint3")
+
+[node name="Background" parent="." instance=ExtResource("14_oc2qy")]
 
 [connection signal="body_entered" from="Color Unlocker" to="Color Unlocker" method="_on_body_entered"]
