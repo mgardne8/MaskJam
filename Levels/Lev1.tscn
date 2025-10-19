@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dbh5v6doojd55"]
+[gd_scene load_steps=23 format=4 uid="uid://dbh5v6doojd55"]
 
 [ext_resource type="Texture2D" uid="uid://eu4f1ong3hkb" path="res://Art/minimal-tilemap.png" id="1_psi6i"]
 [ext_resource type="PackedScene" uid="uid://d01j4f253dh61" path="res://Assets/player.tscn" id="2_am2cp"]
@@ -55,6 +55,14 @@ sources/1 = SubResource("TileSetAtlasSource_8bea5")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l72rl"]
 size = Vector2(269, 199)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l72rl"]
+atlas = ExtResource("3_am2cp")
+region = Rect2(1418.9999, 1694.2997, 105.599976, 72.6001)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc2qy"]
+atlas = ExtResource("3_am2cp")
+region = Rect2(908.8973, 1692.7249, 104.03119, 69.63867)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8bea5"]
 atlas = ExtResource("3_am2cp")
 region = Rect2(908.7274, 267.72736, 102.727295, 102.727295)
@@ -95,15 +103,26 @@ position = Vector2(66.5, -66.5)
 shape = SubResource("RectangleShape2D_l72rl")
 
 [node name="Unlock Text" type="Label" parent="Color Unlocker"]
-visible = false
-offset_left = -204.0
-offset_top = -211.0
-offset_right = 112.0
-offset_bottom = -110.0
-text = "Hey Nerd, Take this.
+offset_left = -228.0
+offset_top = -136.0
+offset_right = 99.0
+offset_bottom = -35.0
+text = "Hey Nerd, Take this, looks like you need it.
 Unlocked \"Cyan Mask\" [Press Left Arrow]
 [Press Down Arrow] to remove mask
 "
+
+[node name="Left" type="Sprite2D" parent="Color Unlocker"]
+visible = false
+position = Vector2(-190, -44)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_l72rl")
+
+[node name="Down" type="Sprite2D" parent="Color Unlocker"]
+visible = false
+position = Vector2(-111, -45)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_oc2qy")
 
 [node name="Icons" type="Node" parent="."]
 
@@ -332,8 +351,32 @@ colour_mask = 1
 position = Vector2(4215, 465)
 colour_mask = 1
 
+[node name="Clipsters2" parent="." instance=ExtResource("10_lgcoi")]
+position = Vector2(194, -223)
+scale = Vector2(2, 2)
+
+[node name="Label" type="Label" parent="Clipsters2"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 178.0
+offset_bottom = 39.0
+scale = Vector2(0.5, 0.5)
+text = "Fix the printer inkboi"
+
+[node name="Clipsters3" parent="." instance=ExtResource("10_lgcoi")]
+position = Vector2(4518, -687)
+
+[node name="Label" type="Label" parent="Clipsters3"]
+offset_left = 14.0
+offset_top = 19.0
+offset_right = 322.0
+offset_bottom = 68.0
+scale = Vector2(0.5, 0.5)
+text = "Kill enemies and bring their ink
+to the cartrages to unlock the next level"
+
 [node name="Clipsters" parent="." instance=ExtResource("10_lgcoi")]
-position = Vector2(4540, 282)
+position = Vector2(4531, 372)
 scale = Vector2(2, 2)
 
 [node name="Platform[single]8" parent="." instance=ExtResource("7_wdwxn")]
